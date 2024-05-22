@@ -6,12 +6,15 @@
 }
 
 .header{
-  height: 100px;
+  height: 90px;
   margin-top: 0;
   display: grid;
   grid-template-columns: 250px 1fr 200px;
   grid-template-areas: "logo barra perfil";
   color: #343C6A;
+  position: fixed;
+  top: 0;
+  width: 100%;
 } 
 
 .logo{
@@ -23,8 +26,6 @@
   font-family: 'poppins';
   font-weight: bold;
   color: #343C6A;
-  /* letter-spacing: 0.5px; */
-  font-style: black;
   font-size: 19px;
 }
 
@@ -58,6 +59,3 @@
   font-weight: semi-bold;
 }
 
-/* *{
-  border: 1px solid black;
-} */
