@@ -1,3 +1,4 @@
+
 #root {
   margin: 0;
   width: 100%;
@@ -59,3 +60,6 @@
   font-weight: semi-bold;
 }
 
+.icon{
+  color: black !important;
+}
