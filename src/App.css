@@ -11,34 +11,51 @@
   display: grid;
   grid-template-columns: 250px 1fr 200px;
   grid-template-areas: "logo barra perfil";
-  
+  color: #343C6A;
 } 
-
-
 
 .logo{
   grid-area: logo;
   display: grid;
-  
   place-items: center;
 }
+.logo p{
+  font-family: 'poppins';
+  font-weight: bold;
+  color: #343C6A;
+  /* letter-spacing: 0.5px; */
+  font-style: black;
+  font-size: 19px;
+}
+
 
 .barra{
   grid-area: barra;
-  
   line-height: 40px;
   padding: 15px;
 }
 
+.barra p{
+  font-family: 'inter';
+  font-weight: 500;
+}
+
 .perfil{
   grid-area: perfil;
-  
   padding: 10px;
+
+}
+.perfil a{
+  text-decoration: none;
+  color: #343C6A;
+
 }
 
 .perfil p{
   margin-top: 0;
   font-size: 12px;
+  font-family: 'inter';
+  font-weight: semi-bold;
 }
 
 /* *{
