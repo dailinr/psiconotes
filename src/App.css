@@ -1,50 +1,69 @@
 
 #root {
-  margin: 0;
-  width: 100%;
-  overflow-x: hidden;
-
+  
 }
 
 .header{
+  grid-area: header;
   height: 90px;
   margin-top: 0;
   display: grid;
   grid-template-columns: 250px 1fr 200px;
+  grid-template-rows: 90px;
   grid-template-areas: "logo barra perfil";
   color: #343C6A;
   position: fixed;
   top: 0;
   width: 100%;
+  box-sizing: border-box;
 } 
-
+.aside{
+  font-family: 'inter', 'arial';
+  grid-area: aside;
+  background-color: aquamarine;
+}
+.main{
+  grid-area: main;
+  background-color: #E5E5E5;
+  margin-top: 90px;
+  padding: 15px;
+}
 .logo{
   grid-area: logo;
   display: grid;
   place-items: center;
 }
-.logo p{
+.logo span{
   font-family: 'poppins';
   font-weight: bold;
   color: #343C6A;
   font-size: 19px;
 }
 
+.logo-1{
+  position: absolute;
+  width: 61px;
+  height: 59px;
+  left: 22px;
+  top: 25px;
+  color: #343C6A !important;
+}
 
 .barra{
   grid-area: barra;
-  line-height: 40px;
+  line-height: 45px;
   padding: 15px;
 }
 
 .barra p{
   font-family: 'inter';
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .perfil{
   grid-area: perfil;
-  padding: 10px;
+  padding: 15px;
 
 }
 .perfil a{
@@ -60,6 +79,18 @@
   font-weight: semi-bold;
 }
 
-.icon{
-  color: black !important;
+
+
+
+
+.aside a{
+  color: #B1B1B1
+}
+.aside a:hover, .aside a:active, .aside a:focus{
+  color: #1814F3
+}
+.aside li:hover, .aside li:active, .aside li:focus{
+  border-left: 3px solid #1814F3;
+  background-color: #F5F5F5;
+  
 }

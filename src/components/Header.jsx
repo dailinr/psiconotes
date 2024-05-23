@@ -3,11 +3,12 @@ import React from 'react'
 export const Header = () => {
   return (
 
-    <header className="header p-3 mb-3 border-bottom">
+    <header className="header  p-1  border-bottom">
 
       <div className="logo">
         <a href="">
-           <p>PsicoNote</p>
+          <img className="logo-1" src="../public/logo-peq-removebg-preview.png" />
+           <span>PsicoNote</span>
         </a>
       </div>
       
