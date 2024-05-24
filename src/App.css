@@ -22,11 +22,10 @@
   grid-area: aside;
   background-color: aquamarine;
 }
-.nav-link svg{
-  width: 20px;
-  height: 21px;
-  color: #343C6A;
+.nav-link .bi{
+ font-size: larger;
 }
+
 .main{
   grid-area: main;
   background-color: #E5E5E5;
