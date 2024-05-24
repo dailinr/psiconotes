@@ -1,13 +1,8 @@
 
-#root {
+#root {}
   
-}
+/* --------------- ESTILOS DEL HEADER ------------------ */
 
-
-.principal{
-  border: 1px solid red;
-  width: calc(100% - 250px);
-}
 .header{
   grid-area: header;
   height: 90px;
@@ -22,37 +17,6 @@
   width: 100%;
   box-sizing: border-box;
 } 
-.aside{
-  font-family: 'inter', 'arial';
-  grid-area: aside;
-  position: relative;
-  height: calc(100vh - 180px);
-}
-.nav-link .bi{
- font-size: larger;
-}
-.salir{
-  position: absolute; 
-  bottom: 0; 
-}
-.main{
-  grid-area: main;
-  background-color: #E5E5E5;
-  margin-top: 90px;
-  padding: 15px;
-}
-.logo{
-  grid-area: logo;
-  display: grid;
-  place-items: center;
-}
-.logo span{
-  font-family: 'poppins';
-  font-weight: bold;
-  color: #343C6A;
-  font-size: 19px;
-}
-
 .logo-1{
   position: absolute;
   width: 61px;
@@ -84,14 +48,39 @@
   color: #343C6A;
 
 }
-
 .perfil p{
   margin-top: 0;
   font-size: 12px;
   font-family: 'inter';
   font-weight: semi-bold;
 }
+.logo{
+  grid-area: logo;
+  display: grid;
+  place-items: center;
+}
+.logo span{
+  font-family: 'poppins';
+  font-weight: bold;
+  color: #343C6A;
+  font-size: 19px;
+}
 
+/* ---------- ESTILOS DE LA BARRA LATERAL ---------- */
+
+.aside{
+  font-family: 'inter', 'arial';
+  grid-area: aside;
+  position: relative;
+  height: calc(100vh - 90px);
+}
+.nav-link .bi{
+ font-size: larger;
+}
+.salir{
+  position: absolute; 
+  bottom: 0; 
+}
 
 .aside a{
   color: #B1B1B1
@@ -103,6 +92,6 @@
   
 }
 .aside li:hover, .aside li:active, .aside li:focus{
-  border-left: 3px solid #1814F3;
+  color: #1814F3;
   background-color: #F5F5F5;
 }

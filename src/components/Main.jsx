@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Main() {
+export const Main = () => {
   return (
     <div className="main">
-        <p>hgaol</p>
+      <p>hoa anjdjdh </p>
     </div>
   )
 }
