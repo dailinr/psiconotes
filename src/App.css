@@ -3,6 +3,11 @@
   
 }
 
+
+.principal{
+  border: 1px solid red;
+  width: calc(100% - 250px);
+}
 .header{
   grid-area: header;
   height: 90px;
@@ -20,6 +25,8 @@
 .aside{
   font-family: 'inter', 'arial';
   grid-area: aside;
+  position: relative;
+  height: calc(100vh - 180px);
 }
 .nav-link .bi{
  font-size: larger;
@@ -85,6 +92,7 @@
   font-weight: semi-bold;
 }
 
+
 .aside a{
   color: #B1B1B1
 }
@@ -97,5 +105,4 @@
 .aside li:hover, .aside li:active, .aside li:focus{
   border-left: 3px solid #1814F3;
   background-color: #F5F5F5;
-  
 }
