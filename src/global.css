@@ -1,6 +1,7 @@
 body {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif sans-serif;
     margin: 0;
+    overflow-x: hidden;
 }
 .app {
     display: grid;
@@ -15,12 +16,12 @@ body {
   
 .aside {
     grid-row: 2;
-    grid-column: 1/2; /* Hace que aside comience después del header */
+    grid-column: 1/2; /* Hace que aside se situe en la izquierda de la pagina */
 }
   
 .main {
-    grid-row: 2; /* Hace que main comience después del header */
-    grid-column: 2/3; /* Hace que main comience después de aside */
+    grid-row: 2; /* Hace que main comience después de la fila del header */
+    grid-column: 2/3; /* Hace que main esté en la derecha después del aside */
 }
 
 *{ 
