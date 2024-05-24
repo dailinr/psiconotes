@@ -3,7 +3,7 @@ import React from 'react'
 export const Header = () => {
   return (
 
-    <header className="header  p-1  border-bottom">
+    <header className="header shadow-sm p-1  border-bottom">
 
       <div className="logo">
         <a href="">
@@ -12,7 +12,7 @@ export const Header = () => {
         </a>
       </div>
       
-      <div className="barra ">
+      <div className="barra  ">
        <p>Panel del psicologo</p>
       </div>
 

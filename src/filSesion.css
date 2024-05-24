@@ -1,0 +1,58 @@
+.row-sesion{
+    background-color: #f9f9f9dd;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 80px;
+    height: 80px;
+    place-items: center;
+}
+.row-sesion img{
+    width: 55px;
+    height: 45px;
+}
+.info{
+    font-size: 14px;
+    color: #232323;
+    font-weight: 500;
+    
+}
+
+.info br + span{
+    color: #B1B1B1;
+    font-size: 13px;
+}
+.state-inf{
+    font-weight: 600;
+    color: green !important;
+}
+
+.info .bi{
+    color: black;
+    font-size: 15px;
+}
+.info .bi-plus-circle-fill{
+    color: #567FBD;   
+}
+
+.name-stud{
+    cursor: pointer;
+}
+.name-stud:hover{
+    color: #567FBD;
+    text-decoration: underline;
+}
+
+/* ---- MOSTRAR DETALLES DEL ESTUDIANTE ---- */
+
+.pageWithDetails {
+  /* Tus estilos para cuando showDetails es true */
+  
+}
+  
+.pageWithoutDetails {
+/* Tus estilos para cuando showDetails es false */
+}
+body.detailsShown, body.detailsShown * {
+    color: #232323 !important;
+}

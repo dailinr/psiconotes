@@ -1,4 +1,6 @@
-
+*{
+  font-family: 'inter', 'arial';
+}
 #root {}
   
 /* --------------- ESTILOS DEL HEADER ------------------ */
@@ -22,14 +24,15 @@
   width: 61px;
   height: 59px;
   left: 22px;
-  top: 25px;
+  top: 20px;
   color: #343C6A !important;
 }
 
 .barra{
   grid-area: barra;
-  line-height: 45px;
-  padding: 15px;
+  display: grid;
+  align-items: center;
+  padding: 0 15px;
 }
 
 .barra p{
@@ -73,6 +76,7 @@
   grid-area: aside;
   position: relative;
   height: calc(100vh - 90px);
+  
 }
 .nav-link .bi{
  font-size: larger;

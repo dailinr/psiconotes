@@ -3,7 +3,7 @@ import React from 'react'
 export const Aside = () => {
   return (
     
-    <div className="aside bg-white d-flex  flex-column flex-shrink-0 p-3 bg-body-tertiary border-right" style={{width: '250px'}}>
+    <div className="aside shadow-sm bg-white d-flex  flex-column flex-shrink-0 p-3 bg-body-tertiary border-right" style={{width: '250px'}}>
     
     
     <ul className="nav nav-pills flex-column mb-auto">

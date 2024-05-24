@@ -1,0 +1,17 @@
+.container-details{
+    width: 500px;
+    height: 500px;
+    background-color: #FFFFFF;
+    position: fixed;
+    z-index: 9999;
+    border-radius: 50px;
+    border: 2px groove #4a3aff4b;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.325);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: grid;
+    place-content: center; */
+}
