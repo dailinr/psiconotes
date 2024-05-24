@@ -22,6 +22,11 @@
   grid-area: aside;
   background-color: aquamarine;
 }
+.nav-link svg{
+  width: 20px;
+  height: 21px;
+  color: #343C6A;
+}
 .main{
   grid-area: main;
   background-color: #E5E5E5;
@@ -78,9 +83,6 @@
   font-family: 'inter';
   font-weight: semi-bold;
 }
-
-
-
 
 
 .aside a{
