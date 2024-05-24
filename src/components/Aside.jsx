@@ -3,7 +3,7 @@ import React from 'react'
 export const Aside = () => {
   return (
     
-    <div className="aside bg-white d-flex  flex-column flex-shrink-0 p-3 bg-body-tertiary border-right" style={{width: '250px', position: 'relative'}}>
+    <div className="aside bg-white d-flex  flex-column flex-shrink-0 p-3 bg-body-tertiary border-right" style={{width: '250px'}}>
     
     
     <ul className="nav nav-pills flex-column mb-auto">
@@ -38,7 +38,7 @@ export const Aside = () => {
         &nbsp;  Notificaciones
         </a>
       </li>
-      <li >
+      <li className="salir">
         <a href="#" className="nav-link link-body-emphasis">
         <i class="bi bi-box-arrow-in-right"></i>
         &nbsp;  Cerrar sesión

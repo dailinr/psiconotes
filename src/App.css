@@ -20,12 +20,14 @@
 .aside{
   font-family: 'inter', 'arial';
   grid-area: aside;
-  background-color: aquamarine;
 }
 .nav-link .bi{
  font-size: larger;
 }
-
+.salir{
+  position: absolute; 
+  bottom: 0; 
+}
 .main{
   grid-area: main;
   background-color: #E5E5E5;
@@ -87,8 +89,11 @@
 .aside a{
   color: #B1B1B1
 }
-.aside a:hover, .aside a:active, .aside a:focus{
-  color: #1814F3
+ .aside a:active, .aside a:focus{
+  color: #1814F3;
+  border-left: 3px solid #1814F3;
+  background-color: #F5F5F5;
+  
 }
 .aside li:hover, .aside li:active, .aside li:focus{
   border-left: 3px solid #1814F3;
