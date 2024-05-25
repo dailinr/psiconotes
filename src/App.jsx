@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './css/App.css';
-
 import { Header } from './components/Header.jsx';
 import { Aside } from './components/Aside.jsx';
 import { Main } from './components/Main.jsx';
@@ -12,13 +11,14 @@ import { Notificaciones } from './components/Notificaciones.jsx';
 import './css/global.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('sesiones');
+  const [activeSection, setActiveSection] = useState('MisPacientes'); // Estado inicial
 
+  // Función para renderizar la sección correspondiente según activeSection
   const renderSection = () => {
     switch (activeSection) {
-      case 'calendario':
+      case 'Calendario':
         return <Calendario />;
-      case 'sesiones':
+      case 'Sesiones':
         return <Sesiones />;
       case 'MisPacientes':
         return <MisPacientes />;
@@ -27,14 +27,14 @@ function App() {
       case 'Notificaciones':
         return <Notificaciones />;
       default:
-        return <Sesiones />;
+        return <MisPacientes />;
     }
   };
 
   return (
     <div className="app">
       <Header />
-      <Aside setActiveSection={setActiveSection} />
+      <Aside setActiveSection={setActiveSection} activeSection={activeSection} /> {/* Paso el estado activo y función de actualización */}
       <Main>
         {renderSection()}
       </Main>
