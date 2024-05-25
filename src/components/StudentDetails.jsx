@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../mostrarEstudiante.css'
+import '../css/mostrarEstudiante.css'
 
 const StudentDetails = () => {
     // EVENTO PARA MOSTRAR LOS DETALLES DEL ESTUDIANTE

@@ -1,4 +1,4 @@
-import '../filSesion.css';
+import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
 
