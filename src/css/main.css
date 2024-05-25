@@ -36,8 +36,7 @@
 }
 
 .sesiones-cont{
-    width: 61.875rem;
-    
+    width: 68.875rem;
     grid-column: 1/3;
     grid-row: 2/3;
     padding: 20px 0;
