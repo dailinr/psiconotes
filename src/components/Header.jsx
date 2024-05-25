@@ -13,7 +13,7 @@ export const Header = () => {
       </div>
       
       <div className="barra  ">
-       <p>Panel del psicologo</p>
+       <p>Panel del psicólogo</p>
       </div>
 
       
@@ -32,7 +32,7 @@ export const Header = () => {
             <li><a className="dropdown-item" href="#">Sign out</a></li>
         </ul>
         
-        <p >Psicologo</p>
+        <p >Psicólogo</p>
       </div> 
 
     </header>

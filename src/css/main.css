@@ -2,15 +2,21 @@
 .main{
     background-color: #E5E5E5;
     display: grid;
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 15px 1fr;
     grid-template-columns: 1fr 1fr;
-    padding: 30px 40px;
-}
-.search-container{
-    grid-column: 1/2;
-    grid-row: 1/2;
+    padding: 1px 40px;
 }
 
+.search-and-button-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Ajustes para el contenedor del formulario */
+.search-container {
+    flex: 1; /* Ocupa el espacio disponible */
+    margin: 0;
+}
 
 .main .search{
     border-radius: 50px;
@@ -21,12 +27,7 @@
     font-size: 14px;
     padding: 20px 20px;
 }
-.boton-agendar{
-    position: absolute; 
-    right: 70px; 
-    grid-column: 2/3;
-    grid-row: 1/2;
-}
+
 .boton-agendar button{
     border-radius: 25px;
     padding: 10px 20px;
