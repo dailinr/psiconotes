@@ -1,5 +1,5 @@
 .container-details{
-    width: 500px;
+    width: 600px;
     height: 500px;
     background-color: #FFFFFF;
     position: fixed;
@@ -7,11 +7,76 @@
     border-radius: 50px;
     border: 2px groove #4a3aff4b;
     padding: 30px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.325);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* display: grid;
-    place-content: center; */
+    display: grid;
+    grid-template-rows: 50px 1fr;
+}
+.mas-info{
+    text-align: center;
+    color: #1814f39e;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'inter', 'Courier New', Courier, monospace;
+}
+.cerrar button{
+    color: white;
+    border-color: none;
+    width: 20px;
+    height: 20px;
+    background-color: #1814f39e;
+    position: absolute;
+    right: 40px;
+    border-radius: 40px;
+}
+/* ----- PARTE IMAGEN DEL ESTUDIANTE----- */
+.content-det{
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    padding-top: 30px ;    
+}
+.colu-1{
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 160px 1fr 1fr;
+}
+.content-det img{
+    width: 130px;
+    height: 135px;
+    border-radius: 50px;
+}
+
+input.custom-control-input:checked ~ label.custom-control-label::before {
+    background-color: #4caf50; /* Color de fondo cuando está activado */
+    border: 1px solid green;
+}
+.editar{
+    font-family: 'inter', 'arial';
+    font-size: 12px;
+    text-align: center;
+    
+}
+.editar:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.cont-pencil{
+    width: 30px;
+    height: 30px;
+    background-color: #1814f39e;
+    border-radius: 80px;
+    display: grid;
+    place-items: center;
+}
+.bi-pencil{
+    color: white !important;
+}
+
+/* ---- Datos del estudiante --- */
+.colu-2{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px 0;
 }

@@ -13,7 +13,9 @@ export const Main = () => {
       </form>
 
       <div className='boton-agendar'>
-        <button type="button" class="btn btn-primary shadow">Agendar sesión</button>
+        <button type="button" class="btn btn-primary shadow">
+          <i class="bi bi-person-add"></i>
+          &nbsp; Agendar sesión</button>
       </div>
       
       <div className="sesiones-cont">
