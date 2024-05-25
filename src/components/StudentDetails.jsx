@@ -49,12 +49,8 @@ const StudentDetails = () => {
                                 <input onChange={handleSwitchChange} type="checkbox" className=" custom-control-input" id="customSwitch1"/>
                                 <label className="custom-control-label" for="customSwitch1"></label>
                             </div>
-
-                            {isSwitchOn && 
-                                <div className="modal">
-                                    <p>Activo</p>
-                                </div>
-                            }
+                            <p>{isSwitchOn ? 'Activo' : 'Inactivo'}</p>
+                            
 
                             <div className="editar">
                                 <div className="cont-pencil mb-1 ">

@@ -40,13 +40,16 @@
 .colu-1{
     display: grid;
     justify-items: center;
-    grid-template-rows: 160px 1fr 1fr;
+    grid-template-rows: 160px 25px 25px 1fr;
 }
 .content-det img{
     width: 130px;
     height: 135px;
     border-radius: 50px;
 }
+/* .custom-switch{
+    height: 60px;
+} */
 
 input.custom-control-input:checked ~ label.custom-control-label::before {
     background-color: #4caf50; /* Color de fondo cuando está activado */
@@ -56,8 +59,11 @@ input.custom-control-input:checked ~ label.custom-control-label::before {
     font-family: 'inter', 'arial';
     font-size: 12px;
     text-align: center;
-    
+    display: grid;
+    align-self: flex-end;
+    margin-bottom: 40px;
 }
+
 .editar:hover{
     cursor: pointer;
     text-decoration: underline;
