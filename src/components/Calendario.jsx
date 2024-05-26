@@ -18,6 +18,21 @@ export const Calendario = () => {
     }
   ];
 
+  const formats = {
+    monthHeaderFormat: date => {
+      const monthCapitalized = dayjs(date).format("MMMM").replace(/^\w/, c => c.toUpperCase()); // Poner primera letra en mayúscula
+      const year = dayjs(date).format("YYYY");
+
+      return `${monthCapitalized} ${year}`;
+    },
+    dayHeaderFormat: date => {
+      const dayCapitalized = dayjs(date).format("dddd").charAt(0).toUpperCase() + dayjs(date).format("dddd").slice(1); // Poner primera letra en mayúscula
+      const dateFormatted = dayjs(date).format("DD/MM/YYYY"); // Formato de la fecha
+
+      return `${dayCapitalized} ${dateFormatted}`;
+    }
+  };
+
   return (
     <div className="card">
       <div className="card-body">
@@ -31,13 +46,11 @@ export const Calendario = () => {
             views={["month", "day", "agenda"]}
             min={dayjs('2024-05-25T08:00:00').toDate()}
             max={dayjs('2024-05-25T19:00:00').toDate()}
-            messages={{ next: "Siguiente", previous: "Anterior", today: "Hoy", month: "Mes", day: "Día", date: "Fecha", time: "Hora", event: "Evento" }}
-            formats={{
-              dayHeaderFormat: date =>{
-                return dayjs(date).format("dddd DD/MM/YYYY")
-              }
-            }}
-            className="custom-calendar"/>
+            messages={{ next: "Siguiente", previous: "Anterior", today: "Hoy", month: "Mes", day: "Día", date: "Fecha", 
+            time: "Hora", event: "Evento", noEventsInRange: "No tienes eventos programados aún." }}
+            formats={formats}
+            className="custom-calendar"
+          />
         </div>
       </div>
     </div>
