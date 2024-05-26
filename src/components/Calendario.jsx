@@ -12,6 +12,7 @@ export const Calendario = () => {
 
   const events = [
     {
+      id:1,
       start: dayjs('2024-05-25T12:00:00').toDate(),
       end: dayjs('2024-05-25T13:00:00').toDate(),
       title: "Cita con Pepe"
@@ -56,3 +57,4 @@ export const Calendario = () => {
     </div>
   );
 };
+
