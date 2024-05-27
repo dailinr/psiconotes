@@ -16,7 +16,7 @@ const ModalCancelar = ({ event, onClose, onCancel }) => {
             <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
           </div>
           <div className="modal-body">
-            <p style={{ fontWeight: 'bold' }}>ID Evento:</p>
+            <p style={{ fontWeight: 'bold' }}>Estudiante:</p>
             <p>{event.id}</p>
             <div className="event-info">
               <div>

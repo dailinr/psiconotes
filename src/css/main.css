@@ -28,14 +28,6 @@
     padding: 20px 20px;
 }
 
-.boton-agendar button{
-    border-radius: 25px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    background-color: #1814f3e1;
-}
-
 .sesiones-cont{
     width: 68.875rem;
     grid-column: 1/3;
