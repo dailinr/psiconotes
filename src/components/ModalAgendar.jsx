@@ -51,10 +51,6 @@ const ModalAgendar = ({ onClose, onAgendar }) => {
               <label htmlFor="endTime" className="form-label">Fin de la cita</label>
               <input type="time" className="form-control" id="endTime" value={formData.endTime} onChange={handleChange} />
             </div>
-            <div className="mb-3">
-              <label htmlFor="reason" className="form-label">Motivo</label>
-              <textarea className="form-control" id="reason" rows="3" value={formData.reason} onChange={handleChange}></textarea>
-            </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
