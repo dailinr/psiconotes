@@ -1,12 +1,13 @@
+// ModalEvento.js
 import React from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/es'; // Asegúrate de importar la localización en español
+import 'dayjs/locale/es'; 
 import './../css/Modal.css';
 
-const Modal = ({ event, onClose }) => {
+const ModalEvento = ({ event, onClose, onReagendar }) => {
   if (!event) return null;
 
-  // Formatea la fecha y hora usando dayjs
+  // Formatea la fecha y hora
   const startDate = dayjs(event.start).locale('es');
   const endDate = dayjs(event.end).locale('es');
 
@@ -18,7 +19,7 @@ const Modal = ({ event, onClose }) => {
   const capitalizedStartMonth = startDate.format('MMMM').charAt(0).toUpperCase() + startDate.format('MMMM').slice(1);
   const capitalizedEndMonth = endDate.format('MMMM').charAt(0).toUpperCase() + endDate.format('MMMM').slice(1);
 
-  // Formatea la fecha completa con el formato deseado
+  // Formatea la fecha completa
   const formattedStartDate = `${capitalizedStartDay} ${startDate.format('D [de]')} ${capitalizedStartMonth} ${startDate.format('YYYY h:mm:ss A')}`;
   const formattedEndDate = `${capitalizedEndDay} ${endDate.format('D [de]')} ${capitalizedEndMonth} ${endDate.format('YYYY h:mm:ss A')}`;
 
@@ -32,13 +33,13 @@ const Modal = ({ event, onClose }) => {
             <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
           </div>
           <div className="modal-body">
-            <p style={{fontWeight: 'bold'}}>Inicio:</p> <p>{formattedStartDate}</p>
-            <p style={{fontWeight: 'bold'}}>Fin:</p> <p>{formattedEndDate}</p>
+            <p style={{ fontWeight: 'bold' }}>Inicio:</p> <p>{formattedStartDate}</p>
+            <p style={{ fontWeight: 'bold' }}>Fin:</p> <p>{formattedEndDate}</p>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" class="btn btn-danger">Cancelar Sesión</button>
-            <button type="button" class="btn btn-primary">Reagendar</button>
+            <button type="button" className="btn btn-danger">Cancelar Sesión</button>
+            <button type="button" className="btn btn-primary" onClick={onReagendar}>Reagendar</button>
           </div>
         </div>
       </div>
@@ -46,4 +47,4 @@ const Modal = ({ event, onClose }) => {
   );
 };
 
-export default Modal;
+export default ModalEvento;

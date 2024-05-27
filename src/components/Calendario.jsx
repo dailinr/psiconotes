@@ -1,9 +1,11 @@
+// Calendario.js
 import React, { useState } from 'react';
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // Importar la localización de dayjs en español
-import Modal from './ModalEvento';
+import ModalEvento from './ModalEvento';
+import ReagendarModal from './ReagendarModal';
 import './../css/Calendario.css'
 
 // Configurar dayjs para usar la localización en español
@@ -12,45 +14,66 @@ dayjs.locale('es');
 export const Calendario = () => {
   const localizer = dayjsLocalizer(dayjs);
 
-  const events = [/*Dinámicamente con la bd*/
+  const initialEvents = [
     {
       id: 1,
       start: dayjs('2024-05-25T12:00:00').toDate(),
       end: dayjs('2024-05-25T13:00:00').toDate(),
-      title: "Cita con Pepe"
+      title: "Cita con Pepe",
+      reason: ''
     },
     {
       id: 2,
       start: dayjs('2024-05-25T14:00:00').toDate(),
       end: dayjs('2024-05-25T15:00:00').toDate(),
-      title: "Cita con Lola"
+      title: "Cita con Lola",
+      reason: ''
     },
     {
       id: 3,
       start: dayjs('2024-05-25T15:00:00').toDate(),
       end: dayjs('2024-05-25T16:00:00').toDate(),
-      title: "Cita con Lola"
+      title: "Cita con Lola",
+      reason: ''
     }
   ];
 
+  const [events, setEvents] = useState(initialEvents);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isReagendarModalOpen, setIsReagendarModalOpen] = useState(false);
+
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
   };
+
   const handleCloseModal = () => {
+    setSelectedEvent(null);
+  };
+
+  const handleOpenReagendarModal = () => {
+    setIsReagendarModalOpen(true);
+  };
+
+  const handleCloseReagendarModal = () => {
+    setIsReagendarModalOpen(false);
+  };
+
+  const handleSaveReagendaredEvent = (updatedEvent) => {
+    setEvents(events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
+    setIsReagendarModalOpen(false);
     setSelectedEvent(null);
   };
 
   const formats = {
     monthHeaderFormat: date => {
-      const monthCapitalized = dayjs(date).format("MMMM").replace(/^\w/, c => c.toUpperCase()); // Poner primera letra en mayúscula
+      const monthCapitalized = dayjs(date).format("MMMM").replace(/^\w/, c => c.toUpperCase());
       const year = dayjs(date).format("YYYY");
 
       return `${monthCapitalized} ${year}`;
     },
     dayHeaderFormat: date => {
-      const dayCapitalized = dayjs(date).format("dddd").charAt(0).toUpperCase() + dayjs(date).format("dddd").slice(1); // Poner primera letra en mayúscula
-      const dateFormatted = dayjs(date).format("DD/MM/YYYY"); // Formato de la fecha
+      const dayCapitalized = dayjs(date).format("dddd").charAt(0).toUpperCase() + dayjs(date).format("dddd").slice(1);
+      const dateFormatted = dayjs(date).format("DD/MM/YYYY");
 
       return `${dayCapitalized} ${dateFormatted}`;
     }
@@ -74,7 +97,20 @@ export const Calendario = () => {
             onSelectEvent={handleSelectEvent}
           />
         </div>
-        {selectedEvent && <Modal event={selectedEvent} onClose={handleCloseModal} />}
+        {selectedEvent && (
+          <ModalEvento
+            event={selectedEvent}
+            onClose={handleCloseModal}
+            onReagendar={handleOpenReagendarModal}
+          />
+        )}
+        {selectedEvent && isReagendarModalOpen && (
+          <ReagendarModal
+            event={selectedEvent}
+            onClose={handleCloseReagendarModal}
+            onSave={handleSaveReagendaredEvent}
+          />
+        )}
       </div>
     </div>
   );
