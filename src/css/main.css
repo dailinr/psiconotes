@@ -56,61 +56,7 @@
     right: 90px;
 }
 
-/*CALENDARIO*/
-  
-.custom-calendar .rbc-day-bg {
-    background-color: #ffffff; /* Dias*/
-}
-.rbc-toolbar-label{
-    font-size: 20px;
-}
-.custom-calendar .rbc-btn-group {/*botones*/
-    box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-    -webkit-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-    -moz-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-    border-radius: 30px;
-}
 
-.custom-calendar .rbc-btn-group button {
-    background-color: #ffffff; 
-    border: none;
-    border-radius: 30px;
-    height: 35px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; 
-}
-.custom-calendar .rbc-btn-group button:hover {
-    background-color: #ebebeb; 
-}
-.custom-calendar .rbc-btn-group button:active,
-.custom-calendar .rbc-btn-group button:focus,
-.custom-calendar .rbc-btn-group button.rbc-active  {
-    background-color: #548CF8 !important;
-    color: #fff !important;
-    outline: none;
-}
-
-.rbc-month-view, .rbc-time-view, .rbc-agenda-view{/*Tablas*/
-    border-radius: 10px;
-    box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-    -webkit-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-    -moz-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
-}
-
-.rbc-month-view .rbc-date-cell {/* Números del calendario */
-    color: #000000; 
-}
-
-.rbc-event{/*Eventos*/
-    background-color: #548CF8 !important;
-}
-
- .card {
-    width: 106.5%; 
-    padding: 20px;
-    height: 108%;
-    margin-top: -2.5%;
-    margin-left: -3%;
-}
 
 
 

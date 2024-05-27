@@ -4,6 +4,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // Importar la localización de dayjs en español
 import Modal from './ModalEvento';
+import './../css/Calendario.css'
 
 // Configurar dayjs para usar la localización en español
 dayjs.locale('es');
@@ -20,8 +21,14 @@ export const Calendario = () => {
     },
     {
       id: 2,
-      start: dayjs('2024-06-25T12:00:00').toDate(),
-      end: dayjs('2024-06-25T13:00:00').toDate(),
+      start: dayjs('2024-05-25T14:00:00').toDate(),
+      end: dayjs('2024-05-25T15:00:00').toDate(),
+      title: "Cita con Lola"
+    },
+    {
+      id: 3,
+      start: dayjs('2024-05-25T15:00:00').toDate(),
+      end: dayjs('2024-05-25T16:00:00').toDate(),
       title: "Cita con Lola"
     }
   ];
@@ -53,7 +60,7 @@ export const Calendario = () => {
     <div className="card">
       <div className="card-body">
         <p>Calendario</p>
-        <div style={{ height: '45vh', width: '100%' }}>
+        <div style={{ height: '63vh', width: '100%' }}>
           <Calendar
             localizer={localizer}
             events={events}

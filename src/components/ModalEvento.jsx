@@ -37,6 +37,8 @@ const Modal = ({ event, onClose }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
+            <button type="button" class="btn btn-danger">Cancelar Sesión</button>
+            <button type="button" class="btn btn-primary">Reagendar</button>
           </div>
         </div>
       </div>
