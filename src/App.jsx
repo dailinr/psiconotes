@@ -4,7 +4,7 @@ import { Header } from './components/Header.jsx';
 import { Aside } from './components/Aside.jsx';
 import { Main } from './components/Main.jsx';
 import { Sesiones } from './components/Sesiones.jsx';
-import { Calendario } from './components/Calendario.jsx';
+import Calendario from './components/Calendario';
 import { MisPacientes } from './components/MisPacientes.jsx';
 import { NuevosPacientes } from './components/NuevosPacientes.jsx';
 import { Notificaciones } from './components/Notificaciones.jsx';
