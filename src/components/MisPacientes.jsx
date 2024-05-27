@@ -4,7 +4,7 @@ export const MisPacientes = () => {
   return (
     <div>
       <h2>Pacientes</h2>
-      <p>Aquí va el contenido de los Pacientes</p>
+      <p>Aquí va el contenido de mis Pacientes</p>
     </div>
   );
 };
