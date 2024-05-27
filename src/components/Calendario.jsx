@@ -1,4 +1,3 @@
-// Calendario.js
 import React, { useState } from 'react';
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -6,7 +5,9 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // Importar la localización de dayjs en español
 import ModalEvento from './ModalEvento';
 import ReagendarModal from './ReagendarModal';
+import ModalCancelar from './ModalCancelar';
 import './../css/Calendario.css'
+import './../css/Modal.css';
 
 // Configurar dayjs para usar la localización en español
 dayjs.locale('es');
@@ -41,6 +42,7 @@ export const Calendario = () => {
   const [events, setEvents] = useState(initialEvents);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isReagendarModalOpen, setIsReagendarModalOpen] = useState(false);
+  const [isCancelarModalOpen, setIsCancelarModalOpen] = useState(false);
 
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
@@ -62,6 +64,22 @@ export const Calendario = () => {
     setEvents(events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
     setIsReagendarModalOpen(false);
     setSelectedEvent(null);
+  };
+
+  const handleOpenCancelarModal = () => {
+    setIsCancelarModalOpen(true);
+  };
+
+  const handleCloseCancelarModal = () => {
+    setIsCancelarModalOpen(false);
+  };
+
+  const handleCancelEvent = (id, reason) => {
+    setEvents(events.filter(event => event.id !== id));
+    setIsCancelarModalOpen(false);
+    setSelectedEvent(null);
+    // Aquí puedes realizar cualquier otra acción necesaria con el motivo del cancelamiento
+    console.log(`Evento con ID ${id} cancelado por el siguiente motivo: ${reason}`);
   };
 
   const formats = {
@@ -102,6 +120,7 @@ export const Calendario = () => {
             event={selectedEvent}
             onClose={handleCloseModal}
             onReagendar={handleOpenReagendarModal}
+            onCancelarSesion={handleOpenCancelarModal}
           />
         )}
         {selectedEvent && isReagendarModalOpen && (
@@ -109,6 +128,13 @@ export const Calendario = () => {
             event={selectedEvent}
             onClose={handleCloseReagendarModal}
             onSave={handleSaveReagendaredEvent}
+          />
+        )}
+        {selectedEvent && isCancelarModalOpen && (
+          <ModalCancelar
+            event={selectedEvent}
+            onClose={handleCloseCancelarModal}
+            onCancel={handleCancelEvent}
           />
         )}
       </div>

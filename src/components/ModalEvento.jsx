@@ -1,13 +1,11 @@
-// ModalEvento.js
 import React from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; 
-import './../css/Modal.css';
 
-const ModalEvento = ({ event, onClose, onReagendar }) => {
+const ModalEvento = ({ event, onClose, onReagendar, onCancelarSesion }) => {
   if (!event) return null;
 
-  // Formatea la fecha y hora
+  // Formatea la fecha y hora usando dayjs
   const startDate = dayjs(event.start).locale('es');
   const endDate = dayjs(event.end).locale('es');
 
@@ -19,7 +17,7 @@ const ModalEvento = ({ event, onClose, onReagendar }) => {
   const capitalizedStartMonth = startDate.format('MMMM').charAt(0).toUpperCase() + startDate.format('MMMM').slice(1);
   const capitalizedEndMonth = endDate.format('MMMM').charAt(0).toUpperCase() + endDate.format('MMMM').slice(1);
 
-  // Formatea la fecha completa
+  // Formatea la fecha completa con el formato deseado
   const formattedStartDate = `${capitalizedStartDay} ${startDate.format('D [de]')} ${capitalizedStartMonth} ${startDate.format('YYYY h:mm:ss A')}`;
   const formattedEndDate = `${capitalizedEndDay} ${endDate.format('D [de]')} ${capitalizedEndMonth} ${endDate.format('YYYY h:mm:ss A')}`;
 
@@ -33,12 +31,12 @@ const ModalEvento = ({ event, onClose, onReagendar }) => {
             <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
           </div>
           <div className="modal-body">
-            <p style={{ fontWeight: 'bold' }}>Inicio:</p> <p>{formattedStartDate}</p>
-            <p style={{ fontWeight: 'bold' }}>Fin:</p> <p>{formattedEndDate}</p>
+            <p style={{fontWeight: 'bold'}}>Inicio:</p> <p>{formattedStartDate}</p>
+            <p style={{fontWeight: 'bold'}}>Fin:</p> <p>{formattedEndDate}</p>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-danger">Cancelar Sesión</button>
+            <button type="button" className="btn btn-danger" onClick={onCancelarSesion}>Cancelar Sesión</button>
             <button type="button" className="btn btn-primary" onClick={onReagendar}>Reagendar</button>
           </div>
         </div>

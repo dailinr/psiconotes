@@ -26,27 +26,21 @@ const ReagendarModal = ({ event, onClose, onSave }) => {
           </div>
           <div className="modal-body">
             <div className="mb-3">
-              <label htmlFor="date" className="form-label">Fecha</label>
-              <input
-                type="date"
-                className="form-control"
-                id="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-              />
+              <label htmlFor="date" className="form-label" style={{ fontWeight: 'bold' }}>Fecha</label>
+              <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)}/>
             </div>
             <div className="mb-3">
-              <label htmlFor="startTime" className="form-label">Inicio de la cita</label>
+              <label htmlFor="startTime" className="form-label" style={{ fontWeight: 'bold' }}>Inicio de la cita</label>
               <input type="time" className="form-control" id="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="endTime" className="form-label">Fin de la cita</label>
+              <label htmlFor="endTime" className="form-label" style={{ fontWeight: 'bold' }}>Fin de la cita</label>
               <input type="time" className="form-control" id="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)}
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="reason" className="form-label">Motivo</label>
+              <label htmlFor="reason" className="form-label" style={{ fontWeight: 'bold' }}>Motivo</label>
               <textarea className="form-control" id="reason" rows="3" value={reason} onChange={(e) => setReason(e.target.value)} placeholder="..."
               ></textarea>
             </div>
