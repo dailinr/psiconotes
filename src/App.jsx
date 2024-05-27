@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Aside setActiveSection={setActiveSection} activeSection={activeSection} /> {/* Paso el estado activo y función de actualización */}
+      <Aside setActiveSection={setActiveSection} activeSection={activeSection} /> 
       <Main>
         {renderSection()}
       </Main>

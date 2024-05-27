@@ -64,7 +64,7 @@
 .rbc-toolbar-label{
     font-size: 20px;
 }
-.custom-calendar .rbc-btn-group {
+.custom-calendar .rbc-btn-group {/*botones*/
     box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
     -webkit-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
     -moz-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
@@ -96,14 +96,21 @@
     -moz-box-shadow: -1px 0px 15px 1px rgba(219,219,219,0.81);
 }
 
+.rbc-month-view .rbc-date-cell {/* Números del calendario */
+    color: #000000; 
+}
+
 .rbc-event{/*Eventos*/
     background-color: #548CF8 !important;
 }
 
-/*MODAL*/
-.custom-calendar .rbc-day-bg {
-    background-color: #ffffff; /* Color de fondo de los días */
-    cursor: pointer !important; /* Hace que el cursor cambie al pasar sobre los días */
+ .card {
+    width: 106.5%; 
+    padding: 20px;
+    height: 108%;
+    margin-top: -2.5%;
+    margin-left: -3%;
 }
+
 
 
