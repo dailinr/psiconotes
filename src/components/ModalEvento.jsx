@@ -23,7 +23,7 @@ const ModalEvento = ({ event, onClose, onReagendar, onCancelarSesion }) => {
 
   return (
     <div className="modal-container">
-      <div className="modal-backdrop"></div>
+      <div className="modal-backdrop" onClick={onClose}></div>
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
