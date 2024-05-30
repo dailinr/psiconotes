@@ -4,7 +4,7 @@
     display: grid;
     grid-template-rows: 15px 1fr;
     grid-template-columns: 1fr 1fr;
-    padding: 1px 40px;
+    padding: 1px 43px;
 }
 
 .search-and-button-container {
