@@ -54,3 +54,17 @@
     margin: 0;
   }
   
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .input-item {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .input-item:last-child {
+    margin-right: 0;
+  }

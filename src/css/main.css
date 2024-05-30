@@ -12,9 +12,9 @@
     align-items: center;
 }
 
-/* Ajustes para el contenedor del formulario */
+
 .search-container {
-    flex: 1; /* Ocupa el espacio disponible */
+    flex: 1; 
     margin: 0;
 }
 
