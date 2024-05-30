@@ -7,7 +7,6 @@ const TablaMisPacientes = () => {
   const datosIniciales = [
     { id: 1, nombre: 'Pablo Felipe', apellidos: 'Piccaso Martínez', grado: '5°', edad: 15, correo: 'soytubebe@gmail.com', genero: 'Masculino', institucion: 'Instituto XYZ', telefono: '1234567890', nombreAcudiente: 'María Piccaso', telefonoAcudiente: '0987654321' },
     { id: 2, nombre: 'Nombre', apellidos: 'Apellidos', grado: 'Grado', edad: 10, correo: 'correo@ejemplo.com', genero: 'Femenino', institucion: 'Instituto ABC', telefono: '1122334455', nombreAcudiente: 'Juan Pérez', telefonoAcudiente: '5566778899' },
-    // Agrega más datos según sea necesario
   ];
 
   const filasPorPagina = 7;

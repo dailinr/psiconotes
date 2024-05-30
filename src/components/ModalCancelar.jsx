@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // Asegúrate de importar la localización en español
-import './../css/Modal.css';
 
 const ModalCancelar = ({ event, onClose, onCancel }) => {
   const [reason, setReason] = useState('');

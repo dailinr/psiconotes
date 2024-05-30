@@ -1,5 +1,4 @@
 import React from 'react';
-import './../css/Modal.css';
 
 const ModalMasInfo = ({ info, onClose, onEdit }) => {
   if (!info) return null;

@@ -47,10 +47,5 @@
 }
 
 .card {
-    width: 104%; 
-    padding: 10px;
-    height: 102%;
-    margin-top: -1%;
-    margin-left: -1.5%;
     border: none!important;
 }

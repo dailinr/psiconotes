@@ -6,9 +6,10 @@ import { Main } from './components/Main.jsx';
 import { Sesiones } from './components/Sesiones.jsx';
 import Calendario from './components/Calendario';
 import { MisPacientes } from './components/MisPacientes.jsx';
-import { NuevosPacientes } from './components/NuevosPacientes.jsx';
+import NuevosPacientes from './components/NuevosPacientes.jsx';
 import { Notificaciones } from './components/Notificaciones.jsx';
 import './css/global.css';
+import './css/Modal.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('MisPacientes'); // Estado inicial
