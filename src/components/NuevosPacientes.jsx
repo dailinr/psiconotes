@@ -32,6 +32,16 @@ const NuevosPacientes = () => {
       return;
     }
 
+    // Permitir solo números y limitar a 2 caracteres para la edad
+    if (name === 'edad') { 
+      const filteredValue = value.replace(/\D/g, '').slice(0, 2); 
+      setForm({
+        ...form,
+        [name]: filteredValue,
+      });
+      return;
+    }
+
     setForm({
       ...form,
       [name]: value,
@@ -101,6 +111,10 @@ const NuevosPacientes = () => {
                   <option value="" disabled>Seleccione una opción</option>
                   {gradoOptions}
                 </select>
+              </div>
+              <div className="input-item">
+                <label className="required-label">Edad <span>*</span></label>
+                <input type="text" name="edad" value={form.edad} onChange={handleChange} />
               </div>
               <div className="input-item">
                 <label className="required-label">Contacto <span>*</span></label>
