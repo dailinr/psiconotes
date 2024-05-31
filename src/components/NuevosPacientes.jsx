@@ -62,6 +62,9 @@ const NuevosPacientes = () => {
   return (
     <div className="card">
       <div className="card-body">
+        <div className='text-new-patient'>
+          <p>Nuevo Paciente</p>
+        </div>
         <form onSubmit={handleSubmit} className="form-new-patient">
           <div className="left-column">
             <div>
