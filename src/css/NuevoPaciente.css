@@ -1,49 +1,83 @@
+.form-new-patient {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+}
+.form-new-patient .required-label span {
+  color: red; /* Color rojo para el asterisco */
+}
 
-.form {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-  }
-  
-  .left-column {
-    flex: 1;
-    text-align: center;
-    padding-right: 20px;
-  }
-  
+.form-new-patient .left-column {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.form-new-patient .avatar {
+  width: 300px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 20%;
+  margin-left: -30px;
+}
+
 .new-patient {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-.new-patient .input-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .submit-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  width: 80%;
+  margin-top: 3.7%;
+}
+
+.new-patient .input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.new-patient .input-item {
+  flex: 1;
+  margin-right: 40px;
+}
+
+
+.new-patient .input-item label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.new-patient .input-item input,
+.new-patient .input-item select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #DFEAF2;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #8f8f8f;
+}
+.new-patient .input-item input:focus,
+.new-patient .input-item select:focus {
+  border: 1.5px solid #cfdce5ca;  
+  outline: none;
+  background-color: #f1f5f7e7;
+  color: #637390;
+}
+
+.new-patient .input-item select {
+  padding: 8px;
+}
+
+.new-patient .submit-button {
+  width: 20%;
+  padding: 5px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.new-patient .submit-button:hover {
+  background-color: #0056b3;
+}

@@ -3,10 +3,10 @@ import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es';
-import ModalEvento from './ModalEvento';
-import ModalCancelar from './ModalCancelar';
-import ModalAgendar from './ModalAgendar';
-import ReagendarModal from './ReagendarModal';
+import ModalEvento from './Modales/ModalEvento';
+import ModalCancelar from './Modales/ModalCancelar';
+import ModalAgendar from './Modales/ModalAgendar';
+import ReagendarModal from './Modales/ReagendarModal';
 import './../css/Calendario.css';
 import './../css/Modal.css';
 

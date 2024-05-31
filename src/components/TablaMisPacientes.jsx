@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ModalMasInfo from './ModalMasInfo';
-import ModalEditarPac from './ModalEditarPac';
+import ModalMasInfo from './Modales/ModalMasInfo';
+import ModalEditarPac from './Modales/ModalEditarPac';
 import './../css/Tabla.css';
 
 const TablaMisPacientes = () => {

@@ -9,13 +9,13 @@ export const Aside = ({ activeSection, setActiveSection, userType }) => {
     <>
       <li className={`nav-item ${activeSection === 'MisPacientes' ? 'active' : ''}`}>
         <a href="#" className="nav-link" aria-current="page" onClick={() => handleClick('MisPacientes')}>
-          <i className="bi bi-person-fill" />
+        <i className="bi bi-people-fill"></i>
           &nbsp; Mis pacientes
         </a>
       </li>
       <li className={`nav-item ${activeSection === 'NuevosPacientes' ? 'active' : ''}`}>
         <a href="#" className="nav-link" onClick={() => handleClick('NuevosPacientes')}>
-          <i className="bi bi-plus-circle-fill"></i>
+          <i className="bi bi-person-plus-fill"></i>
           &nbsp; Nuevos pacientes
         </a>
       </li>
