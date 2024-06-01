@@ -11,7 +11,7 @@ import { Notificaciones } from './components/Notificaciones.jsx';
 import './css/global.css';
 
 function App() {
-  const [activeSection, setActiveSection] = useState('MisPacientes'); // Estado inicial
+  const [activeSection, setActiveSection] = useState('MisPacientes');
 
   // Función para renderizar la sección correspondiente según activeSection
   const renderSection = () => {
