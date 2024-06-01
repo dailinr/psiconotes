@@ -15,6 +15,7 @@ const ModalAgendar = ({ onClose, onAgendar }) => {
 
   const handleAgendar = () => {
     if (formData.student.trim() !== '' && formData.date.trim() !== '' && formData.startTime.trim() !== '' && formData.endTime.trim() !== '') {
+      
       onAgendar(formData);
       setFormData({
         student: '',

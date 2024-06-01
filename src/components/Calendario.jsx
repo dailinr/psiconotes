@@ -13,6 +13,7 @@ import './../css/Modal.css';
 dayjs.locale('es');
 
 const Calendario = () => {
+  
   const localizer = dayjsLocalizer(dayjs);
 
   const initialEvents = [
@@ -167,10 +168,10 @@ const Calendario = () => {
           />
         )}
         {isAgendarModalOpen && (
-          <ModalAgendar
-            onClose={handleCloseAgendarModal}
-            onAgendar={handleAgendar}
-          />
+          <>
+            <ModalAgendar onClose={handleCloseAgendarModal} onAgendar={handleAgendar} />
+            
+          </>
         )}
       </div>
     </div>

@@ -1,7 +1,10 @@
-import React from 'react';
+
 import { FilaSesion } from './FilaSesion.jsx'
+import React, { useState } from 'react';
 
 export const Sesiones = () => {
+
+
   return (
     <div>
     <div className="search-and-button-container">
@@ -19,11 +22,10 @@ export const Sesiones = () => {
           </p> 
         </div>
 
-        <FilaSesion/>
-        <FilaSesion/>
-        <FilaSesion/>
+
         <FilaSesion/>
         
+       
       </div>
     </div>
   );
