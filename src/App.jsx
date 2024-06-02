@@ -3,14 +3,14 @@ import './css/App.css';
 import Header from './components/Header.jsx';
 import Main from './components/Main.jsx';
 import Aside from "./components/Aside"; 
-import Calendario from './components/Calendario'; // Asegúrate de importar los componentes correctamente
+import Calendario from './components/Calendario'; 
 import Sesiones from './components/Sesiones';
-import MisPacientes from './components/MisPacientes';
 import NuevosPacientes from './components/NuevosPacientes';
 import Notificaciones from './components/Notificaciones';
-import Psicologos from './components/Psicologos'; // Para el admin
-import NuevosPsicologos from './components/NuevosPsicologos'; // Para el admin
-import Perfil from './components/Perfil'; // Para el admin
+import GestionTablas from './components/GestionTablas'; 
+import NuevosPsicologos from './components/NuevosPsicologos'; 
+import Perfil from './components/Perfil'; 
+
 import './css/global.css';
 import './css/Modal.css';
 
@@ -48,19 +48,19 @@ const App = () => {
       case 'Sesiones':
         return <Sesiones />;
       case 'MisPacientes':
-        return <MisPacientes />;
+        return <GestionTablas userType={userType} />;
       case 'NuevosPacientes':
         return <NuevosPacientes />;
       case 'Notificaciones':
         return <Notificaciones />;
       case 'Psicologos':
-        return <Psicologos />;
+        return <GestionTablas userType={userType} />;
       case 'NuevosPsicologos':
         return <NuevosPsicologos />;
       case 'Perfil':
         return <Perfil />;
       default:
-        return <MisPacientes />;
+        return <GestionTablas userType={userType} />;
     }
   };
 
