@@ -18,6 +18,7 @@
   top: 0;
   width: 100%;
   box-sizing: border-box;
+  background-color:  white;
 } 
 .logo-1{
   position: absolute;
@@ -74,8 +75,9 @@
 .aside{
   font-family: 'inter', 'arial';
   grid-area: aside;
-  position: relative;
-  height: calc(100vh - 90px);
+  position: fixed;
+  top:  90px; 
+  height: calc(100vh - 90px); 
   
 }
 .nav-link .bi{
