@@ -4,7 +4,7 @@ import StudentDetails from './StudentDetails';
 import { ModalInforme } from './Modales/ModalInforme';
 
 
-export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
+export const FilaSesion = ({ id, nombre, fecha, hora  }) => {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -20,13 +20,20 @@ export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
   return (
     <div className='fil-sesion mb-3 '>
         
+        
         <div className='row-sesion shadow'>
+
+            <div className='d-flex' >
+                <div className='info'>
+                    <p>{id}</p>
+                </div>
+            </div>
 
             <div className='d-flex' >
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
                 &nbsp;
                 <div className='info' >
-                    <span>Paciente</span>
+                    <span>{nombre}</span>
                     <br />
                     <StudentDetails />
                 </div>
@@ -36,7 +43,7 @@ export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
                 <div className='info'>
                     Fecha
                     <br />
-                    <span>{date}</span>
+                    <span>{fecha}</span>
                 </div>
             </div>
 
@@ -45,11 +52,11 @@ export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
                 <div className='info'>
                     Hora
                     <br />
-                    <span>{startTime}</span>
+                    <span>{hora}</span>
                 </div>
             </div>
 
-            <div className='d-flex' >
+            {/* <div className='d-flex' >
                 
                 <div className='info'>
                     Estado
@@ -75,7 +82,7 @@ export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
                         <i class="bi bi-file-earmark-arrow-down"></i>
                     </span>
                 </div>
-            </div>
+            </div> */}
             
         </div>
         

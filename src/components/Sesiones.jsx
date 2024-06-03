@@ -3,12 +3,12 @@ import { FilaSesion } from './FilaSesion.jsx'
 import React, { useState } from 'react';
 
 export const Sesiones = () => {
-  const [sessions, setSessions] = useState([]);
 
-  const handleAddSession = (formData) => {
-    const newSession = <FileSesion {...formData} />;
-    setSessions([...sessions, newSession]);
-  };
+  const datosIniciales = [
+    { id: 1, nombre: 'Sesión 1', fecha: '2022-01-01', hora: '10:00' },
+    { id: 2, nombre: 'Sesión 2', fecha: '2022-01-02', hora: '11:00' },
+  ];
+  const [datos, setDatos] = useState(datosIniciales);
 
   return (
     <div>
@@ -28,7 +28,9 @@ export const Sesiones = () => {
         </div>
 
 
-        <FilaSesion/>
+        {datos.map((sesion, index) => (
+          <FilaSesion key={index} {...sesion} />
+        ))}
         
        
       </div>
