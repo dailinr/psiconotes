@@ -17,16 +17,17 @@ import './css/Modal.css';
 const App = () => {
   const getDefaultSection = (userType) => {
     switch (userType) {
-      case 'admin':
+      case '2':
         return 'Psicologos';
-      case 'estudiante':
+      case '3':
         return 'Sesiones';
       default:
         return 'MisPacientes';
     }
   };
+
   const [activeSection, setActiveSection] = useState(localStorage.getItem('activeSection') || 'MisPacientes');
-  const [userType, setUserType] = useState(localStorage.getItem('userType') || 'psicologo');
+  const [userType, setUserType] = useState(localStorage.getItem('userType') || '1'); // Default to '1' for Psicólogo
 
   useEffect(() => {
     localStorage.setItem('activeSection', activeSection);
@@ -44,7 +45,7 @@ const App = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'Calendario':
-        return <Calendario />;
+        return <Calendario userType={userType} />;
       case 'Sesiones':
         return <Sesiones />;
       case 'MisPacientes':
@@ -73,9 +74,9 @@ const App = () => {
       </Main>
       <div style={{ marginTop: '95px', marginLeft: '260px' }}>
         <select id="userTypeSelect" value={userType} onChange={handleUserTypeChange}>
-          <option value="psicologo">Psicólogo</option>
-          <option value="admin">Administrador</option>
-          <option value="estudiante">Estudiante</option>
+          <option value="1">Psicólogo</option>
+          <option value="2">Administrador</option>
+          <option value="3">Estudiante</option>
         </select>
       </div>
     </div>

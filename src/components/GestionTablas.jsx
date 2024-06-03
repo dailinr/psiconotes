@@ -11,7 +11,7 @@ const GestionTablas = ({ userType }) => {
               <input className="form-control search me-2 shadow-sm" type="text" placeholder="Search for something" />
           </form>
         </div>
-            {userType === 'admin' ? (
+            {userType === '2' ? (
                 <TablaMisPsicologos />
             ) : (
                 <TablaMisPacientes />
