@@ -14,6 +14,7 @@ const ModalMasInfo = ({ info, onClose, onEdit }) => {
           </div>
           <div className="modal-body">
             <p><strong>Nombre:</strong> {info.nombre}</p>
+            <p><strong>Apellidos:</strong> {info.apellidos}</p>
             <p><strong>Edad:</strong> {info.edad}</p>
             <p><strong>Grado:</strong> {info.grado}</p>
             <p><strong>Género:</strong> {info.genero}</p>

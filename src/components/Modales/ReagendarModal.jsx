@@ -11,7 +11,27 @@ const ReagendarModal = ({ event, onClose, onSave }) => {
   const handleSave = () => {
     const newStart = dayjs(`${date} ${startTime}`).toDate();
     const newEnd = dayjs(`${date} ${endTime}`).toDate();
-    onSave({ ...event, start: newStart, end: newEnd, reason });
+    const updatedEvent = {
+      ...event,
+      start: newStart,
+      end: newEnd,
+      reason,
+    };
+
+    fetch(`http://localhost:8080/psicoNote/v1/sesion/actualizar/${updatedEvent.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedEvent),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Llamar a la función onSave para actualizar localmente el evento
+        onSave(updatedEvent);
+        onClose(); // Cerrar el modal después de actualizar
+      })
+      .catch(error => console.error('Error al reagendar sesión:', error));
   };
 
   return (

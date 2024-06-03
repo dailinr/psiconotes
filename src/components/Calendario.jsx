@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, dayjsLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import dayjs from 'dayjs';
@@ -12,6 +12,7 @@ import './../css/Modal.css';
 
 dayjs.locale('es');
 
+<<<<<<< HEAD
 const Calendario = () => {
 
  
@@ -25,37 +26,38 @@ const Calendario = () => {
   });
 
   
+=======
+const Calendario = ({ userType }) => {
+>>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
   const localizer = dayjsLocalizer(dayjs);
 
-  const initialEvents = [
-    {
-      id: 1,
-      start: dayjs('2024-05-25T12:00:00').toDate(),
-      end: dayjs('2024-05-25T13:00:00').toDate(),
-      title: "Cita con Pepe",
-      reason: ''
-    },
-    {
-      id: 2,
-      start: dayjs('2024-05-25T14:00:00').toDate(),
-      end: dayjs('2024-05-25T15:00:00').toDate(),
-      title: "Cita con Lola",
-      reason: ''
-    },
-    {
-      id: 3,
-      start: dayjs('2024-05-25T15:00:00').toDate(),
-      end: dayjs('2024-05-25T16:00:00').toDate(),
-      title: "Cita con Lola",
-      reason: ''
-    }
-  ];
-
-  const [events, setEvents] = useState(initialEvents);
+  const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isReagendarModalOpen, setIsReagendarModalOpen] = useState(false);
   const [isCancelarModalOpen, setIsCancelarModalOpen] = useState(false);
   const [isAgendarModalOpen, setIsAgendarModalOpen] = useState(false);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/psicoNote/v1/sesion')
+      .then(response => response.json())
+      .then(data => {
+        const filteredSessions = data.filter(session => {
+          return session.psicologo && session.psicologo.id.toString() === userType.toString();
+        });
+        const formattedEvents = filteredSessions.map(session => ({
+          id: session.id,
+          start: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
+          end: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
+          title: `Cita con ${session.paciente.nombre} ${session.paciente.apellido}`,
+          reason: '',
+          lugarSesion: session.lugarSesion,
+          idPsicologo: session.psicologo.id,
+          estado: session.estado.nombreEstado
+        }));
+        setEvents(formattedEvents);
+      })
+      .catch(error => console.error('Error en fetch:', error.message || error));
+  }, [userType]);
 
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
@@ -65,7 +67,8 @@ const Calendario = () => {
     setSelectedEvent(null);
   };
 
-  const handleOpenReagendarModal = () => {
+  const handleOpenReagendarModal = (event) => {
+    setSelectedEvent(event);
     setIsReagendarModalOpen(true);
   };
 
@@ -87,13 +90,12 @@ const Calendario = () => {
     setIsCancelarModalOpen(false);
   };
 
-  const handleCancelEvent = (id, reason) => {
-    setEvents(events.filter(event => event.id !== id));
-    setIsCancelarModalOpen(false);
-    setSelectedEvent(null);
-    console.log(`Evento con ID ${id} cancelado por el siguiente motivo: ${reason}`);
+  const handleCancelEvent = (id) => {
+    const updatedEvents = events.filter(event => event.id !== id);
+    setEvents(updatedEvents);
+    setIsCancelarModalOpen(false); // Cerrar modal después de cancelar
   };
-
+  
   const handleOpenAgendarModal = () => {
     setIsAgendarModalOpen(true);
   };
@@ -109,14 +111,17 @@ const Calendario = () => {
   const handleAgendar = (formData) => {
     const newEvent = {
       id: events.length + 1,
-      start: dayjs(`${formData.date}T${formData.startTime}`).toDate(),
-      end: dayjs(`${formData.date}T${formData.endTime}`).toDate(),
+      start: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.startTime}`).toDate(),
+      end: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.endTime}`).toDate(),
       title: `Cita con ${formData.student}`,
       reason: formData.reason
     };
+    // Actualiza events con el nuevo evento agregado
     setEvents([...events, newEvent]);
-    setIsAgendarModalOpen(false);
+  
+    setIsAgendarModalOpen(false); // Cierra modal después de agregar sesión
   };
+  
 
   const formats = {
     monthHeaderFormat: date => {
@@ -173,16 +178,24 @@ const Calendario = () => {
         )}
         {selectedEvent && isCancelarModalOpen && (
           <ModalCancelar
-            event={selectedEvent}
-            onClose={handleCloseCancelarModal}
-            onCancel={handleCancelEvent}
+          event={selectedEvent}
+          onClose={handleCloseCancelarModal}
+          onCancel={handleCancelEvent} 
           />
         )}
         {isAgendarModalOpen && (
+<<<<<<< HEAD
           <>
             <ModalAgendar onClose={handleCloseAgendarModal} onAgendar={handleAgendar} />
             
           </>
+=======
+          <ModalAgendar
+            userType={userType} 
+            onClose={handleCloseAgendarModal}
+            onAgendar={handleAgendar}
+          />
+>>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
         )}
       </div>
     </div>

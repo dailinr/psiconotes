@@ -1,7 +1,8 @@
 import React from 'react';
 import TablaMisPacientes from './TablaMisPacientes';
+import TablaMisPsicologos from './TablaMisPsicologos';
 
-export const MisPacientes = () => {
+const GestionTablas = ({ userType }) => {
   return (
     <div class="card">
       <div class="card-body">
@@ -10,10 +11,14 @@ export const MisPacientes = () => {
               <input className="form-control search me-2 shadow-sm" type="text" placeholder="Search for something" />
           </form>
         </div>
-        <TablaMisPacientes />
+            {userType === '2' ? (
+                <TablaMisPsicologos />
+            ) : (
+                <TablaMisPacientes />
+            )}
       </div>
     </div>
   );
 };
 
-export default MisPacientes;
+export default GestionTablas;

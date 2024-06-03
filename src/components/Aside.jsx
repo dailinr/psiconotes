@@ -89,9 +89,9 @@ export const Aside = ({ activeSection, setActiveSection, userType }) => {
   return (
     <div className="aside shadow-sm bg-white d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary border-right" style={{ width: '250px' }}>
       <ul className="nav nav-pills flex-column mb-auto">
-        {userType === 'psicologo' && renderPsychologistMenu()}
-        {userType === 'admin' && renderAdminMenu()}
-        {userType === 'estudiante' && renderStudentMenu()}
+        {userType === '1' && renderPsychologistMenu()}
+        {userType === '2' && renderAdminMenu()}
+        {userType === '3' && renderStudentMenu()}
         <li className="salir">
           <a href="#" className="nav-link">
             <i className="bi bi-box-arrow-in-right"></i>

@@ -33,6 +33,7 @@ const ModalEvento = ({ event, onClose, onReagendar, onCancelarSesion }) => {
           <div className="modal-body">
             <p style={{fontWeight: 'bold'}}>Inicio:</p> <p>{formattedStartDate}</p>
             <p style={{fontWeight: 'bold'}}>Fin:</p> <p>{formattedEndDate}</p>
+            <p style={{fontWeight: 'bold'}}>Lugar de la sesión:</p> <p>{event.lugarSesion}</p>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
