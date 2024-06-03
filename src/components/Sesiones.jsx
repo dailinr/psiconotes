@@ -3,7 +3,12 @@ import { FilaSesion } from './FilaSesion.jsx'
 import React, { useState } from 'react';
 
 export const Sesiones = () => {
+  const [sessions, setSessions] = useState([]);
 
+  const handleAddSession = (formData) => {
+    const newSession = <FileSesion {...formData} />;
+    setSessions([...sessions, newSession]);
+  };
 
   return (
     <div>

@@ -4,7 +4,7 @@ import StudentDetails from './StudentDetails';
 import { ModalInforme } from './Modales/ModalInforme';
 
 
-export const FilaSesion = () => {
+export const FilaSesion = ({ date, startTime, endTime, student, reason }) => {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -36,7 +36,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Fecha
                     <br />
-                    <span>24-05-2024</span>
+                    <span>{date}</span>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Hora
                     <br />
-                    <span>03:11:07</span>
+                    <span>{startTime}</span>
                 </div>
             </div>
 

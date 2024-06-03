@@ -16,6 +16,16 @@ const ModalAgendar = ({ onClose, onAgendar }) => {
   const handleAgendar = () => {
     if (formData.student.trim() !== '' && formData.date.trim() !== '' && formData.startTime.trim() !== '' && formData.endTime.trim() !== '') {
       
+      setFormData({
+        date: formData.date,
+        startTime: formData.startTime,
+        endTime: formData.endTime,
+        student: formData.student,
+        reason: formData.reason,
+      });
+      // Cerrar el modal
+      setIsAgendarModalOpen(false);
+
       onAgendar(formData);
       setFormData({
         student: '',

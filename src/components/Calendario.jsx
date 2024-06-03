@@ -13,6 +13,17 @@ import './../css/Modal.css';
 dayjs.locale('es');
 
 const Calendario = () => {
+
+ 
+
+  const [formData, setFormData] = useState({
+    date: '',
+    startTime: '',
+    endTime: '',
+    student: '',
+    reason: '',
+  });
+
   
   const localizer = dayjsLocalizer(dayjs);
 
