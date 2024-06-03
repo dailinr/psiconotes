@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; 
-import './../css/Modal.css';
 
 const ReagendarModal = ({ event, onClose, onSave }) => {
   const [date, setDate] = useState(dayjs(event.start).format('YYYY-MM-DD'));

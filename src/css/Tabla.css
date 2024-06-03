@@ -1,0 +1,75 @@
+/* src/Tabla.css */
+.tabla-contenedor {
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+
+  .tabla-contenedor{
+    margin-top: 2.1%;
+  }
+  
+  th, td {
+    border: none;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #F2F4F7; 
+  }
+
+  th{
+    color: #718EBF;
+    font-weight: normal;
+  }
+
+  th:nth-child(7) {
+    width: 150px;
+  }
+  th:nth-child(6) {
+    width: 240px;
+  }
+  th:nth-child(2),
+  th:nth-child(3) {
+    width: 170px;
+  }
+  
+  .boton-info {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid hsl(0, 0%, 0%);
+    padding: 4px 27px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+  .boton-info:active,
+  .boton-info:hover{
+    color: #1814F3;
+    border: 1px solid hsl(241, 90%, 52%);
+  }
+  
+  .paginacion {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .paginacion span {
+    margin: 0 5px;
+    cursor: pointer;
+    color: gray;
+  }
+  
+  .paginacion span.activo {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .paginacion span:hover {
+    color: black;
+  }
+
+
+  

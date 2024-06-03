@@ -14,9 +14,9 @@ export const FilaSesion = () => {
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
                 &nbsp;
                 <div className='info' >
-                    <StudentDetails />
+                    <span>Paciente</span>
                     <br />
-                    <span>- - -</span>
+                    <StudentDetails />
                 </div>
             </div>
             <div className='d-flex' >

@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const Notificaciones = () => {
+export const NuevosPsicologos = () => {
   return (
     <div>
-      <h2>Notificaciones</h2>
+      <h2>Psicologos</h2>
       <p>Aquí va el contenido de las Notificaciones</p>
     </div>
   );
 };
 
-export default Notificaciones;
+export default NuevosPsicologos;

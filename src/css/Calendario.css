@@ -46,10 +46,6 @@
     background-color: #007bff  !important;
 }
 
- .card {
-    width: 106.5%; 
-    padding: 20px;
-    height: 108%;
-    margin-top: -2.5%;
-    margin-left: -3%;
+.card {
+    border: none!important;
 }
