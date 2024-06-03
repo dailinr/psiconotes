@@ -5,6 +5,24 @@ import 'dayjs/locale/es'; // Asegúrate de importar la localización en español
 const ModalCancelar = ({ event, onClose, onCancel }) => {
   const [reason, setReason] = useState('');
 
+  const handleCancelEvent = () => {
+    fetch(`http://localhost:8080/psicoNote/v1/sesion/eliminarSesion/${event.id}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log(`Sesión con ID ${event.id} cancelada correctamente.`);
+          // Actualizar la lista de eventos en Calendario
+          onCancel(event.id, reason);
+          onClose(); 
+        } else {
+          console.error('Error al cancelar sesión:', response.statusText);
+        }
+      })
+      .catch(error => console.error(`Error al cancelar sesión con ID ${event.id}:`, error));
+  };
+  
+
   return (
     <div className="modal-container">
       <div className="modal-backdrop" onClick={onClose}></div>
@@ -16,7 +34,7 @@ const ModalCancelar = ({ event, onClose, onCancel }) => {
           </div>
           <div className="modal-body">
             <p style={{ fontWeight: 'bold' }}>Estudiante:</p>
-            <p>{event.id}</p>
+            <p>{event.title}</p>
             <div className="event-info">
               <div>
                 <p style={{ fontWeight: 'bold' }}>Fecha:</p>
@@ -30,12 +48,12 @@ const ModalCancelar = ({ event, onClose, onCancel }) => {
             <div className="mb-3">
               <label htmlFor="reason" className="form-label" style={{ fontWeight: 'bold' }}>Motivo</label>
               <textarea className="form-control" id="reason" rows="3" value={reason} onChange={(e) => setReason(e.target.value)}
-                placeholder="..."></textarea>
+                placeholder="Por favor, indica el motivo de la cancelación"></textarea>
             </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-primary" onClick={() => onCancel(event.id, reason)}>Cancelar Sesión</button>
+            <button type="button" className="btn btn-primary" onClick={handleCancelEvent}>Cancelar Sesión</button>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 /* ESTILOS PARA LA VISTA PRINCIPAL */
 .main{
+    /* z-index: -1; */
     background-color: #F5F7FA;
     display: grid;
     grid-template-rows: 15px 1fr;
@@ -11,7 +12,6 @@
     display: flex;
     align-items: center;
 }
-
 
 .search-container {
     flex: 1; 
