@@ -15,6 +15,7 @@ import './css/global.css';
 import './css/Modal.css';
 
 const App = () => {
+  
   const getDefaultSection = (userType) => {
     switch (userType) {
       case '2':

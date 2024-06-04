@@ -12,7 +12,23 @@ import './../css/Modal.css';
 
 dayjs.locale('es');
 
+<<<<<<< HEAD
+const Calendario = () => {
+
+ 
+
+  const [formData, setFormData] = useState({
+    date: '',
+    startTime: '',
+    endTime: '',
+    student: '',
+    reason: '',
+  });
+
+  
+=======
 const Calendario = ({ userType }) => {
+>>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
   const localizer = dayjsLocalizer(dayjs);
 
   const [events, setEvents] = useState([]);
@@ -168,11 +184,18 @@ const Calendario = ({ userType }) => {
           />
         )}
         {isAgendarModalOpen && (
+<<<<<<< HEAD
+          <>
+            <ModalAgendar onClose={handleCloseAgendarModal} onAgendar={handleAgendar} />
+            
+          </>
+=======
           <ModalAgendar
             userType={userType} 
             onClose={handleCloseAgendarModal}
             onAgendar={handleAgendar}
           />
+>>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
         )}
       </div>
     </div>
