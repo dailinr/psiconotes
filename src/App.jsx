@@ -14,10 +14,6 @@ import Perfil from './components/Perfil';
 import './css/global.css';
 import './css/Modal.css';
 
-<<<<<<< HEAD
-function App() {
-  const [activeSection, setActiveSection] = useState('MisPacientes');
-=======
 const App = () => {
   const getDefaultSection = (userType) => {
     switch (userType) {
@@ -45,7 +41,6 @@ const App = () => {
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
   };
->>>>>>> main
 
   const renderSection = () => {
     switch (activeSection) {
