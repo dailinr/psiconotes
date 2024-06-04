@@ -24,8 +24,8 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado  }) => {
         <div className='row-sesion shadow'>
 
             <div className='d-flex' >
-                <div className='info text-center'>
-                    <p>{id}</p>
+                <div className='info '>
+                    <p className='text-center'>{id}</p>
                 </div>
             </div>
 

@@ -15,6 +15,13 @@ import './css/global.css';
 import './css/Modal.css';
 
 const App = () => {
+
+  const [datos, setDatos] = useState([]);
+
+  const handleAgendarSesion = (nuevaSesion) => {
+    setDatos([...datos, nuevaSesion]);
+  };
+
   
   const getDefaultSection = (userType) => {
     switch (userType) {
@@ -79,6 +86,10 @@ const App = () => {
           <option value="2">Administrador</option>
           <option value="3">Estudiante</option>
         </select>
+
+        <Calendario onAgendarSesion={handleAgendarSesion} />
+        <Sesiones datos={datos} />
+
       </div>
     </div>
   );

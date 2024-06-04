@@ -23,27 +23,6 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
   
   const handleAgendar = () => {
     if (formData.student.trim() !== '' && formData.date.trim() !== '' && formData.startTime.trim() !== '' && formData.endTime.trim() !== '') {
-<<<<<<< HEAD
-      
-      setFormData({
-        date: formData.date,
-        startTime: formData.startTime,
-        endTime: formData.endTime,
-        student: formData.student,
-        reason: formData.reason,
-      });
-      // Cerrar el modal
-      setIsAgendarModalOpen(false);
-
-      onAgendar(formData);
-      setFormData({
-        student: '',
-        date: '',
-        startTime: '',
-        endTime: '',
-        reason: ''
-      });
-=======
 
       // Convertir la fecha al formato dd/mm/yyyy
       const formattedDate = formData.date.split('-').reverse().join('/');
@@ -88,7 +67,6 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
 
       // Cerrar el modal después de guardar la sesión
       onClose();
->>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
     }
   };
 

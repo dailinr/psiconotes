@@ -12,23 +12,7 @@ import './../css/Modal.css';
 
 dayjs.locale('es');
 
-<<<<<<< HEAD
-const Calendario = () => {
-
- 
-
-  const [formData, setFormData] = useState({
-    date: '',
-    startTime: '',
-    endTime: '',
-    student: '',
-    reason: '',
-  });
-
-  
-=======
 const Calendario = ({ userType }) => {
->>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
   const localizer = dayjsLocalizer(dayjs);
 
   const [events, setEvents] = useState([]);
@@ -104,8 +88,22 @@ const Calendario = ({ userType }) => {
     setIsAgendarModalOpen(false);
   };
 
-  const handleAgendarSesion = () => {
-    handleOpenAgendarModal();
+  // const handleAgendarSesion = () => {
+  //   handleOpenAgendarModal();
+  // };
+
+  const handleAgendarSesion = (event) => {
+    event.preventDefault();
+  
+    const nuevaSesion = {
+      id: Math.random(), 
+      nombre: event.target.nombre.value,
+      fecha: event.target.fecha.value,
+      hora: event.target.hora.value,
+      estado: '',
+    };
+  
+    onAgendarSesion(nuevaSesion);
   };
 
   const handleAgendar = (formData) => {
@@ -184,18 +182,11 @@ const Calendario = ({ userType }) => {
           />
         )}
         {isAgendarModalOpen && (
-<<<<<<< HEAD
-          <>
-            <ModalAgendar onClose={handleCloseAgendarModal} onAgendar={handleAgendar} />
-            
-          </>
-=======
           <ModalAgendar
             userType={userType} 
             onClose={handleCloseAgendarModal}
             onAgendar={handleAgendar}
           />
->>>>>>> 8f09d0523de57d74234bc032330949fd5d135503
         )}
       </div>
     </div>
