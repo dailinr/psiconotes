@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 export const Sesiones = () => {
 
   const datosIniciales = [
-    { id: 1, nombre: 'Sesión 1', fecha: '2022-01-01', hora: '10:00' },
-    { id: 2, nombre: 'Sesión 2', fecha: '2022-01-02', hora: '11:00' },
+    { id: 1, nombre: 'Sesión 1', fecha: '2022-01-01', hora: '10:00', estado: 'activo' },
+    { id: 2, nombre: 'Sesión 2', fecha: '2022-01-02', hora: '11:00', estado: 'activo'},
   ];
+
   const [datos, setDatos] = useState(datosIniciales);
 
   return (

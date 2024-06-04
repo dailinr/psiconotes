@@ -4,7 +4,7 @@ import StudentDetails from './StudentDetails';
 import { ModalInforme } from './Modales/ModalInforme';
 
 
-export const FilaSesion = ({ id, nombre, fecha, hora  }) => {
+export const FilaSesion = ({ id, nombre, fecha, hora, estado  }) => {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -24,7 +24,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora  }) => {
         <div className='row-sesion shadow'>
 
             <div className='d-flex' >
-                <div className='info'>
+                <div className='info text-center'>
                     <p>{id}</p>
                 </div>
             </div>
@@ -56,16 +56,16 @@ export const FilaSesion = ({ id, nombre, fecha, hora  }) => {
                 </div>
             </div>
 
-            {/* <div className='d-flex' >
+            <div className='d-flex' >
                 
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>Finalizado</span>
+                    <span className='state-inf'>{estado}</span>
                 </div>
             </div>
 
-            <div className='d-flex' >
+            {/* <div className='d-flex' >
                 
                 <div className='info'>
                     Informe
@@ -82,67 +82,10 @@ export const FilaSesion = ({ id, nombre, fecha, hora  }) => {
                         <i class="bi bi-file-earmark-arrow-down"></i>
                     </span>
                 </div>
-            </div> */}
+            </div>  */}
             
         </div>
         
     </div>
   )
 }
-
-//     return (
-//       <div className='fil-sesion mb-3 '>
-//         <div className='row-sesion shadow'>
-//           <div className='d-flex' >
-//             <img src="../public/icon_student.png" alt="perfil estudiante" />
-//             &nbsp;
-//             <div className='info' >
-//               <span>{sesion.title}</span>
-//               <br />
-//               <StudentDetails />
-//             </div>
-//           </div>
-//           <div className='d-flex' >
-//             <div className='info'>
-//               Fecha <br />
-//               <span> -- </span>
-//             </div>
-//           </div>
-
-//           <div className='d-flex' >
-                
-//                 <div className='info'>
-//                     Hora
-//                     <br />
-//                     <span> -- </span>
-//                 </div>
-//             </div>
-
-//             <div className='d-flex' >
-                
-//                 <div className='info'>
-//                     Estado
-//                     <br />
-//                     <span className='state-inf'>Finalizado</span>
-//                 </div>
-//             </div>
-
-//             <div className='d-flex' >
-                
-//                 <div className='info'>
-//                     Informe
-//                     <br />
-//                     <span >
-//                         <i class="bi bi-plus-circle-fill"></i>
-//                         &nbsp; &nbsp; 
-//                         <i class="bi bi-eye-fill"></i>
-//                         &nbsp; &nbsp; 
-//                         <i class="bi bi-file-earmark-arrow-down"></i>
-//                     </span>
-//                 </div>
-//             </div>
-
-//         </div>
-//       </div>
-//     );
-//   };

@@ -2,7 +2,7 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 18px 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
     place-items: center;
@@ -44,16 +44,6 @@
     text-decoration: underline;
 }
 
-/* ---- MOSTRAR DETALLES DEL ESTUDIANTE ---- */
-
-.pageWithDetails {
-  /* Tus estilos para cuando showDetails es true */
-  
-}
-  
-.pageWithoutDetails {
-/* Tus estilos para cuando showDetails es false */
-}
 body.detailsShown, body.detailsShown * {
     color: #232323 !important;
 }
