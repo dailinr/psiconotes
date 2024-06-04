@@ -1,0 +1,131 @@
+.section-notification {
+  margin: 0 auto;
+  width: 80rem;
+  padding: 3rem;
+  border-radius: 18px;
+  background-color: white;
+}
+
+.section-notification p{
+    font-size: 18px;
+
+}
+
+.navi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.noti-title {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.noti-count {
+  background-color: hsl(219, 85%, 26%);
+  padding: 0.05rem 0.5rem;
+  border-radius: 6px;
+  color: white;
+  font-size: 22px;
+  margin-left: 1rem;
+}
+
+.noti-markasread {
+  color: hsl(219, 85%, 26%);
+  cursor: pointer;
+  transform: translateY(0.2rem);
+}
+
+.avatar {
+  width: 6rem;
+}
+
+.noti {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.noti-pic {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.noti-pic-pic {
+  width: 6rem;
+  position: absolute;
+  right: 0;
+  top: 2rem;
+}
+
+.noti-message-message {
+  margin: 2rem;
+  padding: 1rem;
+  border: solid 2px hsl(219, 14%, 63%);
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.noti-message-message:hover {
+  border: solid 2px hsl(205, 33%, 90%);
+  background-color: hsl(205, 33%, 90%);
+}
+
+.red-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  background-color: hsl(1, 90%, 64%);
+  color: hsl(1, 90%, 64%);
+  margin: 0.5rem;
+  display: inline-block;
+  transform: translateY(40%);
+}
+
+.noti-text {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.noti-time {
+  color: hsl(219, 14%, 63%);
+}
+
+.link {
+  transition: all 0.3s;
+
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: hsl(219, 85%, 26%);
+}
+
+.link:active {
+  color: hsl(219, 85%, 26%);
+}
+
+/* Utilities */
+.position-relative {
+  position: relative;
+}
+
+/* Javascript -------------------------------------------------- */
+
+.noti-markasread-read {
+  color: hsl(219, 14%, 63%) !important;
+  background-color: black;
+}
+
+.noti-unread {
+  background-color: hsl(211, 68%, 94%);
+}
+
+.hidden {
+  display: none;
+}
