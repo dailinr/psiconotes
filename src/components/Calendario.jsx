@@ -97,10 +97,10 @@ const Calendario = ({ userType }) => {
   
     const nuevaSesion = {
       id: Math.random(), 
-      nombre: event.target.nombre.value,
-      fecha: event.target.fecha.value,
-      hora: event.target.hora.value,
-      estado: '',
+      nombre: event.target.student.value,
+      fecha: event.target.date.value,
+      hora: event.target.startTime.value,
+      estado: 'Finalizado',
     };
   
     onAgendarSesion(nuevaSesion);
