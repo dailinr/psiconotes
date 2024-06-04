@@ -53,7 +53,7 @@ const App = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'Calendario':
-        return <Calendario userType={userType} />;
+        return <Calendario userType={userType} onAgendarSesion={handleAgendarSesion} />;
       case 'Sesiones':
         return <Sesiones />;
       case 'MisPacientes':
@@ -87,7 +87,7 @@ const App = () => {
           <option value="3">Estudiante</option>
         </select>
 
-        <Calendario onAgendarSesion={handleAgendarSesion} />
+        {/* <Calendario onAgendarSesion={handleAgendarSesion} /> */}
         <Sesiones datos={datos} />
 
       </div>
