@@ -2,7 +2,7 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 18px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
     place-items: center;
@@ -16,7 +16,6 @@
     font-size: 14px;
     color: #232323;
     font-weight: 500;
-    
 }
 
 .info br + span{
@@ -30,7 +29,10 @@
 
 .info .bi{
     color: black;
-    font-size: 15px;
+    font-size: 15px; 
+}
+.info .bi:hover{
+    cursor: pointer;
 }
 .info .bi-plus-circle-fill{
     color: #567FBD;   

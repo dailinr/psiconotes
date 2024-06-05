@@ -11,6 +11,11 @@ import GestionTablas from './components/GestionTablas';
 import NuevosPsicologos from './components/NuevosPsicologos'; 
 import Perfil from './components/Perfil'; 
 
+import { MostrarInforme } from './MostrarInforme';
+
+const informeUrl = 'https://psiconotes/ruta/informe.pdf'; // Reemplaza esto con la URL real del informe generado
+
+
 import './css/global.css';
 import './css/Modal.css';
 
@@ -80,6 +85,9 @@ const App = () => {
           <option value="3">Estudiante</option>
         </select>
       </div>
+
+      <MostrarInforme informeUrl={informeUrl} />
+      
     </div>
   );
 };
