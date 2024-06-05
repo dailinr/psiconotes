@@ -11,7 +11,7 @@ import GestionTablas from './components/GestionTablas';
 import NuevosPsicologos from './components/NuevosPsicologos'; 
 import Perfil from './components/Perfil'; 
 
-import { MostrarInforme } from './MostrarInforme';
+// import { MostrarInforme } from '..src/MostrarInforme';
 
 const informeUrl = 'https://psiconotes/ruta/informe.pdf'; // Reemplaza esto con la URL real del informe generado
 
@@ -86,8 +86,8 @@ const App = () => {
         </select>
       </div>
 
-      <MostrarInforme informeUrl={informeUrl} />
-      
+      {/* <MostrarInforme informeUrl={informeUrl} /> */}
+
     </div>
   );
 };

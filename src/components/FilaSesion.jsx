@@ -72,10 +72,10 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                         )}
 
                         &nbsp; &nbsp; 
-                        <Link to={`/mostrar-informe/${id}`}>
+                        {/* <Link to={`/mostrar-informe/${id}`}> */}
                             <i className="bi bi-eye-fill" />
-                        </Link>
-                        
+                        {/* </Link> */}
+
                         &nbsp; &nbsp; 
                         <i class="bi bi-file-earmark-arrow-down"></i>
                     </span>
