@@ -99,3 +99,12 @@
 .new-patient .submit-button:hover {
   background-color: #0056b3;
 }
+
+.new-patient.admin-form .input-row {
+  margin-bottom: 15px; /* Ajustar el margen inferior entre las filas */
+}
+
+.new-patient.admin-form .input-item {
+  margin-bottom: 15px; /* Ajustar el margen inferior entre los elementos dentro de cada fila */
+}
+

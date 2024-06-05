@@ -32,66 +32,83 @@ const Calendario = ({ userType }) => {
           id: session.id,
           start: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
           end: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
-          title: `Cita con ${session.paciente.nombre} ${session.paciente.apellido}`,
+          title: `Cita con ${session.paciente.nombre}`,
           reason: '',
           lugarSesion: session.lugarSesion,
           idPsicologo: session.psicologo.id,
-          estado: session.estado.nombreEstado
+          idPaciente: session.paciente.id,
+          estado: session.estado.nombreEstado,
+          paciente:`${session.paciente.nombre} ${session.paciente.apellido}`
         }));
         setEvents(formattedEvents);
       })
       .catch(error => console.error('Error en fetch:', error.message || error));
   }, [userType]);
 
+  //MODAL EVENTOOOOOOOOOO//
   const handleSelectEvent = (event) => {
     setSelectedEvent(event);
+    console.log("Evento seleccionado:", event);
   };
-
   const handleCloseModal = () => {
     setSelectedEvent(null);
   };
-
-  const handleOpenReagendarModal = (event) => {
-    setSelectedEvent(event);
-    setIsReagendarModalOpen(true);
-  };
-
-  const handleCloseReagendarModal = () => {
-    setIsReagendarModalOpen(false);
-  };
-
-  const handleSaveReagendaredEvent = (updatedEvent) => {
-    setEvents(events.map(event => event.id === updatedEvent.id ? updatedEvent : event));
-    setIsReagendarModalOpen(false);
-    setSelectedEvent(null);
-  };
-
-  const handleOpenCancelarModal = () => {
-    setIsCancelarModalOpen(true);
-  };
-
-  const handleCloseCancelarModal = () => {
-    setIsCancelarModalOpen(false);
-  };
-
   const handleCancelEvent = (id) => {
     const updatedEvents = events.filter(event => event.id !== id);
     setEvents(updatedEvents);
     setIsCancelarModalOpen(false); // Cerrar modal después de cancelar
   };
+//------------------------------------------
+
+//MODAL REAGENDARRRRRRRRRRRRRRRRRRRRRR//
+  const handleOpenReagendarModal = () => {
+    setIsReagendarModalOpen(true);
+  };
+  const handleCloseReagendarModal = () => {
+    setIsReagendarModalOpen(false);
+  };
+  const handleReagendar = (formData) => {
+    const updatedEvent = {
+      id: selectedEvent.id,
+      start: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.startTime}`).toDate(),
+      end: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.endTime}`).toDate(),
+      title: `Cita con ${formData.idPaciente}`,
+      reason: formData.reason,
+      lugarSesion: formData.lugarSesion,
+      idPsicologo: selectedEvent.idPsicologo,
+      idPaciente: selectedEvent.idPaciente,
+      estado: selectedEvent.estado
+    };
   
+    const updatedEvents = events.map(event => // Actualizar en events
+      event.id === selectedEvent.id ? updatedEvent : event
+    );
+
+    setEvents(updatedEvents);
+    setIsReagendarModalOpen(false); 
+    handleCloseModal(); 
+  };
+  //---------------------------------------------------------
+
+
+  //MODAL CANCELARRRRRRRRRRRRRRRRRRRRR//
+  const handleOpenCancelarModal = () => {
+    setIsCancelarModalOpen(true);
+  };
+  const handleCloseCancelarModal = () => {
+    setIsCancelarModalOpen(false);
+    handleCloseModal(); 
+  };
+  //-------------------------------------
+
+
+  //MODAL AGENDARRRRRRRRRRRRRRR//
   const handleOpenAgendarModal = () => {
     setIsAgendarModalOpen(true);
   };
-
   const handleCloseAgendarModal = () => {
     setIsAgendarModalOpen(false);
   };
-
-  const handleAgendarSesion = () => {
-    handleOpenAgendarModal();
-  };
-
   const handleAgendar = (formData) => {
     const newEvent = {
       id: events.length + 1,
@@ -100,12 +117,12 @@ const Calendario = ({ userType }) => {
       title: `Cita con ${formData.student}`,
       reason: formData.reason
     };
-    // Actualiza events con el nuevo evento agregado
+    // Actualiza events con el nuevo
     setEvents([...events, newEvent]);
-  
-    setIsAgendarModalOpen(false); // Cierra modal después de agregar sesión
+    setIsAgendarModalOpen(false);
+    handleCloseModal();
   };
-  
+  //----------------------------------------
 
   const formats = {
     monthHeaderFormat: date => {
@@ -119,13 +136,13 @@ const Calendario = ({ userType }) => {
       return `${dayCapitalized} ${dateFormatted}`;
     }
   };
-
+  
   return (
     <div className="card">
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <p className="mb-0">Calendario</p>
-          <button type="button" className="btn btn-primary shadow" onClick={handleAgendarSesion}>
+          <button type="button" className="btn btn-primary shadow" onClick={handleOpenAgendarModal}>
             <i className="bi bi-person-add"></i> Agendar sesión
           </button>
         </div>
@@ -157,14 +174,14 @@ const Calendario = ({ userType }) => {
           <ReagendarModal
             event={selectedEvent}
             onClose={handleCloseReagendarModal}
-            onSave={handleSaveReagendaredEvent}
+            onSave={handleReagendar}
           />
         )}
         {selectedEvent && isCancelarModalOpen && (
           <ModalCancelar
-          event={selectedEvent}
-          onClose={handleCloseCancelarModal}
-          onCancel={handleCancelEvent} 
+            event={selectedEvent}
+            onClose={handleCloseCancelarModal}
+            onCancel={handleCancelEvent} 
           />
         )}
         {isAgendarModalOpen && (
