@@ -7,12 +7,12 @@ import ModalEvento from './Modales/ModalEvento';
 import ModalCancelar from './Modales/ModalCancelar';
 import ModalAgendar from './Modales/ModalAgendar';
 import ReagendarModal from './Modales/ReagendarModal';
-import '../css/Calendario.css';
-import '../css/Modal.css';
+import './../css/Calendario.css';
+import './../css/Modal.css';
 
 dayjs.locale('es');
 
-const Calendario = ({ userType, onAgendarSesion }) => {
+const Calendario = ({ userType }) => {
   const localizer = dayjsLocalizer(dayjs);
 
   const [events, setEvents] = useState([]);
@@ -88,9 +88,9 @@ const Calendario = ({ userType, onAgendarSesion }) => {
     setIsAgendarModalOpen(false);
   };
 
-  // const handleAgendarSesion = () => {
-  //   handleOpenAgendarModal();
-  // };
+  const handleAgendarSesion = () => {
+    handleOpenAgendarModal();
+  };
 
   const handleAgendar = (formData) => {
     const newEvent = {
@@ -102,7 +102,7 @@ const Calendario = ({ userType, onAgendarSesion }) => {
     };
     // Actualiza events con el nuevo evento agregado
     setEvents([...events, newEvent]);
-    onAgendarSesion(newEvent);
+  
     setIsAgendarModalOpen(false); // Cierra modal después de agregar sesión
   };
   

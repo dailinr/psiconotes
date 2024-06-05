@@ -15,14 +15,6 @@ import './css/global.css';
 import './css/Modal.css';
 
 const App = () => {
-
-  const [datos, setDatos] = useState([]);
-
-  const handleAgendarSesion = (nuevaSesion) => {
-    setDatos([...datos, nuevaSesion]);
-  };
-
-  
   const getDefaultSection = (userType) => {
     switch (userType) {
       case '2':
@@ -53,7 +45,7 @@ const App = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'Calendario':
-        return <Calendario userType={userType} onAgendarSesion={handleAgendarSesion} />;
+        return <Calendario userType={userType} />;
       case 'Sesiones':
         return <Sesiones />;
       case 'MisPacientes':
@@ -86,10 +78,6 @@ const App = () => {
           <option value="2">Administrador</option>
           <option value="3">Estudiante</option>
         </select>
-
-        {/* <Calendario onAgendarSesion={handleAgendarSesion} /> */}
-        <Sesiones datos={datos} />
-
       </div>
     </div>
   );
