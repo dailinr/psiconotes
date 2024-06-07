@@ -3,19 +3,32 @@ import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
 import { MostrarInforme } from './MostrarInforme.jsx';
 import {DescargarInforme } from './DescargarInforme.jsx';
-
+import { ModalInforme } from './Modales/ModalInforme';
 
 export const FilaSesion = () => {
-    
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+    
     const handleOpenModal = () => {
         setShowModal(true);
     };
 
-    const handleCloseModal = () => {
-        setShowModal(false);
+// -----------------------------
+    const [showModalInf, setShowModalInf] = useState(false);
+
+    const handlePlusIconClick = (event) => {
+    event.stopPropagation();
+        setShowModalInf(true);
     };
+
+    const handleCloseModalInf = () => {
+        setShowModalInf(false);
+    };
+
+
     // // const pageStyle = showDetails ? 'pageWithDetails' : 'pageWithoutDetails';
   return (
     <div className='fil-sesion mb-3 '>
@@ -64,14 +77,14 @@ export const FilaSesion = () => {
                     Informe
                     <br />
                     <span >
-                        <i class="bi bi-plus-circle-fill"></i>
+                        <i className="bi bi-plus-circle-fill" onClick={handlePlusIconClick} />
+                        {showModalInf && (
+                            <ModalInforme onClose={handleCloseModalInf} />
+                        )}
                         
                         &nbsp; &nbsp; 
                         <i className="bi bi-eye-fill" onClick={handleOpenModal}></i>                        
-                        
-                        <MostrarInforme show={showModal} handleClose={handleCloseModal}>
-                            Contenido del Modal
-                        </MostrarInforme>
+                        <MostrarInforme show={showModal} handleClose={handleCloseModal} />
 
                         &nbsp; &nbsp; 
                         <DescargarInforme className="inline-component"/>  
