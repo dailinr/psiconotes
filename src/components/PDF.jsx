@@ -1,13 +1,14 @@
 import { Document, Text, Page, StyleSheet, Image, View } from "@react-pdf/renderer"
-// import logo from './icon_student.png'
+import logo from './icon_student.png'
 
 // Personalizamos los estilos del doc PDF
 const styles = StyleSheet.create({
 
     page: {
-        // flexDirection: 'row',
         backgroundColor: 'white',
         padding: 30,
+        // display: 'flex',
+        // flexDirection: 'row',
     }, 
 
     titulo :{
@@ -15,8 +16,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontWeight: 500
     },
-
-    section: {
+    img : {
+        width: 100,
+        height: 100,
+    },
+    section : {
         display: "flex",
         flexDirection: "row",
         margin: 10,
@@ -45,7 +49,7 @@ export const PDF = () => {
                 <Text style={styles.titulo}>Encabezado</Text>
                 
                 <View style={styles.section}> {/* contenedor de cada pagina*/} 
-                    {/* <Image src={logo}/> */}
+                    <Image style={styles.img} src={logo}/> 
                     <Text> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sequi aut delectus aliquam, 
                         adipisci laudantium obcaecati vero nihil ipsum quos esse assumenda quae libero nulla iusto quo, 
                         animi pariatur odio?
