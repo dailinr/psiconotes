@@ -12,8 +12,9 @@ import NuevosPsicologos from './components/NuevosPsicologos';
 import Perfil from './components/Perfil'; 
 
 // import { MostrarInforme } from '..src/MostrarInforme';
-
-const informeUrl = 'https://psiconotes/ruta/informe.pdf'; // Reemplaza esto con la URL real del informe generado
+import {  PDFViewer } from '@react-pdf/renderer';
+import PDF from './components/PDF.jsx'
+// const informeUrl = 'https://psiconotes/ruta/informe.pdf'; // Reemplaza esto con la URL real del informe generado
 
 
 import './css/global.css';
@@ -87,6 +88,9 @@ const App = () => {
       </div>
 
       {/* <MostrarInforme informeUrl={informeUrl} /> */}
+      <PDFViewer>
+        <PDF />
+      </PDFViewer>
 
     </div>
   );

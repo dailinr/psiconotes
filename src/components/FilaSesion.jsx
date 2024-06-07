@@ -2,11 +2,11 @@ import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
 import { ModalInforme } from './Modales/ModalInforme';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   const handlePlusIconClick = (event) => {
     event.stopPropagation();
@@ -73,7 +73,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
 
                         &nbsp; &nbsp; 
                         {/* <Link to={`/mostrar-informe/${id}`}> */}
-                            <i className="bi bi-eye-fill" />
+                            <i className="bi bi-eye-fill"  />
                         {/* </Link> */}
 
                         &nbsp; &nbsp; 

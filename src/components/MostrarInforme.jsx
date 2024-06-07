@@ -1,10 +1,21 @@
-import React from 'react';
+// import React from 'react';
+// import PDF from PDF.jsx
+// import { PDFDownloadLink } from '@react-pdf/renderer'
 
-export const MostrarInforme = ({ informeUrl }) => {
-  return (
-    <div>
-      <h1>Informe</h1>
-      <embed src={informeUrl} width="800px" height="600px" />
-    </div>
-  );
-};
+// export const MostrarInforme = () => {
+//   return (
+//     <div>
+//         <PDFDownloadLink document={<PDF/>} fileName='informeStudent.pdf'>
+//         {
+//           ({loading, url, error, blob}) => 
+//             loading ? (
+//               <button>Cargando informe...</button> 
+              
+//             ): (
+//               <button>Descargar informe</button>
+//             )
+//         }
+//         </PDFDownloadLink>
+//     </div>
+//   );
+// };
