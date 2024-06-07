@@ -44,16 +44,10 @@
     text-decoration: underline;
 }
 
-/* ---- MOSTRAR DETALLES DEL ESTUDIANTE ---- */
+.inline-component {
+    display: inline-block;
+}
 
-.pageWithDetails {
-  /* Tus estilos para cuando showDetails es true */
-  
-}
-  
-.pageWithoutDetails {
-/* Tus estilos para cuando showDetails es false */
-}
 body.detailsShown, body.detailsShown * {
     color: #232323 !important;
 }

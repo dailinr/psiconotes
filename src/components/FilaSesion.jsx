@@ -1,10 +1,22 @@
 import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
+import { MostrarInforme } from './MostrarInforme.jsx';
+import {DescargarInforme } from './DescargarInforme.jsx';
+
 
 export const FilaSesion = () => {
-    // // const pageStyle = showDetails ? 'pageWithDetails' : 'pageWithoutDetails';
+    
+    const [showModal, setShowModal] = useState(false);
 
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+    // // const pageStyle = showDetails ? 'pageWithDetails' : 'pageWithoutDetails';
   return (
     <div className='fil-sesion mb-3 '>
         
@@ -53,10 +65,16 @@ export const FilaSesion = () => {
                     <br />
                     <span >
                         <i class="bi bi-plus-circle-fill"></i>
+                        
                         &nbsp; &nbsp; 
-                        <i class="bi bi-eye-fill"></i>
+                        <i className="bi bi-eye-fill" onClick={handleOpenModal}></i>                        
+                        
+                        <MostrarInforme show={showModal} handleClose={handleCloseModal}>
+                            Contenido del Modal
+                        </MostrarInforme>
+
                         &nbsp; &nbsp; 
-                        <i class="bi bi-file-earmark-arrow-down"></i>
+                        <DescargarInforme className="inline-component"/>  
                     </span>
                 </div>
             </div>

@@ -1,6 +1,10 @@
 import React from 'react';
 import { FilaSesion } from './FilaSesion.jsx'
 
+import {  PDFViewer } from '@react-pdf/renderer';
+import { PDF } from './PDF.jsx';
+import { MostrarInforme } from './MostrarInforme.jsx';
+
 export const Sesiones = () => {
   return (
     <div>
@@ -19,10 +23,13 @@ export const Sesiones = () => {
           </p> 
         </div>
 
-        <FilaSesion/>
-        <FilaSesion/>
-        <FilaSesion/>
-        <FilaSesion/>
+        <FilaSesion />
+
+        {/* <PDFViewer >
+          <PDF />
+      </PDFViewer>   */}
+
+        
         
       </div>
     </div>
