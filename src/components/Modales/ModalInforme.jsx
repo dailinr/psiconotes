@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const ModalInforme = ({ onClose, show }) => {
+export const ModalInforme = ({ onClose, show, onSave }) => {
   const [observacion, setObservacion] = useState('');
 
   const handleObservacionChange = (event) => {
@@ -9,29 +9,11 @@ export const ModalInforme = ({ onClose, show }) => {
 
   const handleAddClick = () => {
     if (observacion.trim()) {
-      enviarObservacion(observacion);
+      onSave(observacion); 
+      onClose(); 
     } else {
       alert('La observación es obligatoria');
     }
-  };
-
-  const enviarObservacion = (observacion) => {
-    fetch('/api/generate-pdf', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ observaciones: observacion }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.url) {
-          window.location.href = data.url;
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
   };
 
   return (

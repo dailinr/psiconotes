@@ -7,6 +7,9 @@ import { ModalInforme } from './Modales/ModalInforme';
 
 export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalInf, setShowModalInf] = useState(false);
+  const [observacion, setObservacion] = useState('');
+
 
     const handleCloseModal = () => {
       setShowModal(false);
@@ -17,7 +20,6 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
     };
 
 // -----------------------------
-    const [showModalInf, setShowModalInf] = useState(false);
 
     const handlePlusIconClick = (event) => {
     event.stopPropagation();
@@ -28,8 +30,10 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
         setShowModalInf(false);
     };
 
+    const handleSaveObservacion = (obs) => {
+        setObservacion(obs); 
+    };
 
-    // // const pageStyle = showDetails ? 'pageWithDetails' : 'pageWithoutDetails';
   return (
     <div className='fil-sesion mb-3 '>
         
@@ -85,17 +89,17 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                     <span >
                         <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
                         {showModalInf && (
-                            <ModalInforme onClose={handleCloseModalInf} />
+                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveObservacion}  />
                         )}
 
                         &nbsp; &nbsp; 
                         <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} 
-                        nombre={nombre} fecha={fecha} hora={hora}/>
+                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>
 
                         &nbsp; &nbsp; 
                         <DescargarInforme className="inline-component" 
-                        nombre={nombre} fecha={fecha} hora={hora}/>  
+                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>  
                     </span>
                 </div>
             </div>
