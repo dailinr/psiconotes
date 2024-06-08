@@ -11,17 +11,11 @@ import GestionTablas from './components/GestionTablas';
 import NuevosPsicologos from './components/NuevosPsicologos'; 
 import Perfil from './components/Perfil'; 
 
-// import { MostrarInforme } from '..src/MostrarInforme';
-import {  PDFViewer } from '@react-pdf/renderer';
-import PDF from './components/PDF.jsx'
-// const informeUrl = 'https://psiconotes/ruta/informe.pdf'; // Reemplaza esto con la URL real del informe generado
-
 
 import './css/global.css';
 import './css/Modal.css';
 
 const App = () => {
-  
   const getDefaultSection = (userType) => {
     switch (userType) {
       case '2':
@@ -34,7 +28,7 @@ const App = () => {
   };
 
   const [activeSection, setActiveSection] = useState(localStorage.getItem('activeSection') || 'MisPacientes');
-  const [userType, setUserType] = useState(localStorage.getItem('userType') || '1'); // Default to '1' for Psicólogo
+  const [userType, setUserType] = useState(localStorage.getItem('userType') || '1');
 
   useEffect(() => {
     localStorage.setItem('activeSection', activeSection);
@@ -86,11 +80,6 @@ const App = () => {
           <option value="3">Estudiante</option>
         </select>
       </div>
-
-      {/* <MostrarInforme informeUrl={informeUrl} /> */}
-      <PDFViewer>
-        <PDF />
-      </PDFViewer>
 
     </div>
   );

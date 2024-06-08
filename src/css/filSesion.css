@@ -2,7 +2,7 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 25px  1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
     place-items: center;
@@ -34,6 +34,9 @@
 .info .bi:hover{
     cursor: pointer;
 }
+.info .bi:hover{
+    cursor: pointer;
+}
 .info .bi-plus-circle-fill{
     color: #567FBD;   
 }
@@ -44,6 +47,10 @@
 .name-stud:hover{
     color: #567FBD;
     text-decoration: underline;
+}
+
+.inline-component {
+    display: inline-block;
 }
 
 body.detailsShown, body.detailsShown * {

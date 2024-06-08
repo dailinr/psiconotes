@@ -1,21 +1,27 @@
-// import React from 'react';
-// import PDF from PDF.jsx
-// import { PDFDownloadLink } from '@react-pdf/renderer'
+import React from 'react';
+import Modal from 'react-bootstrap/Modal';
 
-// export const MostrarInforme = () => {
-//   return (
-//     <div>
-//         <PDFDownloadLink document={<PDF/>} fileName='informeStudent.pdf'>
-//         {
-//           ({loading, url, error, blob}) => 
-//             loading ? (
-//               <button>Cargando informe...</button> 
-              
-//             ): (
-//               <button>Descargar informe</button>
-//             )
-//         }
-//         </PDFDownloadLink>
-//     </div>
-//   );
-// };
+import {  PDFViewer } from '@react-pdf/renderer';
+import { PDF } from './PDF.jsx';
+
+export const MostrarInforme = ({ show, handleClose,  nombre, fecha, hora, observacion  }) => {
+    const modalStyle = {
+        // maxWidth: '70%', 
+        //maxHeight: '100vh',
+    };
+
+    const pdfViewerStyle = {
+        width: '100%',
+        height: '100vh',
+    };
+
+    return (
+        <Modal show={show} onHide={handleClose} style={modalStyle} >
+
+            <PDFViewer  style={pdfViewerStyle}>
+                <PDF nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>
+            </PDFViewer> 
+            
+        </Modal>
+    );
+}

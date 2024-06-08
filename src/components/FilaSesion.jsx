@@ -1,40 +1,50 @@
 import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
+import { MostrarInforme } from './MostrarInforme.jsx';
+import { DescargarInforme } from './DescargarInforme.jsx';
 import { ModalInforme } from './Modales/ModalInforme';
 // import { Link } from 'react-router-dom';
 
-
 export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showModalInf, setShowModalInf] = useState(false);
+  const [observacion, setObservacion] = useState('');
 
-  const handlePlusIconClick = (event) => {
+
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+    
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+// -----------------------------
+
+    const handlePlusIconClick = (event) => {
     event.stopPropagation();
-    setShowModal(true);
-  };
+        setShowModalInf(true);
+    };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+    const handleCloseModalInf = () => {
+        setShowModalInf(false);
+    };
+
+    const handleSaveObservacion = (obs) => {
+        setObservacion(obs); 
+    };
 
   return (
-    <div className='fil-sesion mb-3'>
-      <div className='row-sesion shadow'>
-        <div className='d-flex'>
-          <div className='info ps-5'>
-            <p>{id}</p>
-          </div>
-        </div>
+    <div className='fil-sesion mb-3 '>
+        
+        <div className='row-sesion shadow'>
 
-        <div className='d-flex'>
-          <img src="../public/icon_student.png" alt="perfil estudiante" />
-          &nbsp;
-          <div className='info'>
-            <span>{nombre}</span>
-            <br />
-            <StudentDetails />
-          </div>
-        </div>
+            <div className='d-flex'>
+                <div className='info ps-5'>
+                    <p>{id}</p>
+                </div>
+            </div>
 
         <div className='d-flex'>
           <div className='info'>
@@ -60,29 +70,31 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
           </div>
         </div>
 
-        <div className='d-flex' >
+            <div className='d-flex' >
                 
                 <div className='info'>
                     Informe
                     <br />
                     <span >
-                        <i className="bi bi-plus-circle-fill" onClick={handlePlusIconClick} />
-                        {showModal && (
-                            <ModalInforme onClose={handleCloseModal} />
+                        <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
+                        {showModalInf && (
+                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveObservacion}  />
                         )}
 
                         &nbsp; &nbsp; 
-                        {/* <Link to={`/mostrar-informe/${id}`}> */}
-                            <i className="bi bi-eye-fill"  />
-                        {/* </Link> */}
+                        <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
+                        <MostrarInforme show={showModal} handleClose={handleCloseModal} 
+                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>
 
                         &nbsp; &nbsp; 
-                        <i class="bi bi-file-earmark-arrow-down"></i>
+                        <DescargarInforme className="inline-component" 
+                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>  
                     </span>
                 </div>
-            </div>  
-
-      </div>
+            </div>
+            
+        </div>
+        
     </div>
   );
 };

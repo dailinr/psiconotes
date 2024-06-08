@@ -1,72 +1,111 @@
-import {
-    Document,
-    Text,
-    Page,
-    StyleSheet,
-    Image,
-    View
-} from '@react-pdf/renderer'
-// import logo from './icon_student.png'
+import { Document, Font, Text, Page, StyleSheet, Image, View } from "@react-pdf/renderer"
+import logo from './mas_info_estud.png'
 
-// Personalizamos los estilos del doc PDF
+Font.register({
+    family: 'Inter-Bold',
+    src: './Inter-Bold.ttf' 
+});
+
 const styles = StyleSheet.create({
-    
+
     page: {
-        backgroundColor: 'black',
-        padding: 30
+        backgroundColor: 'white',
+        padding: 30,
     }, 
 
-    tittle :{
-        fontSize: 10,
-        fontFamily: 'system iu',
+    titulo :{
+        fontSize: '30px',
         textAlign: "center",
-        fontWeight: 500
+        fontWeight: 'bold',
+        marginBottom: 20,
+        color: '#343C6A'
     },
-
-    section: {
-        display: "flex",
-        flexDirection: "row",
+    img : {
+        width: 100,
+        height: 100,
+        marginRight: 20
+    },
+    section : {  
         margin: 10,
         padding: 10,
-        flexGrow: 1
+        flexGrow: 1,
+        flexDirection: 'row',
+        alignItems: 'flex-start'
+    },
+    textContainer: {
+        flexGrow: 1,
     },
 
     pageNumber: {
         position: 'absolute',
-        fontSize: 12,
+        fontSize: 14,
         bottom: 20,
         left: 0,
         right: 0,
         textAlign: 'center',
         color: 'grey'
-    }
+    },
+    info : {
+        display: 'block',
+        marginBottom: 10,
+        fontSize: '16px',
+        fontWeight: 'bold',
+        color: 'darkblue',
+    },
+    boldText: {
+        fontWeight: 'bold',
+        
+    },
+    dataText: {
+        color: 'black', 
+        fontSize: 15,
+    },
+    contObs: {
+        marginTop: 20,
+        padding: 10
+    },
+    observacion: {
+        fontSize: 20,
+        color: 'darkblue',
+        marginBottom: 10,
+      },
 
 })
 
-function PDF (){
 
+export const PDF = ({ nombre, fecha, hora, observacion }) => {
     return (
-        <Document>
+        <Document style={styles.doc}>
             <Page style={styles.page}>
 
-                <Text style={styles.tittle}> Informacion del Estudiante</Text>
+                <Text style={styles.titulo}>Informe del estudiante</Text>
+                
+                <View style={styles.section}> 
+                    <Image style={styles.img} src={logo}/> 
 
-                <View style={styles.section}> {/* contenedor*/} 
-                    {/* <Image src={logo}/> */}
-                    <Text> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sequi aut delectus aliquam, 
-                        adipisci laudantium obcaecati vero nihil ipsum quos esse assumenda quae libero nulla iusto quo, 
-                        animi pariatur odio?
-                    </Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.info}>Nombre del paciente: <Text style={styles.dataText}>{nombre}</Text></Text>
+                        <Text style={styles.info}>Edad: <Text style={styles.dataText}>{nombre}</Text></Text>
+                        <Text style={styles.info}>Fecha de la sesión: <Text style={styles.dataText}>{fecha}</Text></Text>
+                        <Text style={styles.info}>Duración de la sesión:  </Text>
+                        <Text style={[styles.info, styles.boldText]}>Psicóloga a cargo: <Text style={styles.dataText}>Fulanita perez</Text></Text>
+                        
+                        
+                    </View>    
+                    
                 </View>
+                
+                <View style={styles.contObs}>
+                    <Text style={styles.observacion}>Observaciones: </Text>
+                    <Text style={styles.observ}>{observacion}</Text>
+                </View> 
 
-                {/* Otra pagina */}
-                <View styles={styles.pageNumber} >
+
+                <View style={styles.pageNumber} >
                     <Text render={ ( {pageNumber, totalPages }) => `${pageNumber} / ${totalPages}` }> </Text>
                 </View>
+
             </Page>
-            
         </Document>
     )
-}
-
-export default PDF;
+};
