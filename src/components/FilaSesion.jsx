@@ -2,7 +2,7 @@ import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
 import { MostrarInforme } from './MostrarInforme.jsx';
-import {DescargarInforme } from './DescargarInforme.jsx';
+import { DescargarInforme } from './DescargarInforme.jsx';
 import { ModalInforme } from './Modales/ModalInforme';
 
 export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
@@ -90,10 +90,12 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
 
                         &nbsp; &nbsp; 
                         <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
-                        <MostrarInforme show={showModal} handleClose={handleCloseModal} />
+                        <MostrarInforme show={showModal} handleClose={handleCloseModal} 
+                        nombre={nombre} fecha={fecha} hora={hora}/>
 
                         &nbsp; &nbsp; 
-                        <DescargarInforme className="inline-component"/>  
+                        <DescargarInforme className="inline-component" 
+                        nombre={nombre} fecha={fecha} hora={hora}/>  
                     </span>
                 </div>
             </div>

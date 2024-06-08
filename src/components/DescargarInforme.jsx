@@ -2,10 +2,10 @@ import React from 'react';
 import { PDF } from './PDF.jsx'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 
-export const DescargarInforme = ({ className }) => {
+export const DescargarInforme = ({ className, nombre, fecha, hora }) => {
   return (
     <div className={className}>
-        <PDFDownloadLink document={<PDF/>} fileName='informeStudent.pdf'>
+        <PDFDownloadLink document={<PDF nombre={nombre} fecha={fecha} hora={hora} />} fileName='informeStudent.pdf'>
         {
           ({loading, url, error, blob}) => 
             loading ? (
