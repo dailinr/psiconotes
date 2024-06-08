@@ -39,11 +39,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
         
         <div className='row-sesion shadow'>
 
-            <div className='d-flex'>
-                <div className='info ps-5'>
-                    <p>{id}</p>
-                </div>
-            </div>
+            
 
             <div className='d-flex' >
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
@@ -51,7 +47,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                 <div className='info' >
                     <span>{nombre}</span>
                     <br />
-                    <StudentDetails />
+                    <span>Sesion&nbsp;{id}</span>
                 </div>
             </div>
             <div className='d-flex' >

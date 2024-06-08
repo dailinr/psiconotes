@@ -2,7 +2,7 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 25px  1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:   1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
     place-items: center;
@@ -54,3 +54,21 @@
 body.detailsShown, body.detailsShown * {
     color: #232323 !important;
 }
+
+/* --------------  */
+
+.filter{
+    background-color: rgba(165, 160, 160, 0); /* gris y transparente */
+    border: none;
+  }
+  
+  .filter option {
+    color: rgba(0, 0, 0, 0.859); 
+    background-color: rgba(255, 255, 255, 0.499);
+  }
+  
+  .filter option:hover {
+    background-color: rgba(227, 215, 215, 0.1); /* efecto hover */
+    border: none;
+  }
+  
