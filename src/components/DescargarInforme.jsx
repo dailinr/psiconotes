@@ -9,7 +9,9 @@ export const DescargarInforme = ({ className }) => {
         {
           ({loading, url, error, blob}) => 
             loading ? (
-              <button>Cargando informe...</button> 
+              <p style={{position: 'absolute', bottom: 0, fontSize: '16px'}}>
+                Cargando informe... 
+              </p>
               
             ): (
               <i class="bi bi-file-earmark-arrow-down"></i>

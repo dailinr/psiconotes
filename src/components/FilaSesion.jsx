@@ -5,7 +5,7 @@ import { MostrarInforme } from './MostrarInforme.jsx';
 import {DescargarInforme } from './DescargarInforme.jsx';
 import { ModalInforme } from './Modales/ModalInforme';
 
-export const FilaSesion = () => {
+export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
   const [showModal, setShowModal] = useState(false);
 
     const handleCloseModal = () => {
@@ -35,11 +35,17 @@ export const FilaSesion = () => {
         
         <div className='row-sesion shadow'>
 
+            <div className='d-flex'>
+                <div className='info ps-5'>
+                    <p>{id}</p>
+                </div>
+            </div>
+
             <div className='d-flex' >
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
                 &nbsp;
                 <div className='info' >
-                    <span>Paciente</span>
+                    <span>{nombre}</span>
                     <br />
                     <StudentDetails />
                 </div>
@@ -49,7 +55,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Fecha
                     <br />
-                    <span>24-05-2024</span>
+                    <span>{fecha}</span>
                 </div>
             </div>
 
@@ -58,7 +64,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Hora
                     <br />
-                    <span>03:11:07</span>
+                    <span>{hora}</span>
                 </div>
             </div>
 
@@ -67,7 +73,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>Finalizado</span>
+                    <span className='state-inf'>{estado}</span>
                 </div>
             </div>
 
@@ -77,13 +83,13 @@ export const FilaSesion = () => {
                     Informe
                     <br />
                     <span >
-                        <i className="bi bi-plus-circle-fill" onClick={handlePlusIconClick} />
+                        <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
                         {showModalInf && (
                             <ModalInforme onClose={handleCloseModalInf} />
                         )}
-                        
+
                         &nbsp; &nbsp; 
-                        <i className="bi bi-eye-fill" onClick={handleOpenModal}></i>                        
+                        <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} />
 
                         &nbsp; &nbsp; 
