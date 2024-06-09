@@ -11,6 +11,8 @@
 .row-sesion img{
     width: 55px;
     height: 45px;
+    position: relative;
+    left: 0;
 }
 .info{
     font-size: 14px;

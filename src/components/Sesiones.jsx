@@ -9,21 +9,38 @@ export const Sesiones = () => {
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
+    setSelectedOption(option);
+    filtrar(option);
   };
+
+  // Funcion filter
+  const filtrar = (option) => {
+    if (option === "ninguno") {
+      setFilteredResults(sessions);
+    } else {
+      const filteredData = sessions.filter((session) => 
+        session[option].toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredResults(filteredData);
+    }
+  }
 
   // Funcion de busqueda
   const searcher = (e) => {
     setSearch(e.target.value);
+    filtrar(selectedOption);
   }
-
   let resultado = []
-  // Metodo de filtrado
+  
   if(!search){
     resultado = sessions
   }
   else{
     resultado = sessions.filter( (dato) =>
-      dato.name.toLowerCase().includes(search.toLocaleLowerCase()) 
+      dato.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+      dato.fecha.toLowerCase().includes(search.toLocaleLowerCase()) ||
+      dato.hora.toLowerCase().includes(search.toLocaleLowerCase()) ||
+      dato.estado.toLowerCase().includes(search.toLocaleLowerCase()) 
     );
   }
 
@@ -40,16 +57,6 @@ export const Sesiones = () => {
     setFilteredResults(fakeData);
   }, []);
 
-  // Metodo de filtrado 2
-  // useEffect(() => {
-  //   let filteredData = [...sessions];
-  //   if (selectedOption && search) {
-  //     filteredData =  sessions.filter((session) =>
-  //       session[selectedOption].toLowerCase().includes(search.toLowerCase())
-  //     );
-  //   }
-  //   setFilteredResults(filteredData);
-  // }, [selectedOption, search, sessions]);
 
   // Prueba conexion API
   // useEffect(() => {
@@ -82,14 +89,14 @@ export const Sesiones = () => {
             <span style={{border: 'none'}} >
               <select className='filter' value={selectedOption} onChange={handleChange}>
                 <option value="" disabled hidden>Filtrar</option>
-                <option value="nombre">Nombre</option>
-                <option value="fecha">Fecha</option>
-                <option value="hora">Hora</option>
-                <option value="estado">Estado</option>
+                <option value="name" >Nombre</option> 
+                <option value="fecha" >Fecha</option>
+                <option value="hora" >Hora</option>
+                <option value="estado" >Estado</option> 
                 {/* <hr className="it-divider" /> */}
                 <option value="ninguno">Ninguno</option>
               </select>
-            </span>
+            </span> 
           </p> 
 
         </div>
@@ -100,17 +107,13 @@ export const Sesiones = () => {
         {resultado.map((resultado) => (
           <FilaSesion
             key={resultado.id}
-            id={resultado.id}
-            nombre={resultado.name}
-            fecha={resultado.fecha} 
-            hora={resultado.hora} 
-            estado={resultado.estado} 
+            session={resultado}
           />
         ))}
       </ul>
 
     </div>
-  );
-};
+  )
+}
 
 export default Sesiones;

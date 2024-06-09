@@ -5,7 +5,7 @@ import { MostrarInforme } from './MostrarInforme.jsx';
 import { DescargarInforme } from './DescargarInforme.jsx';
 import { ModalInforme } from './Modales/ModalInforme';
 
-export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
+export const FilaSesion = ({ session }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalInf, setShowModalInf] = useState(false);
   const [observacion, setObservacion] = useState('');
@@ -39,15 +39,14 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
         
         <div className='row-sesion shadow'>
 
-            
-
             <div className='d-flex' >
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
                 &nbsp;
                 <div className='info' >
-                    <span>{nombre}</span>
+                    
+                    <span><StudentDetails nombre={session.name} /></span>
                     <br />
-                    <span>Sesion&nbsp;{id}</span>
+                    <span>Sesion&nbsp;{session.id}</span>
                 </div>
             </div>
             <div className='d-flex' >
@@ -55,7 +54,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                 <div className='info'>
                     Fecha
                     <br />
-                    <span>{fecha}</span>
+                    <span>{session.fecha}</span>
                 </div>
             </div>
 
@@ -64,7 +63,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                 <div className='info'>
                     Hora
                     <br />
-                    <span>{hora}</span>
+                    <span>{session.hora}</span>
                 </div>
             </div>
 
@@ -73,7 +72,7 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>{estado}</span>
+                    <span className='state-inf'>{session.estado}</span>
                 </div>
             </div>
 
@@ -91,11 +90,11 @@ export const FilaSesion = ({ id, nombre, fecha, hora, estado }) => {
                         &nbsp; &nbsp; 
                         <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} 
-                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>
+                        session={session} observacion={observacion}/>
 
                         &nbsp; &nbsp; 
                         <DescargarInforme className="inline-component" 
-                        nombre={nombre} fecha={fecha} hora={hora} observacion={observacion}/>  
+                        session={session} observacion={observacion}/>  
                     </span>
                 </div>
             </div>
