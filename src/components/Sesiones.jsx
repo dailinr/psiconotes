@@ -1,11 +1,41 @@
 import { FilaSesion } from './FilaSesion.jsx'
 import React, { useEffect, useState } from 'react'
 
-export const Sesiones = () => {
+import dayjs from 'dayjs';
+import 'dayjs/locale/es';
+
+export const Sesiones = ({ userType}) => {
   const [sessions, setSessions] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
+
+  // Prueba conexion API
+  // useEffect(() => {
+  //   fetch('localhost:8080/psicoNote/v1/sesion')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const filteredSessions = data.filter(session => {
+  //         return session.psicologo && session.psicologo.id.toString() === userType.toString();
+  //       });
+
+  //       const formattedSessions = filteredSessions.map(session => ({
+  //         id: session.id,
+  //         name: session.paciente,
+  //         fecha: session.fecha,
+  //         hora: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
+  //         horaFinal: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
+  //         lugar: session.lugarSesion,
+  //         idPsicologo: session.psicologo.id,
+  //         idPaciente: session.paciente.id,
+  //         estado: session.estado.nombreEstado,
+  //         paciente:`${session.paciente.nombre} ${session.paciente.apellido}`
+
+  //       }));
+  //       setSessions(formattedSessions);
+  //     })
+  //     .catch(error => console.error('Error en fetch:', error.message || error));
+  // }, [userType]);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
@@ -44,6 +74,7 @@ export const Sesiones = () => {
     );
   }
 
+  // Datos de prueba que se eliminaran despues
   useEffect(() => {
     
     const fakeData = [
@@ -56,22 +87,7 @@ export const Sesiones = () => {
     setSessions(fakeData);
     setFilteredResults(fakeData);
   }, []);
-
-
-  // Prueba conexion API
-  // useEffect(() => {
-  //   const fetchSessions = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:8080/psicoNote/v1/sesion");
-  //       const data = await response.json();
-  //       setSessions(data);
-  //       setFilteredResults(data);
-  //     } catch (error) {
-  //       console.error('Error fetching sessions:', error);
-  //     }
-  //   };
-  //   fetchSessions();
-  // }, []);
+ 
 
   return (
     <div>
