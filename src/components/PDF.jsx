@@ -100,9 +100,7 @@ export const PDF = ({ session, informe }) => {
                     
                 </View>
                 
-                <View style={styles.contenido}
-                // style={styles}
-                >
+                <View style={styles.contenido} >
 
                     <Text style={styles.informe}>Resumen: </Text>
                     <Text style={styles.observ}>{informe.resumen}</Text>

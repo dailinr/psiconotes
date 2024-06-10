@@ -10,7 +10,6 @@ export const FilaSesion = ({ session }) => {
   const [showModalInf, setShowModalInf] = useState(false);
   const [informe, setInforme] = useState('');
 
-
     const handleCloseModal = () => {
       setShowModal(false);
     };
@@ -18,12 +17,17 @@ export const FilaSesion = ({ session }) => {
     const handleOpenModal = () => {
         setShowModal(true);
     };
-
 // -----------------------------
 
     const handlePlusIconClick = (event) => {
-    event.stopPropagation();
-        setShowModalInf(true);
+        if(informe !== ''){
+            return ;
+        }
+        else{
+            event.stopPropagation();
+            setShowModalInf(true);
+        }
+        
     };
 
     const handleCloseModalInf = () => {
@@ -38,13 +42,11 @@ export const FilaSesion = ({ session }) => {
     <div className='fil-sesion mb-3 '>
         
         <div className='row-sesion shadow'>
-
-            <div className='d-flex' >
-                <img src="../public/icon_student.png" alt="perfil estudiante" />
-                &nbsp;
+            <img src="../public/icon_student.png" alt="perfil estudiante" />
+            
+            <div  className='d-flex'>    
                 <div className='info' >
-                    
-                    <span><StudentDetails nombre={session.name} /></span>
+                    <span>{session.name}</span>
                     <br />
                     <span>Sesion&nbsp;{session.id}</span>
                 </div>
@@ -82,19 +84,42 @@ export const FilaSesion = ({ session }) => {
                     Informe
                     <br />
                     <span >
-                        <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
+                        <i className="bi bi-plus-circle-fill"  
+                            onClick={informe !== '' ? null : handlePlusIconClick} 
+                            style={{ 
+                                color: informe !== '' ? 'gray' : 'yourActiveColor',
+                                cursor: informe !== '' ? 'default' : 'pointer'
+                            }} 
+                        />
                         {showModalInf && (
                             <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveInforme}  />
                         )}
 
                         &nbsp; &nbsp; 
-                        <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
+                        <i className="bi bi-eye-fill" 
+                            onClick={informe === ''? null : handleOpenModal} 
+                            style={{ 
+                                color: informe === '' ? 'gray' : 'black',
+                                cursor: informe === '' ? 'default' : 'pointer'
+                            }} 
+                        />
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} 
                         session={session} informe={informe}/>
 
                         &nbsp; &nbsp; 
-                        <DescargarInforme className="inline-component" 
-                        session={session} informe={informe}/>  
+                        {informe === '' ? (
+                            <i className=" bi bi-file-earmark-arrow-down"
+                                style={{ color: 'gray', cursor: 'default' }} 
+                            />
+                        ) :
+                         (informe !== '' && (
+                            <DescargarInforme 
+                                className="inline-component" 
+                                session={session} 
+                                informe={informe} 
+                            />
+                         ))
+                        }
                     </span>
                 </div>
             </div>

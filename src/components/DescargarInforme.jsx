@@ -2,7 +2,8 @@ import React from 'react';
 import { PDF } from './PDF.jsx'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 
-export const DescargarInforme = ({ className, session, informe }) => {
+export const DescargarInforme = ({ className, session, informe}) => {
+
   return (
     <div className={className}>
         <PDFDownloadLink document={<PDF session={session} informe={informe} />} fileName='informeStudent.pdf'>
@@ -14,7 +15,7 @@ export const DescargarInforme = ({ className, session, informe }) => {
               </p>
               
             ): (
-              <i class="bi bi-file-earmark-arrow-down"></i>
+              <i className=" bi bi-file-earmark-arrow-down" />
             )
         }
         </PDFDownloadLink>

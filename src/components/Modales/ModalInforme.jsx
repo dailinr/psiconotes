@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../../css/modalInforme.css'
 
 
-
 export const ModalInforme = ({ onClose, show, onSave }) => {
   const [resumen, setResumen] = useState('');
   const [objetivos, setObjetivos] = useState('');
@@ -175,8 +174,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
           <div className='mod-foot '>
             
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-primary" onClick={handleAddClick}  >Añadir</button>
-            {/* onClick={handleAddClick} */}
+            <button type="button" className="btn btn-primary" onClick={handleAddClick} >Añadir</button>
           </div>
         </div>
 
