@@ -47,7 +47,7 @@ const App = () => {
       case 'Calendario':
         return <Calendario userType={userType} />;
       case 'Sesiones':
-        return <Sesiones />;
+        return <Sesiones userType={userType} />;
       case 'MisPacientes':
         return <GestionTablas userType={userType} />;
       case 'NuevosPacientes':

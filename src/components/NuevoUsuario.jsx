@@ -81,6 +81,10 @@ const NuevoUsuario = ({ userType, handleSubmit, handleChange, form }) => {
                   <label className="required-label">Edad <span>*</span></label>
                   <input type="text" name="edad" value={form.edad} onChange={handleChange} />
                 </div>
+                <div className="input-item">
+                  <label className="required-label">Contraseña <span>*</span></label>
+                  <input type="password" name="password" value={form.password} onChange={handleChange} required />
+                </div>
               </div>
             )}
             <div className="input-row">
