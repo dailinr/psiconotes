@@ -3,11 +3,11 @@ import React from 'react';
 export const Header = ({ userType }) => {
   const renderUserRole = () => {
     switch (userType) {
-      case 'psicologo':
+      case '1':
         return 'Panel del psicólogo';
-      case 'admin':
+      case '2':
         return 'Panel del administrador';
-      case 'estudiante':
+      case '3':
         return 'Panel del estudiante';
     }
   };
