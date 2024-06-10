@@ -81,8 +81,13 @@ input.custom-control-input:checked ~ label.custom-control-label::before {
 }
 
 /* ---- Datos del estudiante --- */
-.colu-2{
+
+.colu-2 li{
+    list-style: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #232323;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    padding: 10px 0;
+    grid-template-columns: 1fr 1fr;
+    padding: 7px 0;
 }

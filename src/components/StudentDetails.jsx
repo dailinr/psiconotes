@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../css/mostrarEstudiante.css'
+import PropTypes from "prop-types";
 
-const StudentDetails = () => {
+const StudentDetails = ({ nombre }) => {
     // EVENTO PARA MOSTRAR LOS DETALLES DEL ESTUDIANTE
     const [showDetails, setShowDetails] = useState(false);
 
@@ -31,7 +32,7 @@ const StudentDetails = () => {
 
     return (
         <>
-            <span className='name-stud' onClick={showStudent}>Juanito Alimaña </span>
+            <span className='name-stud' onClick={showStudent}> {nombre}</span>
             {showDetails && 
                 <div className="container-details">
                     <div className="mas-info">
@@ -61,13 +62,15 @@ const StudentDetails = () => {
                         </div>
 
                         <div className="colu-2">
-                            <p>Pablo Felipe Piccaso Gonzalez</p>
-                            <p>15 años</p>
-                            <p>Liceo del norte</p>
-                            <p>soytubebe@gmail.com</p>
-                            <p>3006482013</p>
-                            <p>Petrona Martinez (Acuente)</p>
-                            <p>3006482013 </p>
+                            <ul>
+                                <li>{nombre}</li>
+                                <li>15 años</li>
+                                <li>Liceo del norte</li>
+                                <li>soytubebe@gmail.com</li>
+                                <li>3006482013</li>
+                                <li>Petrona Martinez (Acuente)</li>
+                                <li>3006482013</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -77,3 +80,8 @@ const StudentDetails = () => {
 }
 
 export default StudentDetails;
+
+{/* Validamos las propiedades enviadas desde el componente APP*/}
+StudentDetails.propTypes = {
+    nombre: PropTypes.string.isRequired
+}

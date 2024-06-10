@@ -12,6 +12,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@react-pdf/renderer": "^3.4.4",
+    "axios": "^1.7.2",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.11.3",
     "dayjs": "^1.11.11",

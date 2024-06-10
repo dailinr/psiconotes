@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 })
 
 
-export const PDF = ({ nombre, fecha, hora, observacion }) => {
+export const PDF = ({ session, observacion }) => {
     return (
         <Document style={styles.doc}>
             <Page style={styles.page}>
@@ -84,9 +84,9 @@ export const PDF = ({ nombre, fecha, hora, observacion }) => {
                     <Image style={styles.img} src={logo}/> 
 
                     <View style={styles.textContainer}>
-                        <Text style={styles.info}>Nombre del paciente: <Text style={styles.dataText}>{nombre}</Text></Text>
-                        <Text style={styles.info}>Edad: <Text style={styles.dataText}>{nombre}</Text></Text>
-                        <Text style={styles.info}>Fecha de la sesión: <Text style={styles.dataText}>{fecha}</Text></Text>
+                        <Text style={styles.info}>Nombre del paciente: <Text style={styles.dataText}>{session.name}</Text></Text>
+                        <Text style={styles.info}>Edad: <Text style={styles.dataText}>---</Text></Text>
+                        <Text style={styles.info}>Fecha de la sesión: <Text style={styles.dataText}>{session.fecha}</Text></Text>
                         <Text style={styles.info}>Duración de la sesión:  </Text>
                         <Text style={[styles.info, styles.boldText]}>Psicóloga a cargo: <Text style={styles.dataText}>Fulanita perez</Text></Text>
                         

@@ -53,6 +53,8 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
                 value={observacion}
                 onChange={handleObservacionChange}
               />
+
+              
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
