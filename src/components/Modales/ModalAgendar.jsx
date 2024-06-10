@@ -64,7 +64,6 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
               title: '¡Sesión agendada!',
               text: 'La sesión ha sido agendada correctamente.',
             });
-
             onAgendar(formData);
             setFormData({
               student: '',
