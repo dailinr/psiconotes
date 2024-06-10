@@ -27,7 +27,7 @@ const App = () => {
   };
 
   const [activeSection, setActiveSection] = useState(localStorage.getItem('activeSection') || 'MisPacientes');
-  const [userType, setUserType] = useState(localStorage.getItem('userType') || '1'); // Default to '1' for Psicólogo
+  const [userType, setUserType] = useState(localStorage.getItem('userType') || '1');
 
   useEffect(() => {
     localStorage.setItem('activeSection', activeSection);

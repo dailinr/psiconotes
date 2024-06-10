@@ -2,7 +2,7 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:   1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
     place-items: center;
@@ -11,6 +11,8 @@
 .row-sesion img{
     width: 55px;
     height: 45px;
+    position: relative;
+    left: 0;
 }
 .info{
     font-size: 14px;
@@ -32,6 +34,9 @@
     color: black;
     font-size: 15px;
 }
+.info .bi:hover{
+    cursor: pointer;
+}
 .info .bi-plus-circle-fill{
     color: #567FBD;   
 }
@@ -44,16 +49,28 @@
     text-decoration: underline;
 }
 
-/* ---- MOSTRAR DETALLES DEL ESTUDIANTE ---- */
+.inline-component {
+    display: inline-block;
+}
 
-.pageWithDetails {
-  /* Tus estilos para cuando showDetails es true */
-  
-}
-  
-.pageWithoutDetails {
-/* Tus estilos para cuando showDetails es false */
-}
 body.detailsShown, body.detailsShown * {
     color: #232323 !important;
 }
+
+/* --------------  */
+
+.filter{
+    background-color: rgba(165, 160, 160, 0); /* gris y transparente */
+    border: none;
+  }
+  
+  .filter option {
+    color: rgba(0, 0, 0, 0.859); 
+    background-color: rgba(255, 255, 255, 0.499);
+  }
+  
+  .filter option:hover {
+    background-color: rgba(227, 215, 215, 0.1); /* efecto hover */
+    border: none;
+  }
+  

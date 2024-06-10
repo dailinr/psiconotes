@@ -1,9 +1,38 @@
 import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
 import StudentDetails from './StudentDetails';
+import { MostrarInforme } from './MostrarInforme.jsx';
+import { DescargarInforme } from './DescargarInforme.jsx';
+import { ModalInforme } from './Modales/ModalInforme';
 
-export const FilaSesion = () => {
-    // // const pageStyle = showDetails ? 'pageWithDetails' : 'pageWithoutDetails';
+export const FilaSesion = ({ session }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalInf, setShowModalInf] = useState(false);
+  const [observacion, setObservacion] = useState('');
+
+
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+    
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+// -----------------------------
+
+    const handlePlusIconClick = (event) => {
+    event.stopPropagation();
+        setShowModalInf(true);
+    };
+
+    const handleCloseModalInf = () => {
+        setShowModalInf(false);
+    };
+
+    const handleSaveObservacion = (obs) => {
+        setObservacion(obs); 
+    };
 
   return (
     <div className='fil-sesion mb-3 '>
@@ -14,9 +43,10 @@ export const FilaSesion = () => {
                 <img src="../public/icon_student.png" alt="perfil estudiante" />
                 &nbsp;
                 <div className='info' >
-                    <span>Paciente</span>
+                    
+                    <span><StudentDetails nombre={session.name} /></span>
                     <br />
-                    <StudentDetails />
+                    <span>Sesion&nbsp;{session.id}</span>
                 </div>
             </div>
             <div className='d-flex' >
@@ -24,7 +54,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Fecha
                     <br />
-                    <span>24-05-2024</span>
+                    <span>{session.fecha}</span>
                 </div>
             </div>
 
@@ -33,7 +63,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Hora
                     <br />
-                    <span>03:11:07</span>
+                    <span>{session.hora}</span>
                 </div>
             </div>
 
@@ -42,7 +72,7 @@ export const FilaSesion = () => {
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>Finalizado</span>
+                    <span className='state-inf'>{session.estado}</span>
                 </div>
             </div>
 
@@ -52,11 +82,19 @@ export const FilaSesion = () => {
                     Informe
                     <br />
                     <span >
-                        <i class="bi bi-plus-circle-fill"></i>
+                        <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
+                        {showModalInf && (
+                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveObservacion}  />
+                        )}
+
                         &nbsp; &nbsp; 
-                        <i class="bi bi-eye-fill"></i>
+                        <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
+                        <MostrarInforme show={showModal} handleClose={handleCloseModal} 
+                        session={session} observacion={observacion}/>
+
                         &nbsp; &nbsp; 
-                        <i class="bi bi-file-earmark-arrow-down"></i>
+                        <DescargarInforme className="inline-component" 
+                        session={session} observacion={observacion}/>  
                     </span>
                 </div>
             </div>

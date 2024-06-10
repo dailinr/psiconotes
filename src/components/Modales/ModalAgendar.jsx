@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ModalAgendar = ({ onClose, onAgendar, userType }) => {
   const [formData, setFormData] = useState({
@@ -6,7 +7,8 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
     date: '',
     startTime: '',
     endTime: '',
-    lugarSesion: ''
+    lugarSesion: '',
+    reason:'p'
   });
 
   const handleChange = (e) => {
@@ -20,56 +22,70 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
     }
   };
 
-  
   const handleAgendar = () => {
     if (formData.student.trim() !== '' && formData.date.trim() !== '' && formData.startTime.trim() !== '' && formData.endTime.trim() !== '') {
-
-      // Convertir la fecha al formato dd/mm/yyyy
       const formattedDate = formData.date.split('-').reverse().join('/');
 
       // Construir el objeto de sesión para enviar al backend
       const newSession = {
-        fecha: formattedDate, 
-        horaInicio: formData.startTime, 
-        horaFinal: formData.endTime, 
+        fecha: formattedDate,
+        horaInicio: formData.startTime,
+        horaFinal: formData.endTime,
         lugarSesion: formData.lugarSesion,
-        idPsicologo: userType,
+        idPsicologo: userType, 
         idPaciente: parseInt(formData.student, 10),
         estado: {
           nombreEstado: 'agendada'
         }
       };
-
-      // Enviar la solicitud POST al backend
-      fetch('http://localhost:8080/psicoNote/v1/sesion/guardar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newSession),
-      })
-        .then(response => response.json())
-        .then(data => {
-          // Actualizar el calendario con el nuevo evento
-          onAgendar(formData);
-          console.log(newSession);
-
-          // Limpiar el formulario después de agendar
-          setFormData({
-            student: '',
-            date: '',
-            startTime: '',
-            endTime: '',
-            lugarSesion: ''
-          });
-        })
-        .catch(error => console.error('Error al guardar sesión:', error));
-
-      // Cerrar el modal después de guardar la sesión
-      onClose();
+  
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¿Quieres agendar esta sesión?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, agendar!',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch('http://localhost:8080/psicoNote/v1/sesion/guardar', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newSession),
+          })
+          .then(response => response.json())
+          .then(data => {
+            Swal.fire({
+              icon: 'success',
+              title: '¡Sesión agendada!',
+              text: 'La sesión ha sido agendada correctamente.',
+            });
+            onAgendar(formData);
+            setFormData({
+              student: '',
+              date: '',
+              startTime: '',
+              endTime: '',
+              lugarSesion: ''
+            });
+          })
+          .catch(error => console.error('Error al guardar sesión:', error));
+          onClose();
+        } 
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Todos los campos son requeridos para agendar una sesión.',
+      });
     }
   };
-
+  
   return (
     <div className="modal-container">
       <div className="modal-backdrop"></div>

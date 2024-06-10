@@ -69,3 +69,12 @@
 .modal-edit.input-item:last-child {
   margin-right: 0;
 }
+
+.modal-reagendar .modal-body .row {
+  margin-bottom: 1rem;
+}
+
+.modal-reagendar.modal-body .col-sm-4 {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}

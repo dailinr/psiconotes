@@ -1,28 +1,65 @@
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/es'; // Asegúrate de importar la localización en español
+import 'dayjs/locale/es'; 
+import Swal from 'sweetalert2';
 
-const ModalCancelar = ({ event, onClose, onCancel }) => {
+const ModalCancelar = ({ event, onClose, onCancel, userType }) => {
   const [reason, setReason] = useState('');
 
   const handleCancelEvent = () => {
-    fetch(`http://localhost:8080/psicoNote/v1/sesion/eliminarSesion/${event.id}`, {
-      method: 'DELETE',
-    })
-      .then(response => {
-        if (response.ok) {
-          console.log(`Sesión con ID ${event.id} cancelada correctamente.`);
-          // Actualizar la lista de eventos en Calendario
-          onCancel(event.id, reason);
-          onClose(); 
-        } else {
-          console.error('Error al cancelar sesión:', response.statusText);
-        }
-      })
-      .catch(error => console.error(`Error al cancelar sesión con ID ${event.id}:`, error));
+    if (!reason.trim()) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos incompletos',
+        text: 'Todos los campos son requeridos para cancelar la sesión.',
+      });
+      return;
+    }
+    const userTypeInt = parseInt(userType, 10);
+    console.log('u',userType);
+    if (userTypeInt === 3) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Solicitud recibida',
+        text: 'Tu solicitud para cancelar la sesión ha sido enviada correctamente.',
+      });
+      onClose();
+    } else {
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¿Quieres cancelar esta sesión?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, cancelar!',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:8080/psicoNote/v1/sesion/eliminarSesion/${event.id}`, {
+            method: 'DELETE',
+          })
+          .then(response => {
+            if (response.ok) {
+              Swal.fire({
+                icon: 'success',
+                title: '¡Cancelación exitosa!',
+                text: `Sesión con ID ${event.paciente} cancelada correctamente.`,
+              });
+              onCancel(event.id, reason);
+              onClose();
+            } else {
+              throw new Error(`Error al cancelar sesión: ${response.status} - ${response.statusText}`);
+            }
+          })
+          .catch(error => {
+            console.error(`Error al cancelar sesión con ID ${event.id}:`, error);
+          });
+        } 
+      });
+    }
   };
   
-
   return (
     <div className="modal-container">
       <div className="modal-backdrop" onClick={onClose}></div>
@@ -53,7 +90,9 @@ const ModalCancelar = ({ event, onClose, onCancel }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-primary" onClick={handleCancelEvent}>Cancelar Sesión</button>
+            {userType !== 3 && // Solo mostrar el botón de cancelar si no es paciente
+              <button type="button" className="btn btn-primary" onClick={handleCancelEvent}>Cancelar Sesión</button>
+            }
           </div>
         </div>
       </div>

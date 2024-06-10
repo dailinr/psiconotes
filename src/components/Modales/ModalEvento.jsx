@@ -17,7 +17,7 @@ const ModalEvento = ({ event, onClose, onReagendar, onCancelarSesion }) => {
   const capitalizedStartMonth = startDate.format('MMMM').charAt(0).toUpperCase() + startDate.format('MMMM').slice(1);
   const capitalizedEndMonth = endDate.format('MMMM').charAt(0).toUpperCase() + endDate.format('MMMM').slice(1);
 
-  // Formatea la fecha completa con el formato deseado
+  // Formatea la fecha completa
   const formattedStartDate = `${capitalizedStartDay} ${startDate.format('D [de]')} ${capitalizedStartMonth} ${startDate.format('YYYY h:mm:ss A')}`;
   const formattedEndDate = `${capitalizedEndDay} ${endDate.format('D [de]')} ${capitalizedEndMonth} ${endDate.format('YYYY h:mm:ss A')}`;
 
