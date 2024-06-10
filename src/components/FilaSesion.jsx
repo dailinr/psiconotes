@@ -8,7 +8,7 @@ import { ModalInforme } from './Modales/ModalInforme';
 export const FilaSesion = ({ session }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalInf, setShowModalInf] = useState(false);
-  const [observacion, setObservacion] = useState('');
+  const [informe, setInforme] = useState('');
 
 
     const handleCloseModal = () => {
@@ -30,8 +30,8 @@ export const FilaSesion = ({ session }) => {
         setShowModalInf(false);
     };
 
-    const handleSaveObservacion = (obs) => {
-        setObservacion(obs); 
+    const handleSaveInforme = (inf) => {
+        setInforme(inf); 
     };
 
   return (
@@ -84,17 +84,17 @@ export const FilaSesion = ({ session }) => {
                     <span >
                         <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
                         {showModalInf && (
-                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveObservacion}  />
+                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveInforme}  />
                         )}
 
                         &nbsp; &nbsp; 
                         <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} 
-                        session={session} observacion={observacion}/>
+                        session={session} informe={informe}/>
 
                         &nbsp; &nbsp; 
                         <DescargarInforme className="inline-component" 
-                        session={session} observacion={observacion}/>  
+                        session={session} informe={informe}/>  
                     </span>
                 </div>
             </div>

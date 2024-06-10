@@ -4,11 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import {  PDFViewer } from '@react-pdf/renderer';
 import { PDF } from './PDF.jsx';
 
-export const MostrarInforme = ({ show, handleClose,  session, observacion  }) => {
-    const modalStyle = {
-        // maxWidth: '70%', 
-        //maxHeight: '100vh',
-    };
+export const MostrarInforme = ({ show, handleClose,  session, informe }) => {
 
     const pdfViewerStyle = {
         width: '100%',
@@ -16,10 +12,10 @@ export const MostrarInforme = ({ show, handleClose,  session, observacion  }) =>
     };
 
     return (
-        <Modal show={show} onHide={handleClose} style={modalStyle} >
+        <Modal show={show} onHide={handleClose}  >
 
             <PDFViewer  style={pdfViewerStyle}>
-                <PDF session={session} observacion={observacion}/>
+                <PDF session={session} informe={informe} />
             </PDFViewer> 
             
         </Modal>

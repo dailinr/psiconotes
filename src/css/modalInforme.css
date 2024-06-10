@@ -1,0 +1,78 @@
+.modal-contendor{
+    width: 50%;
+    border: 1px solid red;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(232, 238, 247);
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    border: 2px groove #9d98d86e;
+    box-shadow: inset 0px 0px 5px rgba(107, 105, 105, 0.325);
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.modal-contenido{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    /* grid-template-columns: 1fr; */
+}
+
+.mod-head{
+   color: black;
+   display: flex;
+   place-content: center;
+   padding: 20px 0;
+}
+.modal-titulo{
+    font-weight: bold;
+    font-size: 25px;
+    color: #343C6A;
+}
+.btn-close{
+    position: absolute;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: inherit;
+}
+.btn-close .bi-x{
+    color: gray;
+    font-size: 25px
+}
+.mod-body{
+    padding: 18px 30px;
+    display: grid;
+    place-content: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 10px;
+}
+
+.celda{
+    width: 280px;
+    height: 100px;
+}
+.celda p{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: -1%;
+    margin-bottom: 2%;
+    font-family: 'inter', 'arial';
+}
+
+.mod-foot{
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px ;
+    column-gap: 10px;
+    padding-right: 40px;
+}

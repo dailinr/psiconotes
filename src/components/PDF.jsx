@@ -60,20 +60,25 @@ const styles = StyleSheet.create({
         color: 'black', 
         fontSize: 15,
     },
-    contObs: {
+    contInf: {
         marginTop: 20,
         padding: 10
     },
-    observacion: {
+    informe: {
         fontSize: 20,
         color: 'darkblue',
         marginBottom: 10,
-      },
+        marginTop: 20
+    },
+    contenido : {
+        padding: '20px 10px', 
+        margin: 10,
+    },
 
 })
 
 
-export const PDF = ({ session, observacion }) => {
+export const PDF = ({ session, informe }) => {
     return (
         <Document style={styles.doc}>
             <Page style={styles.page}>
@@ -95,9 +100,34 @@ export const PDF = ({ session, observacion }) => {
                     
                 </View>
                 
-                <View style={styles.contObs}>
-                    <Text style={styles.observacion}>Observaciones: </Text>
-                    <Text style={styles.observ}>{observacion}</Text>
+                <View style={styles.contenido}
+                // style={styles}
+                >
+
+                    <Text style={styles.informe}>Resumen: </Text>
+                    <Text style={styles.observ}>{informe.resumen}</Text>
+
+                    <Text style={styles.informe}>Objetivos: </Text>
+                    <Text style={styles.observ}>{informe.objetivos}</Text>
+
+                    <Text style={styles.informe}>Trabajo Realizado: </Text>
+                    <Text style={styles.observ}>{informe.trabajoRealizado}</Text>
+
+                    <Text style={styles.informe}>Observaciones: </Text>
+                    <Text style={styles.observ}>{informe.observacion}</Text>
+
+                    <Text style={styles.informe}>Respuestas Estudiante: </Text>
+                    <Text style={styles.observ}>{informe.respuestaEstudiante}</Text>
+
+                    <Text style={styles.informe}>Conclusiones: </Text>
+                    <Text style={styles.observ}>{informe.conclusiones}</Text>
+
+                    <Text style={styles.informe}>Plan de acción: </Text>
+                    <Text style={styles.observ}>{informe.planAccion}</Text>
+
+                    <Text style={styles.informe}>Notas Adiccionales </Text>
+                    <Text style={styles.observ}>{informe.notasAdiccionales}</Text>
+
                 </View> 
 
 
