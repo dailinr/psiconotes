@@ -67,7 +67,7 @@ const ModalCancelar = ({ event, onClose, onCancel, userType }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{event.title}</h5>
-            <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
+            <button type="button" className="btn-close" onClick={onClose} aria-label="Close">X</button>
           </div>
           <div className="modal-body">
             <p style={{ fontWeight: 'bold' }}>Estudiante:</p>
@@ -90,9 +90,7 @@ const ModalCancelar = ({ event, onClose, onCancel, userType }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            {userType !== 3 && // Solo mostrar el botón de cancelar si no es paciente
               <button type="button" className="btn btn-primary" onClick={handleCancelEvent}>Cancelar Sesión</button>
-            }
           </div>
         </div>
       </div>

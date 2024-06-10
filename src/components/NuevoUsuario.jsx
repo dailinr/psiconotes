@@ -1,6 +1,5 @@
 import React from 'react';
 import './../css/NuevoPaciente.css';
-
 const NuevoUsuario = ({ userType, handleSubmit, handleChange, form }) => {
   // Generar opciones de grado (solo para pacientes)
   const gradoOptions = [];
@@ -51,15 +50,23 @@ const NuevoUsuario = ({ userType, handleSubmit, handleChange, form }) => {
                 <label className="required-label">Email <span>*</span></label>
                 <input type="email" name="email" value={form.email} onChange={handleChange} required />
               </div>
-              <div className="input-item">
-                <label className="required-label">Género <span>*</span></label>
-                <select name="genero" value={form.genero} onChange={handleChange} required>
-                  <option value="" disabled>Seleccione una opción</option>
-                  <option value="Fluido">Fluido</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Femenino">Femenino</option>
-                </select>
-              </div>
+              {userType === '1' && (
+                <div className="input-item">
+                  <label className="required-label">Género <span>*</span></label>
+                    <select name="genero" value={form.genero} onChange={handleChange} required>
+                      <option value="" disabled>Seleccione una opción</option>
+                      <option value="Fluido">Fluido</option>
+                      <option value="Masculino">Masculino</option>
+                      <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+              )}
+              {userType === '2' && (
+                <div className="input-item">
+                  <label className="required-label">Edad <span>*</span></label>
+                  <input type="text" name="edad" value={form.edad} onChange={handleChange} required />
+                </div>
+              )}
             </div>
             {userType === '1' && ( // Mostrar solo para userType === '1' (Paciente)
               <div className="input-row">
@@ -73,6 +80,10 @@ const NuevoUsuario = ({ userType, handleSubmit, handleChange, form }) => {
                 <div className="input-item">
                   <label className="required-label">Edad <span>*</span></label>
                   <input type="text" name="edad" value={form.edad} onChange={handleChange} />
+                </div>
+                <div className="input-item">
+                  <label className="required-label">Contraseña <span>*</span></label>
+                  <input type="password" name="password" value={form.password} onChange={handleChange} required />
                 </div>
               </div>
             )}
@@ -91,6 +102,12 @@ const NuevoUsuario = ({ userType, handleSubmit, handleChange, form }) => {
                 <label className="required-label">Contacto de emergencia <span>*</span></label>
                 <input type="text" name="contactoEmergencia" value={form.contactoEmergencia} onChange={handleChange} required />
               </div>
+              {userType === '2' && (
+                <div className="input-item">
+                  <label className="required-label">Contraseña <span>*</span></label>
+                  <input type="password" name="password" value={form.password} onChange={handleChange} required />
+                </div>
+            )}
             </div>
             <button type="submit" className="submit-button">Añadir {userType === '2' ? 'psicólogo' : 'paciente'}</button>
           </div>
