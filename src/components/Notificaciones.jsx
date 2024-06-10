@@ -1,57 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/notifications.css";
+import dayjs from "dayjs";
 
-function Notificaciones() {
-  const [info, setInfo] = useState([
-    {
-      id: "1",
-      estudiante: "Valentina",
-      psicologo: "Milicen",
-      titulo: "Sesión cancelada",
-      motivo: "Si me muevo me cago, lorem ipsum traquen truqui pum pum",
-      unread: true
+const Notificaciones = ({ userType }) => {
+  const [info, setInfo] = useState([]);
+  const userTypeInt = parseInt(userType, 10);
+
+  useEffect(() => {
+    let endpoint = null;
+
+    switch (userTypeInt) {
+      case 1:
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
+        break;
+      case 3:
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
+        break;
+      default:
+        return;
     }
-  ]);
 
-  const markAsRead = () => {
-    const updatedInfo = info.map((notification) => ({
-      ...notification,
-      unread: false
-    }));
-    setInfo(updatedInfo);
-  };
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => {
+        const filteredSessions = data.filter(session => {
+          const sessionDate = dayjs(session.fecha, "DD/MM/YYYY");
+          const currentDate = dayjs();
+          return (session.estado.nombreEstado === "reagendada" || session.estado.nombreEstado === "cancelada") &&
+            sessionDate.isBefore(currentDate);
+        });
 
-  const countNoti = info.filter(notification => notification.unread).length;
+        const formattedNotifications = filteredSessions.map(session => ({
+          id: session.id,
+          estudiante: session.paciente.nombre,
+          psicologo: session.psicologo.nombre,
+          titulo: `Sesión ${session.estado.nombreEstado}`,
+          motivo: session.notificacion,
+          fecha: session.fecha,
+          horaInicio: session.horaInicio,
+          horaFinal: session.horaFinal,
+          lugarSesion: session.lugarSesion,
+        }));
+
+        setInfo(formattedNotifications);
+      })
+      .catch(error => console.error('Error en fetch:', error.message || error));
+  }, [userTypeInt]);
 
   return (
     <section className="section-notification">
       <div className="navi">
-        <h3 className="noti-title">
-          Notifications <span className="noti-count">{countNoti}</span>
-        </h3>
-        <a className="noti-markasread" onClick={markAsRead}>Mark all as read</a>
+        <h3 className="noti-title">Notificaciones</h3>
       </div>
 
       <div className="noti-content">
-        {info.map((notification) => (
-          <div key={notification.id} className={`noti noti-message ${notification.unread ? 'noti-unread' : ''}`}>
-            <img
-              src="../public/icon_student.png"
-              alt="mark webber image"
-              className="avatar"
-            />
-            <div className="noti-text">
-              <p>
-                <span className="link">{notification.psicologo}</span> canceló la sesión
-                <span className={`red-dot ${notification.unread ? 'dot1' : ''}`}></span>
-              </p>
-              <p className="noti-message-message">{notification.motivo}</p>
+        {info.length === 0 ? (
+          <p>No hay notificaciones.</p>
+        ) : (
+          info.map(notification => (
+            <div key={notification.id} className="noti noti-message">
+              <img
+                src="../public/icon_student.png"
+                alt="user avatar"
+                className="avatar"
+              />
+              <div className="noti-text">
+                <p>
+                  <span className="link">{notification.psicologo}</span> {notification.titulo}
+                </p>
+                <p className="noti-message-message">{notification.motivo}</p>
+                <p>{`Fecha: ${notification.fecha} Hora: ${notification.horaInicio} - ${notification.horaFinal}`}</p>
+                <p>{`Lugar: ${notification.lugarSesion}`}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </section>
   );
-}
+};
 
 export default Notificaciones;
