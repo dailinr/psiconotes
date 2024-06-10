@@ -79,10 +79,10 @@ export const Sesiones = ({ userType}) => {
     
     const fakeData = [
       { id: 1, name: "Luis Hernandez", fecha: "2024-06-08", hora: "10:00", estado: "Activa" },
-      { id: 2, name: "Jose Muñoz", fecha: "2024-06-09", hora: "11:00", estado: "Finalizada" },
-      { id: 3, name: "Sara Cordoba", fecha: "2024-06-10", hora: "12:30", estado: "Pendiente" },
-      { id: 4, name: "Firulais", fecha: "2024-06-17", hora: "14:00", estado: "Pendiente" },
-      { id: 5, name: "Natalia Perez", fecha: "2024-06-19", hora: "08:00", estado: "Pendiente" }
+      { id: 2, name: "Jose Muñoz", fecha: "2024-06-09", hora: "11:00", estado: "Realizada" },
+      { id: 3, name: "Sara Cordoba", fecha: "2024-06-10", hora: "12:30", estado: "Agendada" },
+      { id: 4, name: "Firulais", fecha: "2024-06-17", hora: "14:00", estado: "Inclumplida" },
+      { id: 5, name: "Natalia Perez", fecha: "2024-06-19", hora: "08:00", estado: "Cancelada" }
     ];
     setSessions(fakeData);
     setFilteredResults(fakeData);

@@ -38,6 +38,24 @@ export const FilaSesion = ({ session }) => {
         setInforme(inf); 
     };
 
+    const colorEstado = (estado) => {
+        switch(estado){
+          case 'Agendada':
+            return <span style={{color: 'goldenrod'}}>{estado}</span>;
+          case 'Activa':
+            return <span style={{color: 'blue'}}>{estado}</span>;
+          case 'Realizada':
+            return <span style={{color: 'green'}}>{estado}</span>;
+          case 'Cancelada':
+            return <span style={{color: 'red'}}>{estado}</span>;
+          case 'Inclumplida':
+            return <span style={{color: 'red'}}>{estado}</span>;
+          default:
+            return <span style={{color: 'gray'}}>{estado}</span>;
+        }
+    }
+    
+      
   return (
     <div className='fil-sesion mb-3 '>
         
@@ -74,7 +92,9 @@ export const FilaSesion = ({ session }) => {
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>{session.estado}</span>
+                    <span className='state-inf'>
+                            {colorEstado(session.estado)}
+                    </span>
                 </div>
             </div>
 
