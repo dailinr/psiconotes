@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import './../css/Perfil.css';
 import './../css/NuevoPaciente.css';
-
 const Perfil = () => {
   const [form, setForm] = useState({
     primerNombre: '',

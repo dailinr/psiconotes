@@ -35,10 +35,15 @@ export const FilaSesion = ({ session }) => {
         setShowModalInf(false);
     };
 
+    // const handleSaveInforme = (inf) => {
+    //     setInforme(inf); 
+    //     setShowToast(true);
+    // };
     const handleSaveInforme = (inf) => {
-        setInforme(inf); 
-        setShowToast(true);
+      setInforme(inf)
+      setShowModalInf(false);
     };
+
     const handleCloseToast = () => {
         setShowToast(false);
     };
