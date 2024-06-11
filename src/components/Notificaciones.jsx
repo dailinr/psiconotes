@@ -14,7 +14,7 @@ const Notificaciones = ({ userType }) => {
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
         break;
       case 3:
-        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/12`;
         console.log(endpoint);
         break;
       default:
@@ -87,8 +87,13 @@ const Notificaciones = ({ userType }) => {
                 className="avatar"
               />
               <div className="noti-text">
-                <p>
-                  {notification.psicologo}{" El estado de la sesion es: "}
+                <p>{userTypeInt !== 1 && ( // Mostrar solo si es psicólogo
+                  <p>{notification.estudiante}</p>
+                )}
+                {userTypeInt === 1 && ( // Mostrar solo si es psicólogo
+                  <p>{notification.psicologo}</p>
+                )}
+                  {" El estado de la sesion es: "}
                   {notification.titulo}
                 </p>
                 <p className="noti-message-message">{notification.motivo}</p>

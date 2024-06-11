@@ -24,13 +24,13 @@ const Calendario = ({ userType }) => {
 
   useEffect(() => {
     let endpoint = null;
-
+    console.log(userTypeInt);
     switch (userTypeInt) {
       case 1:
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
         break;
       case 3:
-        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/12`;
         break;
       default:
         return;
@@ -44,7 +44,7 @@ const Calendario = ({ userType }) => {
           start: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
           end: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
           title: `Cita con ${session.paciente.nombre}`,
-          reason: '',
+          reason: session.motivo,
           lugarSesion: session.lugarSesion,
           idPsicologo: session.psicologo.id,
           idPaciente: session.paciente.id,
