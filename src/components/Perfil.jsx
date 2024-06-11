@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-
+import './../css/Perfil.css';
+import './../css/NuevoPaciente.css';
 const Perfil = () => {
   const [form, setForm] = useState({
     primerNombre: '',
@@ -111,7 +112,7 @@ const Perfil = () => {
   };
 
   return (
-    <div className="card">
+    <div className="card new-patient">
       <div className="card-body">
         <h2>Perfil</h2>
         <form onSubmit={handleSubmit}>

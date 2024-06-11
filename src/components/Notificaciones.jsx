@@ -8,13 +8,14 @@ const Notificaciones = ({ userType }) => {
 
   useEffect(() => {
     let endpoint = null;
-
+    console.log(userTypeInt);
     switch (userTypeInt) {
       case 1:
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
         break;
       case 3:
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
+        console.log(endpoint);
         break;
       default:
         return;
@@ -23,6 +24,7 @@ const Notificaciones = ({ userType }) => {
     fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         let filteredSessions = [];
 
         if (userTypeInt === 3) {
@@ -52,7 +54,7 @@ const Notificaciones = ({ userType }) => {
           id: session.id,
           estudiante: session.paciente.nombre,
           psicologo: session.psicologo.nombre,
-          titulo: `Sesión ${session.estado.nombreEstado}`,
+          titulo: `${session.estado.nombreEstado}`,
           motivo: session.notificacion,
           fecha: session.fecha,
           horaInicio: session.horaInicio,
@@ -86,10 +88,13 @@ const Notificaciones = ({ userType }) => {
               />
               <div className="noti-text">
                 <p>
-                  {notification.psicologo}{" El estado es: "}
+                  {notification.psicologo}{" El estado de la sesion es: "}
                   {notification.titulo}
                 </p>
                 <p className="noti-message-message">{notification.motivo}</p>
+                {userTypeInt === 1 && ( // Mostrar solo si es psicólogo
+                  <p>Estudiante: {notification.estudiante}</p>
+                )}
                 <p>{`Fecha: ${notification.fecha} Hora: ${notification.horaInicio} - ${notification.horaFinal}`}</p>
                 <p>{`Lugar: ${notification.lugarSesion}`}</p>
               </div>
