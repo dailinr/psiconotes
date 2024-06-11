@@ -23,15 +23,30 @@ const Notificaciones = ({ userType }) => {
     fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
-        const filteredSessions = data.filter((session) => {
-          const sessionDate = dayjs(session.fecha, "DD/MM/YYYY");
-          const currentDate = dayjs();
-          return (
-            (session.estado.nombreEstado === "reagendada" ||
-              session.estado.nombreEstado === "cancelada") &&
-            sessionDate.isBefore(currentDate)
-          );
-        });
+        let filteredSessions = [];
+
+        if (userTypeInt === 3) {
+          // Estudiante
+          filteredSessions = data.filter((session) => {
+            const sessionDate = dayjs(session.fecha, "DD/MM/YYYY");
+            const currentDate = dayjs();
+            return (
+              (session.estado.nombreEstado === "reagendada" ||
+                session.estado.nombreEstado === "cancelada") &&
+              sessionDate.isAfter(currentDate)
+            );
+          });
+        } else if (userTypeInt === 1) {
+          // Psicólogo
+          filteredSessions = data.filter((session) => {
+            return (
+              session.notificacion !== null &&
+              session.estado.nombreEstado !== "reagendada" &&
+              session.estado.nombreEstado !== "cancelada" &&
+              session.estado.nombreEstado !== "realizada"
+            );
+          });
+        }
 
         const formattedNotifications = filteredSessions.map((session) => ({
           id: session.id,
@@ -63,7 +78,7 @@ const Notificaciones = ({ userType }) => {
           <p>No hay notificaciones.</p>
         ) : (
           info.map((notification) => (
-            <div key={notification.id} className="noti noti-message">
+            <div key={notification.id} className="noti noti-message noti-unread">
               <img
                 src="../public/icon_student.png"
                 alt="user avatar"
@@ -71,13 +86,9 @@ const Notificaciones = ({ userType }) => {
               />
               <div className="noti-text">
                 <p>
-                  {session.psicologo.nombre}{" "}
-                  {session.estado.nombreEstado === "cancelada"
-                    ? "canceló la sesión"
-                    : "reagendó la sesión"}{" "}
-                  con {session.paciente.nombre} {session.paciente.apellido}
+                  {notification.psicologo}{" El estado es: "}
+                  {notification.titulo}
                 </p>
-
                 <p className="noti-message-message">{notification.motivo}</p>
                 <p>{`Fecha: ${notification.fecha} Hora: ${notification.horaInicio} - ${notification.horaFinal}`}</p>
                 <p>{`Lugar: ${notification.lugarSesion}`}</p>

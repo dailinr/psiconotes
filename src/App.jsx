@@ -53,13 +53,13 @@ const App = () => {
       case 'NuevosPacientes':
         return <NuevosPacientes />;
       case 'Notificaciones':
-        return <Notificaciones />;
+        return <Notificaciones userType={userType}/>;
       case 'Psicologos':
         return <GestionTablas userType={userType} />;
       case 'NuevosPsicologos':
         return <NuevosPsicologos />;
       case 'Perfil':
-        return <Perfil />;
+        return <Perfil userType={userType}/>;
       default:
         return <GestionTablas userType={userType} />;
     }
