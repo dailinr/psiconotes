@@ -2,17 +2,18 @@
     background-color: #f9f9f9dd;
     border-radius: 20px;
     display: grid;
-    grid-template-columns:   1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:  12% 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 80px;
     height: 80px;
-    place-items: center;
+    align-items: center;
     
 }
 .row-sesion img{
     width: 55px;
     height: 45px;
-    position: relative;
-    left: 0;
+    display: flex;
+    justify-self: flex-end;
+    margin-right: 15px;
 }
 .info{
     font-size: 14px;

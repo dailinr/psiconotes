@@ -8,8 +8,7 @@ import { ModalInforme } from './Modales/ModalInforme';
 export const FilaSesion = ({ session }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalInf, setShowModalInf] = useState(false);
-  const [observacion, setObservacion] = useState('');
-
+  const [informe, setInforme] = useState('');
 
     const handleCloseModal = () => {
       setShowModal(false);
@@ -18,33 +17,54 @@ export const FilaSesion = ({ session }) => {
     const handleOpenModal = () => {
         setShowModal(true);
     };
-
 // -----------------------------
 
     const handlePlusIconClick = (event) => {
-    event.stopPropagation();
-        setShowModalInf(true);
+        if(informe !== ''){
+            return ;
+        }
+        else{
+            event.stopPropagation();
+            setShowModalInf(true);
+        }
+        
     };
 
     const handleCloseModalInf = () => {
         setShowModalInf(false);
     };
 
-    const handleSaveObservacion = (obs) => {
-        setObservacion(obs); 
+    const handleSaveInforme = (inf) => {
+        setInforme(inf); 
     };
 
+    const colorEstado = (estado) => {
+        switch(estado){
+          case 'Agendada':
+            return <span style={{color: 'goldenrod'}}>{estado}</span>;
+          case 'Activa':
+            return <span style={{color: 'blue'}}>{estado}</span>;
+          case 'Realizada':
+            return <span style={{color: 'green'}}>{estado}</span>;
+          case 'Cancelada':
+            return <span style={{color: 'red'}}>{estado}</span>;
+          case 'Inclumplida':
+            return <span style={{color: 'red'}}>{estado}</span>;
+          default:
+            return <span style={{color: 'gray'}}>{estado}</span>;
+        }
+    }
+    
+      
   return (
     <div className='fil-sesion mb-3 '>
         
         <div className='row-sesion shadow'>
-
-            <div className='d-flex' >
-                <img src="../public/icon_student.png" alt="perfil estudiante" />
-                &nbsp;
+            <img src="../public/icon_student.png" alt="perfil estudiante" />
+            
+            <div  className='d-flex'>    
                 <div className='info' >
-                    
-                    <span><StudentDetails nombre={session.name} /></span>
+                    <span>{session.name}</span>
                     <br />
                     <span>Sesion&nbsp;{session.id}</span>
                 </div>
@@ -72,7 +92,9 @@ export const FilaSesion = ({ session }) => {
                 <div className='info'>
                     Estado
                     <br />
-                    <span className='state-inf'>{session.estado}</span>
+                    <span className='state-inf'>
+                            {colorEstado(session.estado)}
+                    </span>
                 </div>
             </div>
 
@@ -82,19 +104,42 @@ export const FilaSesion = ({ session }) => {
                     Informe
                     <br />
                     <span >
-                        <i className="bi bi-plus-circle-fill"  onClick={handlePlusIconClick} />
+                        <i className="bi bi-plus-circle-fill"  
+                            onClick={informe !== '' ? null : handlePlusIconClick} 
+                            style={{ 
+                                color: informe !== '' ? 'gray' : 'yourActiveColor',
+                                cursor: informe !== '' ? 'default' : 'pointer'
+                            }} 
+                        />
                         {showModalInf && (
-                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveObservacion}  />
+                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveInforme}  />
                         )}
 
                         &nbsp; &nbsp; 
-                        <i className="bi bi-eye-fill" onClick={handleOpenModal} ></i>                        
+                        <i className="bi bi-eye-fill" 
+                            onClick={informe === ''? null : handleOpenModal} 
+                            style={{ 
+                                color: informe === '' ? 'gray' : 'black',
+                                cursor: informe === '' ? 'default' : 'pointer'
+                            }} 
+                        />
                         <MostrarInforme show={showModal} handleClose={handleCloseModal} 
-                        session={session} observacion={observacion}/>
+                        session={session} informe={informe}/>
 
                         &nbsp; &nbsp; 
-                        <DescargarInforme className="inline-component" 
-                        session={session} observacion={observacion}/>  
+                        {informe === '' ? (
+                            <i className=" bi bi-file-earmark-arrow-down"
+                                style={{ color: 'gray', cursor: 'default' }} 
+                            />
+                        ) :
+                         (informe !== '' && (
+                            <DescargarInforme 
+                                className="inline-component" 
+                                session={session} 
+                                informe={informe} 
+                            />
+                         ))
+                        }
                     </span>
                 </div>
             </div>
