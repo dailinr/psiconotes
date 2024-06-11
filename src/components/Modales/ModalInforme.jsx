@@ -50,7 +50,8 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
           respuestaEstudiante,
           conclusiones,
           planAccion,
-          notasAdiccionales
+          notasAdiccionales,
+          fecha: new Date().toISOString().split('T')[0],
         };
       console.log(informe);
       onSave(informe);
