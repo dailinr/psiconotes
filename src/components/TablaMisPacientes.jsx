@@ -1,7 +1,7 @@
 import React from 'react';
 import Tabla from './Tabla';
 
-const TablaMisPacientes = () => {
+const TablaMisPacientes = ({ searchTerm, setActiveSection }) => {
   const datosIniciales = [
     { id: 1, nombre: 'Sofía', apellidos: 'Ramírez Torres', grado: '2°', edad: 8, correo: 'sofia.ramirez@example.com', genero: 'Femenino', institucion: 'Escuela DEF', telefono: '9988776655', nombreAcudiente: 'Carla Torres', telefonoAcudiente: '5566778899' },
     { id: 2, nombre: 'Miguel', apellidos: 'Hernández Gómez', grado: '1°', edad: 7, correo: 'miguel.h@example.com', genero: 'Masculino', institucion: 'Escuela GHI', telefono: '8877665544', nombreAcudiente: 'Luis Hernández', telefonoAcudiente: '4455667788' },
@@ -24,7 +24,7 @@ const TablaMisPacientes = () => {
     { titulo: 'Correo', campo: 'correo' },
   ];
 
-  return <Tabla datosIniciales={datosIniciales} columnas={columnas} />;
+  return <Tabla datosIniciales={datosIniciales} columnas={columnas} searchTerm={searchTerm} setActiveSection={setActiveSection} />;
 };
 
 export default TablaMisPacientes;
