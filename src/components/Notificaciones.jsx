@@ -14,7 +14,7 @@ const Notificaciones = ({ userType }) => {
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
         break;
       case 3:
-        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/12`;
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
         console.log(endpoint);
         break;
       default:

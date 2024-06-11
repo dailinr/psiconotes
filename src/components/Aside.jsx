@@ -54,12 +54,6 @@ export const Aside = ({ activeSection, setActiveSection, userType }) => {
           &nbsp; Nuevos Psicólogos
         </a>
       </li>
-      <li className={`nav-item ${activeSection === 'Perfil' ? 'active' : ''}`}>
-        <a href="#" className="nav-link" onClick={() => handleClick('Perfil')}>
-          <i className="bi bi-person-circle"></i>
-          &nbsp; Perfil
-        </a>
-      </li>
     </>
   );
 

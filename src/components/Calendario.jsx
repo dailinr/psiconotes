@@ -30,7 +30,7 @@ const Calendario = ({ userType }) => {
         endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPsicologo/${userTypeInt}`;
         break;
       case 3:
-        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/12`;
+        endpoint = `http://localhost:8080/psicoNote/v1/sesion/obtenerPorPaciente/${userTypeInt}`;
         break;
       default:
         return;
@@ -51,8 +51,9 @@ const Calendario = ({ userType }) => {
           estado: session.estado.nombreEstado,
           paciente: `${session.paciente.nombre} ${session.paciente.apellido}`
         }));
+        
 
-        setEvents(formattedEvents);
+        setEvents(formattedEvents); 
       })
       .catch(error => console.error('Error en fetch:', error.message || error));
   }, [userTypeInt]); // Usar userTypeInt en lugar de userType
@@ -83,7 +84,8 @@ const Calendario = ({ userType }) => {
       start: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.startTime}`).toDate(),
       end: dayjs(`${formData.date.split('/').reverse().join('-')}T${formData.endTime}`).toDate(),
       title: `Cita con ${formData.student}`,
-      reason: formData.reason
+      reason: formData.reason,
+      lugarSesion: formData.lugarSesion
     };
 
     setEvents([...events, newEvent]);

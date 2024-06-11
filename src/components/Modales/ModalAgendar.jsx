@@ -46,7 +46,7 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
         idPsicologo: userType, 
         idPaciente: parseInt(formData.student, 10),
         estado: {
-          nombreEstado: 'agendada'
+          nombreEstado: 'Agendada'
         }
       };
 
@@ -111,7 +111,7 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
               <select className="form-control" id="student" value={formData.student} onChange={handleChange}>
                 <option value="">Seleccione un estudiante</option>
                 {pacientes.map(paciente => (
-                  <option key={paciente.id} value={paciente.id}>
+                  <option key={paciente.id} value={paciente.nombre}>
                     {paciente.nombre}
                   </option>
                 ))}
