@@ -123,7 +123,7 @@ export const FilaSesion = ({ session }) => {
                         />
                        
                         {showModalInf && (
-                            <ModalInforme onClose={handleCloseModalInf} onSave={handleSaveInforme} />
+                            <ModalInforme onClose={handleCloseModalInf} sesion={session} onSave={handleSaveInforme} />
                                                    
                         )}
                         {showToast && <Toast message="Informe guardado" onClose={handleCloseToast} />}

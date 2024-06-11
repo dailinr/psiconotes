@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../css/modalInforme.css'
 
-export const ModalInforme = ({ onClose, show, onSave }) => {
+export const ModalInforme = ({ onClose, show, onSave, sesion }) => {
   const [resumen, setResumen] = useState('');
   const [objetivos, setObjetivos] = useState('');
   const [trabajoRealizado, setTrabajoRealizado] = useState('');
@@ -58,7 +58,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
     })
     .then(response => response.json())
     .then(data => {
-      fetch(`http://localhost:8080/psicoNote/v1/sesion/actualizarInforme/${idSesion}/${data.id}`, {
+      fetch(`http://localhost:8080/psicoNote/v1/sesion/actualizarInforme/${sesion.id}/${data.id}`, {
         method: 'PUT'
       })
       .then(() => onSave(data))
