@@ -10,7 +10,7 @@ export const Sesiones = ({ userType }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [filteredResults, setFilteredResults] = useState([]);
 
-  // Prueba conexion API
+  {/* Prueba conexion API
   useEffect(() => {
     fetch('http://localhost:8080/psicoNote/v1/sesion')
       .then(response => response.json())
@@ -35,7 +35,7 @@ export const Sesiones = ({ userType }) => {
         
       })
       .catch(error => console.error('Error en fetch:', error.message || error));
-  }, [userType]);
+  }, [userType]); 
 
   const guardarSesion = (nuevaSesion) => {
     fetch('http://localhost:8080/psicoNote/v1/sesion/guardar', {
@@ -62,7 +62,7 @@ export const Sesiones = ({ userType }) => {
       }]);
     })
     .catch(error => console.error('Error en fetch:', error.message || error));
-  };
+  }; */}
   
 
   const handleChange = (event) => {
@@ -91,7 +91,7 @@ export const Sesiones = ({ userType }) => {
     );
   } 
 
-  {/* Datos de prueba que se eliminaran despues 
+  // Datos de prueba que se eliminaran despues 
   useEffect(() => {
     
     const fakeData = [
@@ -103,7 +103,7 @@ export const Sesiones = ({ userType }) => {
     ];
     setSessions(fakeData);
     setFilteredResults(fakeData);
-  }, []); */}
+  }, []); 
  
 
   return (

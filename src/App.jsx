@@ -54,14 +54,14 @@ const App = () => {
       case 'NuevosPacientes':
         return <NuevosPacientes />;
       case 'Notificaciones':
-        return <Notificaciones />;
+        return <Notificaciones userType={userType}/>;
       case 'Psicologos':
         return <GestionTablas userType={userType} setActiveSection={setActiveSection} />;
       case 'NuevosPsicologos':
         return <NuevosPsicologos />;
       case 'Perfil':
         return <Perfil />;
-      case 'HistoriaClinica': 
+      case 'HistoriaClinica': // Añadir caso para Historia Clínica
         return <HistoriaClinica />;
       default:
         return <GestionTablas userType={userType} />;
