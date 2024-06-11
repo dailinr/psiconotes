@@ -1,7 +1,12 @@
 import React from 'react';
 
-const ModalMasInfo = ({ info, onClose, onEdit }) => {
+const ModalMasInfo = ({ info, onClose, onEdit, setActiveSection }) => {
   if (!info) return null;
+
+  const handleClick = (section) => {
+    setActiveSection(section);
+    onClose();
+  };
 
   return (
     <div className="modal-container">
@@ -27,6 +32,7 @@ const ModalMasInfo = ({ info, onClose, onEdit }) => {
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
             <button type="button" className="btn btn-primary" onClick={onEdit}>Editar</button>
+            <button type="button" className="btn btn-success" onClick={() => handleClick('HistoriaClinica')}>Historia Clínica</button>
           </div>
         </div>
       </div>

@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ModalMasInfo from './Modales/ModalMasInfo';
 import ModalEditarPac from './Modales/ModalEditarPac';
 import './../css/Tabla.css';
 
-const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6 }) => {
+const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6, searchTerm, setActiveSection }) => {
   const [paginaActual, setPaginaActual] = useState(1);
   const [datos, setDatos] = useState(datosIniciales);
   const [seleccionado, setSeleccionado] = useState(null);
   const [modalEditarAbierto, setModalEditarAbierto] = useState(false);
+
+  useEffect(() => {
+    const filtrarDatos = () => {
+      if (!searchTerm) {
+        setDatos(datosIniciales);
+      } else {
+        const datosFiltrados = datosIniciales.filter(dato =>
+          columnas.some(columna => {
+            const valor = dato[columna.campo];
+            return valor && valor.toString().toLowerCase().includes(searchTerm.toLowerCase());
+          })
+        );
+        setDatos(datosFiltrados);
+      }
+      setPaginaActual(1);
+    };
+
+    filtrarDatos();
+  }, [searchTerm, datosIniciales, columnas]);
 
   const indiceUltimaFila = paginaActual * filasPorPagina;
   const indicePrimeraFila = indiceUltimaFila - filasPorPagina;
@@ -85,6 +104,7 @@ const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6 }) => {
           info={seleccionado}
           onClose={handleCloseModalMasInfo}
           onEdit={handleOpenModalEditar}
+          setActiveSection={setActiveSection} // Pasando setActiveSection aquí
         />
       )}
       {modalEditarAbierto && seleccionado && (

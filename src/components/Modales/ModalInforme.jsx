@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../../css/modalInforme.css'
 
-
 export const ModalInforme = ({ onClose, show, onSave }) => {
   const [resumen, setResumen] = useState('');
   const [objetivos, setObjetivos] = useState('');
@@ -11,6 +10,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
   const [conclusiones, setConclusiones] = useState('');
   const [planAccion, setPlanAccion] = useState('');
   const [notasAdiccionales, setNotasAdiccionales] = useState('');
+  
 
   const handleResumenChange = (event) => {
     setResumen(event.target.value);
@@ -40,7 +40,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
   const handleAddClick = () => {
     if (resumen.trim() && objetivos.trim() && trabajoRealizado.trim() 
       && observacion.trim() && respuestaEstudiante.trim() && conclusiones.trim() 
-      && planAccion.trim() && notasAdiccionales.trim()) {
+      && planAccion.trim() ) {
         
         const informe = {
           resumen,
@@ -55,6 +55,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
       console.log(informe);
       onSave(informe);
       onClose();
+      
     }
     else{
       alert('hay un campo sin completar');
@@ -127,7 +128,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
             </div>
 
             <div className='celda'>
-            <p >Respuesta Estudiante</p>
+            <p >Respuestas del estudiante</p>
             <textarea
               className="form-control"
               id="respuestaEstudiante"
@@ -160,7 +161,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
             </div>
 
             <div className='celda'>
-            <p >Notas Adiccionales</p>
+            <p >Notas Adiccionales (opcional) </p>
             <textarea
               className="form-control"
               id="notasAdiccionales"
@@ -175,6 +176,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
             
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
             <button type="button" className="btn btn-primary" onClick={handleAddClick} >Añadir</button>
+            
           </div>
         </div>
 
