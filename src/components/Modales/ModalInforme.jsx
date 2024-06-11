@@ -51,7 +51,7 @@ export const ModalInforme = ({ onClose, show, onSave, sesion }) => {
           conclusiones,
           planAccion,
           notasAdiccionales,
-          fecha: new Date().toISOString().split('T')[0],
+          //fecha: new Date().toISOString().split('T')[0],
         };
       console.log(informe);
       onSave(informe);
@@ -176,7 +176,7 @@ export const ModalInforme = ({ onClose, show, onSave, sesion }) => {
           <div className='mod-foot '>
             
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-primary" onClick={handleSave} >Añadir</button>
+            <button type="button" className="btn btn-primary" onClick={handleAddClick } >Añadir</button>
             
           </div>
         </div>
