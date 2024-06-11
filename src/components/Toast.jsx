@@ -6,9 +6,9 @@ function Toast({ message, onClose }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
-    }, 3000); // El `Toast` se ocultará después de 3 segundos
+    }, 3000); 
 
-    return () => clearTimeout(timer); // Limpiar el temporizador si el componente se desmonta
+    return () => clearTimeout(timer); 
   }, [onClose]);
 
   return (

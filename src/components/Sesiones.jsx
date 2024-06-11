@@ -11,55 +11,72 @@ export const Sesiones = ({ userType }) => {
   const [filteredResults, setFilteredResults] = useState([]);
 
   // Prueba conexion API
-  // useEffect(() => {
-  //   fetch('localhost:8080/psicoNote/v1/sesion')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       const filteredSessions = data.filter(session => {
-  //         return session.psicologo && session.psicologo.id.toString() === userType.toString();
-  //       });
+  useEffect(() => {
+    fetch('http://localhost:8080/psicoNote/v1/sesion')
+      .then(response => response.json())
+      .then(data => {
+        const filteredSessions = data.filter(session => {
+          return session.psicologo && session.psicologo.id.toString() === userType.toString();
+        });
 
-  //       const formattedSessions = filteredSessions.map(session => ({
-  //         id: session.id,
-  //         name: session.paciente,
-  //         fecha: session.fecha,
-  //         hora: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
-  //         horaFinal: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
-  //         lugar: session.lugarSesion,
-  //         idPsicologo: session.psicologo.id,
-  //         idPaciente: session.paciente.id,
-  //         estado: session.estado.nombreEstado,
-  //         paciente:`${session.paciente.nombre} ${session.paciente.apellido}`
+        const formattedSessions = filteredSessions.map(session => ({
+          id: session.id,
+          name: session.paciente.nombre + ' ' + session.paciente.apellido,
+          fecha: session.fecha,
+          hora: dayjs(`${session.fecha}T${session.horaInicio}`).toDate(),
+          horaFinal: dayjs(`${session.fecha}T${session.horaFinal}`).toDate(),
+          lugar: session.lugarSesion,
+          idPsicologo: session.psicologo.id,
+          idPaciente: session.paciente.id,
+          estado: session.estado.nombreEstado,
 
-  //       }));
-  //       setSessions(formattedSessions);
-  //     })
-  //     .catch(error => console.error('Error en fetch:', error.message || error));
-  // }, [userType]);
+        }));
+        setSessions(formattedSessions);
+        
+      })
+      .catch(error => console.error('Error en fetch:', error.message || error));
+  }, [userType]);
+
+  const guardarSesion = (nuevaSesion) => {
+    fetch('http://localhost:8080/psicoNote/v1/sesion/guardar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(nuevaSesion)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Sesion guardada:', data);
+      // Actualiza la lista de sesiones después de guardar una nueva sesión
+      setSessions(prevSessions => [...prevSessions, {
+        id: data.id,
+        name: data.paciente.nombre + ' ' + data.paciente.apellido,
+        fecha: data.fecha,
+        hora: dayjs(`${data.fecha}T${data.horaInicio}`).toDate(),
+        horaFinal: dayjs(`${data.fecha}T${data.horaFinal}`).toDate(),
+        lugar: data.lugarSesion,
+        idPsicologo: data.psicologo.id,
+        idPaciente: data.paciente.id,
+        estado: data.estado.nombreEstado,
+      }]);
+    })
+    .catch(error => console.error('Error en fetch:', error.message || error));
+  };
+  
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
     setSelectedOption(option);
-    filtrar(option);
+    // filtrar(option);
   };
-
-  // Funcion filter
-  const filtrar = (option) => {
-    if (option === "ninguno") {
-      setFilteredResults(sessions);
-    } else {
-      const filteredData = sessions.filter((session) => 
-        session[option].toLowerCase().includes(search.toLowerCase())
-      );
-      setFilteredResults(filteredData);
-    }
-  }
 
   // Funcion de busqueda
   const searcher = (e) => {
     setSearch(e.target.value);
-    filtrar(selectedOption);
+    // filtrar(selectedOption);
   }
+  
   let resultado = []
   
   if(!search){
@@ -72,9 +89,9 @@ export const Sesiones = ({ userType }) => {
       dato.hora.toLowerCase().includes(search.toLocaleLowerCase()) ||
       dato.estado.toLowerCase().includes(search.toLocaleLowerCase()) 
     );
-  }
+  } 
 
-  // Datos de prueba que se eliminaran despues
+  {/* Datos de prueba que se eliminaran despues 
   useEffect(() => {
     
     const fakeData = [
@@ -86,7 +103,7 @@ export const Sesiones = ({ userType }) => {
     ];
     setSessions(fakeData);
     setFilteredResults(fakeData);
-  }, []);
+  }, []); */}
  
 
   return (
@@ -120,13 +137,13 @@ export const Sesiones = ({ userType }) => {
       </div>
 
       <ul>
-        {resultado.map((resultado) => (
-          <FilaSesion
-            key={resultado.id}
-            session={resultado}
-          />
-        ))}
-      </ul>
+      {resultado.map((resultado) => (
+        <FilaSesion
+          key={resultado.id}
+          session={resultado}
+        />
+      ))}
+    </ul>
 
     </div>
   )
