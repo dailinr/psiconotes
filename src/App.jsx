@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './css/App.css';
 import Header from './components/Header.jsx';
 import Main from './components/Main.jsx';
@@ -11,24 +12,14 @@ import GestionTablas from './components/GestionTablas';
 import NuevosPsicologos from './components/NuevosPsicologos'; 
 import Perfil from './components/Perfil'; 
 import HistoriaClinica from './components/HistoriaClinica';
-
+import Login from './components/Login'; // Importar el componente de Login
 import './css/global.css';
 import './css/Modal.css';
 
 const App = () => {
-  const getDefaultSection = (userType) => {
-    switch (userType) {
-      case '2':
-        return 'Psicologos';
-      case '3':
-        return 'Sesiones';
-      default:
-        return 'MisPacientes';
-    }
-  };
-
   const [activeSection, setActiveSection] = useState(localStorage.getItem('activeSection') || 'MisPacientes');
   const [userType, setUserType] = useState(localStorage.getItem('userType') || '1');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('activeSection', activeSection);
@@ -60,8 +51,8 @@ const App = () => {
       case 'NuevosPsicologos':
         return <NuevosPsicologos />;
       case 'Perfil':
-        return <Perfil />;
-      case 'HistoriaClinica': // Añadir caso para Historia Clínica
+        return <Perfil userType={userType}/>;
+      case 'HistoriaClinica': 
         return <HistoriaClinica />;
       default:
         return <GestionTablas userType={userType} />;
@@ -69,21 +60,44 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <Header userType={userType} />
-      <Aside activeSection={activeSection} setActiveSection={setActiveSection} userType={userType} />
-      <Main>
-        {renderSection()}
-      </Main>
-      <div style={{ marginTop: '95px', marginLeft: '260px' }}>
-        <select id="userTypeSelect" value={userType} onChange={handleUserTypeChange}>
-          <option value="1">Psicólogo</option>
-          <option value="2">Administrador</option>
-          <option value="3">Estudiante</option>
-        </select>
+    <Router>
+      <div className="app">
+        {!isAuthenticated ? (
+          <Routes>
+            <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} setUserType={setUserType} />} />
+            <Route path="/sign-in" element={<Login setIsAuthenticated={setIsAuthenticated} setUserType={setUserType} />} />
+            <Route path="*" element={<Login setIsAuthenticated={setIsAuthenticated} setUserType={setUserType} />} />
+          </Routes>
+        ) : (
+          <>
+            <Header userType={userType} />
+            <Aside activeSection={activeSection} setActiveSection={setActiveSection} userType={userType} />
+            <Main>
+              {renderSection()}
+            </Main>
+            <div style={{ marginTop: '95px', marginLeft: '260px' }}>
+              <select id="userTypeSelect" value={userType} onChange={handleUserTypeChange}>
+                <option value="1">Psicólogo</option>
+                <option value="2">Administrador</option>
+                <option value="3">Estudiante</option>
+              </select>
+            </div>
+          </>
+        )}
       </div>
-    </div>
+    </Router>
   );
+};
+
+const getDefaultSection = (userType) => {
+  switch (userType) {
+    case '2':
+      return 'Psicologos';
+    case '3':
+      return 'Sesiones';
+    default:
+      return 'MisPacientes';
+  }
 };
 
 export default App;
