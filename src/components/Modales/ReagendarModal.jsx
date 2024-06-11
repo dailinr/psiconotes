@@ -8,7 +8,7 @@ const ReagendarModal = ({ event, onClose, onSave, userType }) => {
     startTime: dayjs(event.start).format('HH:mm:ss'),
     endTime: dayjs(event.end).format('HH:mm:ss'),
     lugarSesion: event.lugarSesion,
-    reason: '',
+    reason: event.reason,
     idPaciente: event.paciente,
   });
 
