@@ -10,7 +10,29 @@ const ModalEditarPac = ({ info, onClose, onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    // Llamada a la API para actualizar el paciente
+    fetch(`http://localhost:8080/api/v1/pacientes/actualizarPaciente/${formData.id}`, {
+      method: 'PUT', // o 'PATCH' dependiendo de tu API
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error al actualizar el paciente');
+        }
+      })
+      .then(updatedData => {
+        onSave(updatedData); // Llama a la función onSave con los datos actualizados
+        onClose(); // Cierra el modal
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Manejar el error, por ejemplo, mostrando un mensaje al usuario
+      });
   };
 
   if (!formData) return null;

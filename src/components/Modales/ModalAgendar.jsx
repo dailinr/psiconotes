@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 const ModalAgendar = ({ onClose, onAgendar, userType }) => {
@@ -8,8 +8,19 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
     startTime: '',
     endTime: '',
     lugarSesion: '',
-    reason:'p'
+    reason: 'p',
   });
+  const [pacientes, setPacientes] = useState([]);
+
+  useEffect(() => {
+    // Fetch patients from the API
+    fetch('http://localhost:8080/api/v1/pacientes/activos')
+      .then(response => response.json())
+      .then(data => {
+        setPacientes(data);
+      })
+      .catch(error => console.error('Error fetching patients:', error));
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -38,7 +49,7 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
           nombreEstado: 'agendada'
         }
       };
-  
+
       Swal.fire({
         title: '¿Estás seguro?',
         text: "¿Quieres agendar esta sesión?",
@@ -85,7 +96,7 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
       });
     }
   };
-  
+
   return (
     <div className="modal-container">
       <div className="modal-backdrop"></div>
@@ -97,7 +108,14 @@ const ModalAgendar = ({ onClose, onAgendar, userType }) => {
           <div className="modal-body">
             <div className="mb-3">
               <label htmlFor="student" className="form-label">Estudiante</label>
-              <input type="text" className="form-control" id="student" value={formData.student} onChange={handleChange} />
+              <select className="form-control" id="student" value={formData.student} onChange={handleChange}>
+                <option value="">Seleccione un estudiante</option>
+                {pacientes.map(paciente => (
+                  <option key={paciente.id} value={paciente.id}>
+                    {paciente.nombre}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="mb-3">
               <label htmlFor="date" className="form-label">Fecha</label>

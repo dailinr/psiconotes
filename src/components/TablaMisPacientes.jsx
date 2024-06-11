@@ -14,7 +14,7 @@ const TablaMisPacientes = ({ searchTerm, setActiveSection, userType }) => {
           id: paciente.id,
           nombre: paciente.nombre,
           apellidos: paciente.apellido, // Asegúrate de que el campo es correcto
-          grado: paciente.grado || 'N/A', // Si no hay campo grado en los datos, puedes manejarlo así
+          grado: paciente.grado, // Si no hay campo grado en los datos, puedes manejarlo así
           edad: paciente.edad,
           correo: paciente.email,
           genero: paciente.genero,
