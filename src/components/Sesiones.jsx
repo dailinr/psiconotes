@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import dayjs from 'dayjs';
 import 'dayjs/locale/es';
 
-export const Sesiones = ({ userType}) => {
+export const Sesiones = ({ userType }) => {
   const [sessions, setSessions] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState('');

@@ -10,6 +10,7 @@ import Notificaciones from './components/Notificaciones';
 import GestionTablas from './components/GestionTablas'; 
 import NuevosPsicologos from './components/NuevosPsicologos'; 
 import Perfil from './components/Perfil'; 
+import HistoriaClinica from './components/HistoriaClinica';
 
 import './css/global.css';
 import './css/Modal.css';
@@ -49,17 +50,19 @@ const App = () => {
       case 'Sesiones':
         return <Sesiones userType={userType} />;
       case 'MisPacientes':
-        return <GestionTablas userType={userType} />;
+        return <GestionTablas userType={userType} setActiveSection={setActiveSection}/>;
       case 'NuevosPacientes':
         return <NuevosPacientes />;
       case 'Notificaciones':
         return <Notificaciones userType={userType}/>;
       case 'Psicologos':
-        return <GestionTablas userType={userType} />;
+        return <GestionTablas userType={userType} setActiveSection={setActiveSection} />;
       case 'NuevosPsicologos':
         return <NuevosPsicologos />;
       case 'Perfil':
         return <Perfil userType={userType}/>;
+      case 'HistoriaClinica': 
+        return <HistoriaClinica />;
       default:
         return <GestionTablas userType={userType} />;
     }
