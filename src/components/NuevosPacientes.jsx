@@ -15,8 +15,6 @@ const NuevosPacientes = () => {
     contacto: '',
     nombreAcudiente: '',
     contactoEmergencia: '',
-    username: '',
-    password: ''
   });
 
   const handleChange = (e) => {
@@ -60,9 +58,26 @@ const NuevosPacientes = () => {
     });
   };
 
+  const generateUsername = (primerNombre, primerApellido) => {
+    return `${primerNombre}.${primerApellido}`.toLowerCase();
+  };
+
+  const generateRandomPassword = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    let password = '';
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+    return password;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    const username = generateUsername(form.primerNombre, form.primerApellido);
+    const password = generateRandomPassword();
+
     const nuevoPaciente = {
       nombre: `${form.primerNombre} ${form.segundoNombre}`,
       apellido: `${form.primerApellido} ${form.segundoApellido}`,
@@ -75,8 +90,8 @@ const NuevosPacientes = () => {
       estado: 'activa',
       usuario: {
         email: form.email,
-        username: form.username,
-        password: form.password,
+        username: username,
+        password: password,
         roles: [1, 3]
       }
     };
@@ -100,7 +115,7 @@ const NuevosPacientes = () => {
       // Mostrar alerta de éxito
       Swal.fire({
         title: 'Éxito',
-        text: 'El paciente ha sido guardado exitosamente',
+        text: `El paciente ha sido guardado exitosamente. Username: ${username}, Password: ${password}`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       });
@@ -118,8 +133,6 @@ const NuevosPacientes = () => {
         contacto: '',
         nombreAcudiente: '',
         contactoEmergencia: '',
-        username: '',
-        password: ''
       });
 
     } catch (error) {
@@ -137,7 +150,7 @@ const NuevosPacientes = () => {
 
   return (
     <NuevoUsuario
-      userType="1" // userType 1 para Pacientes
+      userType='1' // userType 1 para Pacientes
       form={form}
       handleChange={handleChange}
       handleSubmit={handleSubmit}

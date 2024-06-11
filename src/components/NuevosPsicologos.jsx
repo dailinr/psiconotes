@@ -2,18 +2,15 @@ import React, { useState } from 'react';
 import NuevoUsuario from './NuevoUsuario';
 import Swal from 'sweetalert2';
 
-const NuevosPacientes = () => {
+const NuevosPsicologos = () => {
   const [form, setForm] = useState({
     primerNombre: '',
     segundoNombre: '',
     primerApellido: '',
     segundoApellido: '',
     email: '',
-    genero: '',
-    grado: '',
     edad: '',
     contacto: '',
-    nombreAcudiente: '',
     contactoEmergencia: '',
     username: '',
     password: ''
@@ -21,90 +18,66 @@ const NuevosPacientes = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Validaciones específicas para Nuevos Pacientes
-    if (name === 'contacto' || name === 'contactoEmergencia') {
-      const filteredValue = value.replace(/\D/g, ''); // Eliminar todo lo que no sea dígito
-      if (filteredValue.length <= 10) {
-        setForm({
-          ...form,
-          [name]: filteredValue,
-        });
-      }
-      return;
-    }
-
-    // Permitir solo números y limitar a 2 caracteres para la edad
-    if (name === 'edad') {
-      const filteredValue = value.replace(/\D/g, '').slice(0, 2);
-      setForm({
-        ...form,
-        [name]: filteredValue,
-      });
-      return;
-    }
-
-    // Validar que los inputs de texto no acepten números ni espacios
-    if (['primerNombre', 'segundoNombre', 'primerApellido', 'segundoApellido', 'nombreAcudiente'].includes(name)) {
-      const filteredValue = value.replace(/[0-9\s]/g, ''); // Eliminar números y espacios
-      setForm({
-        ...form,
-        [name]: filteredValue,
-      });
-      return;
-    }
-
     setForm({
       ...form,
       [name]: value,
     });
   };
 
+  const generateUsername = (primerNombre, primerApellido) => {
+    return `${primerNombre}.${primerApellido}`.toLowerCase();
+  };
+
+  const generateRandomPassword = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+    let password = '';
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      password += chars[randomIndex];
+    }
+    return password;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const nuevoPaciente = {
+    const username = generateUsername(form.primerNombre, form.primerApellido);
+    const password = generateRandomPassword();
+    const nuevoPsicologo = {
       nombre: `${form.primerNombre} ${form.segundoNombre}`,
       apellido: `${form.primerApellido} ${form.segundoApellido}`,
-      edad: form.edad,
-      genero: form.genero,
-      email: form.email,
+      estado: 'Activo',
+      edad: form.edad, 
       telefono: form.contacto,
-      acudiente: form.nombreAcudiente,
-      telAcudiente: form.contactoEmergencia,
-      estado: 'activo',
       usuario: {
         email: form.email,
-        username: form.username,
-        password: form.password,
-        roles: [1, 3]
+        username: username,
+        password: password,
+        roles: [1, 2]
       }
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/pacientes/guardar', {
+      const response = await fetch('http://localhost:8080/api/v1/psicologos/guardar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(nuevoPaciente),
+        body: JSON.stringify(nuevoPsicologo),
       });
 
       if (!response.ok) {
-        throw new Error('Error al guardar el paciente');
+        throw new Error('Error al guardar el psicólogo');
       }
 
       const data = await response.json();
-      console.log('Nuevo paciente guardado:', data);
+      console.log('Nuevo psicólogo guardado:', data);
 
-      // Mostrar alerta de éxito
       Swal.fire({
         title: 'Éxito',
-        text: 'El paciente ha sido guardado exitosamente',
+        text: `El psicólogo ha sido guardado exitosamente. Username: ${username}, Password: ${password}`,
         icon: 'success',
         confirmButtonText: 'Aceptar'
       });
-
       // Limpiar el formulario
       setForm({
         primerNombre: '',
@@ -112,11 +85,8 @@ const NuevosPacientes = () => {
         primerApellido: '',
         segundoApellido: '',
         email: '',
-        genero: '',
-        grado: '',
         edad: '',
         contacto: '',
-        nombreAcudiente: '',
         contactoEmergencia: '',
         username: '',
         password: ''
@@ -124,7 +94,6 @@ const NuevosPacientes = () => {
 
     } catch (error) {
       console.error('Error:', error);
-
       // Mostrar alerta de error
       Swal.fire({
         title: 'Error',
@@ -137,12 +106,12 @@ const NuevosPacientes = () => {
 
   return (
     <NuevoUsuario
-      userType="1" // userType 1 para Pacientes
-      form={form}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
+  userType='2'  // Para psicólogos
+  form={form}
+  handleChange={handleChange}
+  handleSubmit={handleSubmit}
+   />
   );
 };
 
-export default NuevosPacientes;
+export default NuevosPsicologos;

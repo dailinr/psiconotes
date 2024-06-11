@@ -3,7 +3,7 @@ import ModalMasInfo from './Modales/ModalMasInfo';
 import ModalEditarPac from './Modales/ModalEditarPac';
 import './../css/Tabla.css';
 
-const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6, searchTerm, setActiveSection }) => {
+const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6, searchTerm, setActiveSection, userType }) => {
   const [paginaActual, setPaginaActual] = useState(1);
   const [datos, setDatos] = useState(datosIniciales);
   const [seleccionado, setSeleccionado] = useState(null);
@@ -104,7 +104,8 @@ const Tabla = ({ datosIniciales, columnas, filasPorPagina = 6, searchTerm, setAc
           info={seleccionado}
           onClose={handleCloseModalMasInfo}
           onEdit={handleOpenModalEditar}
-          setActiveSection={setActiveSection} // Pasando setActiveSection aquí
+          setActiveSection={setActiveSection}
+          userType={userType}
         />
       )}
       {modalEditarAbierto && seleccionado && (

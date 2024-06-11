@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ModalMasInfo = ({ info, onClose, onEdit, setActiveSection }) => {
+const ModalMasInfo = ({ info, onClose, onEdit, setActiveSection, userType}) => {
   if (!info) return null;
 
   const handleClick = (section) => {
@@ -32,7 +32,9 @@ const ModalMasInfo = ({ info, onClose, onEdit, setActiveSection }) => {
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
             <button type="button" className="btn btn-primary" onClick={onEdit}>Editar</button>
-            <button type="button" className="btn btn-success" onClick={() => handleClick('HistoriaClinica')}>Historia Clínica</button>
+            {userType === '1' && (
+                <button type="button" className="btn btn-success" onClick={() => handleClick('HistoriaClinica')}>Historia Clínica</button>
+            )}
           </div>
         </div>
       </div>
