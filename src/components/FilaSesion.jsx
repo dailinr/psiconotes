@@ -1,14 +1,15 @@
 import '../css/filSesion.css';
 import React, { useEffect, useState } from 'react'
-import StudentDetails from './StudentDetails';
 import { MostrarInforme } from './MostrarInforme.jsx';
 import { DescargarInforme } from './DescargarInforme.jsx';
 import { ModalInforme } from './Modales/ModalInforme';
+import Toast from './Toast.jsx'
 
 export const FilaSesion = ({ session }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalInf, setShowModalInf] = useState(false);
   const [informe, setInforme] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
     const handleCloseModal = () => {
       setShowModal(false);
@@ -36,6 +37,10 @@ export const FilaSesion = ({ session }) => {
 
     const handleSaveInforme = (inf) => {
         setInforme(inf); 
+        setShowToast(true);
+    };
+    const handleCloseToast = () => {
+        setShowToast(false);
     };
 
     const colorEstado = (estado) => {
@@ -104,19 +109,22 @@ export const FilaSesion = ({ session }) => {
                     Informe
                     <br />
                     <span >
-                        <i className="bi bi-plus-circle-fill"  
+                        <i className="bi bi-plus-circle-fill" title="Añadir informe" 
                             onClick={informe !== '' ? null : handlePlusIconClick} 
                             style={{ 
                                 color: informe !== '' ? 'gray' : 'yourActiveColor',
                                 cursor: informe !== '' ? 'default' : 'pointer'
                             }} 
                         />
+                       
                         {showModalInf && (
-                            <ModalInforme onClose={handleCloseModalInf}  onSave={handleSaveInforme}  />
+                            <ModalInforme onClose={handleCloseModalInf} onSave={handleSaveInforme} />
+                                                   
                         )}
+                        {showToast && <Toast message="Informe guardado" onClose={handleCloseToast} />}
 
                         &nbsp; &nbsp; 
-                        <i className="bi bi-eye-fill" 
+                        <i className="bi bi-eye-fill" title="Ver informe"
                             onClick={informe === ''? null : handleOpenModal} 
                             style={{ 
                                 color: informe === '' ? 'gray' : 'black',
@@ -128,7 +136,7 @@ export const FilaSesion = ({ session }) => {
 
                         &nbsp; &nbsp; 
                         {informe === '' ? (
-                            <i className=" bi bi-file-earmark-arrow-down"
+                            <i className=" bi bi-file-earmark-arrow-down" title="descargar informe"
                                 style={{ color: 'gray', cursor: 'default' }} 
                             />
                         ) :

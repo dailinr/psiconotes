@@ -75,3 +75,15 @@ body.detailsShown, body.detailsShown * {
     border: none;
   }
   
+  .toast-container {
+    position: fixed;
+    width: 200px;
+    bottom: 3rem;
+    right: 2rem;
+    z-index: 1050;
+}
+  
+  .toast-custom {
+    background-color: rgb(8, 99, 8) !important;
+  }
+  
