@@ -20,7 +20,7 @@ const Calendario = ({ userType }) => {
 
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [modalType, setModalType] = useState(null); // Nuevo estado para manejar qué modal está abierto
+  const [modalType, setModalType] = useState(null); 
 
   useEffect(() => {
     let endpoint = null;

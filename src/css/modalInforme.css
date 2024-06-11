@@ -1,5 +1,6 @@
 .modal-contendor{
     width: 50%;
+    max-width: 800px;
     border: 1px solid red;
     position: fixed;
     top: 50%;
@@ -50,16 +51,18 @@
 .mod-body{
     padding: 18px 30px;
     display: grid;
+    max-width: 800px;
     place-content: center;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; 
+    /* grid-template-columns: repeat(auto-fit, minmax(min(280px, 60%), 1fr)); */
     column-gap: 25px;
     row-gap: 10px;
 }
 
 .celda{
-    width: 280px;
-    height: 100px;
+    width: 17.5rem;
+    height: 6.25rem;
 }
 .celda p{
     font-size: 16px;
@@ -75,4 +78,20 @@
     padding: 15px 20px ;
     column-gap: 10px;
     padding-right: 40px;
+}
+
+@media screen and (max-width: 1250px){
+    .modal-contendor{
+        width: 80%;
+    }
+    .mod-body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    }
+    .celda{
+        width: 100%;
+    }
+    .mod-foot{
+        padding-right: 20px;
+    }
 }
