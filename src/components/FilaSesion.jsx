@@ -39,32 +39,9 @@ export const FilaSesion = ({ session }) => {
     //     setInforme(inf); 
     //     setShowToast(true);
     // };
-    const handleSaveInforme = async (informeData) => {
-        try {
-          const response = await fetch(`http://localhost:8080/psicoNote/v1/informe/guardar`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              ...informeData,
-              idPsicologo: session.idPsicologo,
-              idPaciente: session.idPaciente,
-            }),
-          });
-    
-          if (response.ok) {
-            const data = await response.json();
-            setInforme(data);
-            setShowToast(true);
-          } else {
-            console.error('Error guardando el informe');
-          }
-        } catch (error) {
-          console.error('Error en fetch:', error.message || error);
-        }
-    
-        setShowModalInf(false);
+    const handleSaveInforme = (inf) => {
+      setInforme(inf)
+      setShowModalInf(false);
     };
 
     const handleCloseToast = () => {
