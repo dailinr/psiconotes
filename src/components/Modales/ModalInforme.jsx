@@ -37,31 +37,38 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
     setNotasAdiccionales(event.target.value);
   };
 
-  const handleAddClick = () => {
-    if (resumen.trim() && objetivos.trim() && trabajoRealizado.trim() 
-      && observacion.trim() && respuestaEstudiante.trim() && conclusiones.trim() 
-      && planAccion.trim() ) {
-        
-        const informe = {
-          resumen,
-          objetivos,
-          trabajoRealizado,
-          observacion,
-          respuestaEstudiante,
-          conclusiones,
-          planAccion,
-          notasAdiccionales
-        };
-      console.log(informe);
-      onSave(informe);
-      onClose();
-      
-    }
-    else{
-      alert('hay un campo sin completar');
-    }
-      
-  }
+  const handleSave = () => {
+    const informe = {
+      resumen,
+      objetivos,
+      trabajoRealizado,
+      observacion,
+      respuestaEstudiante,
+      conclusiones,
+      planAccion,
+      notasAdiccionales
+    };
+
+    fetch(`http://localhost:8080/api/v1/psicologos/1/informes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(informe)
+    })
+    .then(response => response.json())
+    .then(data => {
+      fetch(`http://localhost:8080/psicoNote/v1/sesion/actualizarInforme/${idSesion}/${data.id}`, {
+        method: 'PUT'
+      })
+      .then(() => onSave(data))
+      .catch(error => console.error('Error al actualizar la sesión:', error));
+    })
+    .catch(error => console.error('Error al guardar el informe:', error));
+    
+    onClose();
+  };
+
 
   return (
     <div>
@@ -175,7 +182,7 @@ export const ModalInforme = ({ onClose, show, onSave }) => {
           <div className='mod-foot '>
             
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
-            <button type="button" className="btn btn-primary" onClick={handleAddClick} >Añadir</button>
+            <button type="button" className="btn btn-primary" onClick={handleSave} >Añadir</button>
             
           </div>
         </div>
