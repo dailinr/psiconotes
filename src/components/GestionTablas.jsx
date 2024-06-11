@@ -24,11 +24,16 @@ const GestionTablas = ({ userType, setActiveSection }) => {
           </form>
         </div>
         {userType === '2' ? (
-          <TablaMisPsicologos searchTerm={searchTerm}
-          setActiveSection={setActiveSection}  />
+          <TablaMisPsicologos 
+          searchTerm={searchTerm}
+          setActiveSection={setActiveSection}
+          />
         ) : (
-          <TablaMisPacientes searchTerm={searchTerm} 
-          setActiveSection={setActiveSection} />
+          <TablaMisPacientes 
+          searchTerm={searchTerm} 
+          setActiveSection={setActiveSection} 
+          userType={userType}
+          />
         )}
       </div>
     </div>

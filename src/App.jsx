@@ -61,7 +61,7 @@ const App = () => {
         return <NuevosPsicologos />;
       case 'Perfil':
         return <Perfil />;
-      case 'HistoriaClinica': // Añadir caso para Historia Clínica
+      case 'HistoriaClinica': 
         return <HistoriaClinica />;
       default:
         return <GestionTablas userType={userType} />;
